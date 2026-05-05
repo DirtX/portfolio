@@ -1,0 +1,16 @@
+.about-header {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  color: #f5f5f5;
+}
+
+.about-text-container {
+  color: #a0a0a0;
+  font-size: 1.1rem;
+  max-width: 600px;
+}
+
+.about-paragraph {
+  margin-bottom: 1.5rem;
+}
+

@@ -1,0 +1,24 @@
+.bg-grid-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  background-color: #050505;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.bg-grid-cell {
+  width: 50px;
+  height: 50px;
+  border-right: 1px solid rgba(255, 255, 255, 0.03);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+  transition: background-color 0.8s ease;
+}
+
+.bg-grid-cell.active {
+  background-color: rgba(255, 255, 255, 0.15);
+  transition: background-color 0s;
+}
