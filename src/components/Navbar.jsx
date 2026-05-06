@@ -5,7 +5,7 @@ export default function Navbar() {
   return (
     <nav className="navbar">
       <Link to="/" className="nav-logo">
-        Portfolio.
+        YH.
       </Link>
       <div className="nav-links">
         <Link to="/about" className="nav-link">About</Link>
