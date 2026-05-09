@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import Button from '../components/Button';
 import './Home.css';
 
 const FULL_NAME = 'Yaroslav Horbatiuk';
@@ -23,8 +24,8 @@ export default function Home() {
 
   return (
     <div className="home-container">
-      <p className="home-greeting">Available for work · Prague</p>
-      <h1 className="home-name">
+        <p className="home-greeting">Available for work · Prague</p>
+        <h1 className="home-name">
         {displayed}
         {!done && <span className="home-cursor" />}
       </h1>
@@ -34,14 +35,17 @@ export default function Home() {
         Bridging the gap between pixel-perfect design and responsive web experiences.
       </p>
       <div className="home-actions">
-        <Link to="/projects" className="home-btn-primary">View Projects</Link>
-        
-          <a href="/Horbatiuk_CV.pdf"
-          download
-          className="home-btn-secondary"
-        >
+        <Button to="/projects" variant="primary">
+          View Projects
+        </Button>
+
+        <Button href="/Horbatiuk_CV.pdf" variant="secondary" download>
           Download CV
-        </a>
+        </Button>
+
+        <Button href="#" variant="figma" target="_blank" rel="noopener noreferrer">
+          Figma File
+        </Button>
       </div>
     </div>
   );

@@ -5,6 +5,7 @@ import Projects from './pages/Projects';
 import About from './pages/About';
 import Contact from './pages/Contact';
 import BackgroundGrid from './components/BackgroundGrid';
+import VideoCompressor from './pages/Projects/VideoCompressor';
 import './App.css';
 
 export default function App() {
@@ -18,6 +19,7 @@ export default function App() {
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/projects" element={<Projects />} />
+            <Route path="/projects/video-compressor" element={<VideoCompressor />} />
             <Route path="/contact" element={<Contact />} />
           </Routes>
         </main>
