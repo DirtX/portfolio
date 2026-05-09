@@ -1,10 +1,28 @@
+.project-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.project-arrow {
+  color: #444;
+  font-size: 1.2rem;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.project-card:hover .project-arrow {
+  transform: translateX(8px);
+  color: #fff;
+}
+
 .project-card {
   border: 1px solid #222;
   border-radius: 8px;
   padding: 1.5rem;
   transition: border-color 0.3s ease;
   display: block;
-  text-decoration: none; /* Гарантуємо, що лінк не матиме підкреслення */
+  text-decoration: none;
 }
 
 .project-card:hover {

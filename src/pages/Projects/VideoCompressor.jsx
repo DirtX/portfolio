@@ -163,7 +163,7 @@ export default function VideoCompressor() {
           {errorMessage && <span className="error-message">{errorMessage}</span>}
         </div>
 
-        <div style={{ display: 'flex', gap: '1rem' }}>
+        <div className="compressor-controls-row">
           <div className="input-group" style={{ flex: 1 }}>
             <label>Target Size (MB)</label>
             <input 
@@ -190,14 +190,15 @@ export default function VideoCompressor() {
           </div>
         </div>
 
-        <Button 
-          variant={isLoaded && videoFile && !isCompressing ? "primary" : "secondary"}
-          onClick={startCompression}
-          disabled={!isLoaded || !videoFile || isCompressing}
-          style={{ width: '100%', marginTop: '1rem' }}
-        >
-          {isCompressing ? 'Compressing...' : !isLoaded ? 'Loading Engine...' : 'Start Compression'}
-        </Button>
+        <div className="compressor-submit-btn">
+          <Button
+            variant={isLoaded && videoFile && !isCompressing ? "primary" : "secondary"}
+            onClick={startCompression}
+            disabled={!isLoaded || !videoFile || isCompressing}
+          >
+            {isCompressing ? 'Compressing...' : !isLoaded ? 'Loading Engine...' : 'Start Compression'}
+          </Button>
+        </div>
 
         {isCompressing && (
           <div className="progress-section">

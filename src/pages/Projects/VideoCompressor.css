@@ -77,3 +77,17 @@
   margin-top: 0.75rem;
   font-family: monospace;
 }
+
+.compressor-controls-row {
+  display: flex;
+  gap: 1rem;
+}
+
+.compressor-submit-btn {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.compressor-submit-btn .base-btn {
+  width: 100%;
+}
