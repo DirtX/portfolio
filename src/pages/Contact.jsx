@@ -3,7 +3,7 @@ import './Contact.css';
 export default function Contact() {
   return (
     <div className="page-placeholder">
-      <h2 className="contact-header">Get in Touch.</h2>
+      <h2 className="page-header">Get in Touch.</h2>
       <div className="contact-info-block">
         <div>
           <span className="contact-label">Email</span>

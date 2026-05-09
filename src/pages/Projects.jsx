@@ -9,7 +9,7 @@ const projectsData = [
 export default function Projects() {
   return (
     <div className="projects-container">
-      <h2 className="projects-title">Selected Works.</h2>
+      <h2 className="page-header">Selected Works.</h2>
       <div className="projects-grid">
         {projectsData.map(proj => (
           <ProjectCard key={proj.id} {...proj} />

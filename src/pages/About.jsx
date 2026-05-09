@@ -3,9 +3,9 @@ import './About.css';
 export default function About() {
   return (
     <div className="page-placeholder">
-      <h2 className="about-header">About Me.</h2>
+      <h2 className="page-header">About Me.</h2>
       <div className="about-text-container">
-        <p className="about-paragraph">
+        <p className="about-subtext">
           Frontend developer with 4 years of freelance experience building responsive websites 
           and web interfaces. 
         </p>
