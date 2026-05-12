@@ -1,5 +1,7 @@
 import { useEffect, useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import figmaLogo from '../assets/figma-logo.svg';
+import { useLang } from '../context/LanguageContext';
 import './Home.css';
 
 const FULL_NAME = 'Yaroslav Horbatiuk';
@@ -8,7 +10,7 @@ const skills = [
   { icon: '⚛', name: 'React', level: 'Intermediate' },
   { icon: '{ }', name: 'HTML / CSS', level: 'Confident' },
   { icon: 'JS', name: 'JavaScript', level: 'Confident' },
-  { icon: '◈', name: 'Figma', level: 'Confident' },
+  { icon: 'F', name: 'Figma', level: 'Confident' },
   { icon: 'Ps', name: 'Photoshop', level: 'Confident' },
   { icon: 'Ai', name: 'Illustrator', level: 'Intermediate' },
 ];
@@ -19,6 +21,34 @@ const projects = [
 ];
 
 export default function Home() {
+  const { t } = useLang();
+
+  const projects = [
+    { 
+      id: 'video-compressor', 
+      tag: 'WebAssembly · FFmpeg', 
+      title: t('proj_video_title'), 
+      desc: t('proj_video_desc'), 
+      tech: ['React', 'WASM', 'FFmpeg'] 
+    },
+    { 
+      id: 'color-palette', 
+      tag: 'Canvas API', 
+      title: t('proj_palette_title'), 
+      desc: t('proj_palette_desc'), 
+      tech: ['React', 'Canvas'] 
+    },
+  ];
+
+  const skills = [
+    { icon: '⚛', name: 'React', level: t('skill_intermediate') },
+    { icon: '{ }', name: 'HTML / CSS', level: t('skill_confident') },
+    { icon: 'JS', name: 'JavaScript', level: t('skill_confident') },
+    { icon: 'F', name: 'Figma', level: t('skill_confident') },
+    { icon: 'Ps', name: 'Photoshop', level: t('skill_confident') },
+    { icon: 'Ai', name: 'Illustrator', level: t('skill_intermediate') },
+  ];
+
   const [displayed, setDisplayed] = useState('');
   const [done, setDone] = useState(false);
   const carouselRef = useRef(null);
@@ -127,20 +157,17 @@ export default function Home() {
 
       {/* HERO SECTION */}
       <section className="home-hero">
-        <p className="home-eyebrow">Available for work · Prague</p>
+        <p className="home-eyebrow">{t('hero_eyebrow')}</p>
         <h1 className="home-name">
           {displayed}
           {!done && <span className="home-cursor" />}
         </h1>
-        <p className="home-role">Frontend Developer & Designer.</p>
-        <p className="home-description">
-          Translating visual concepts into clean, functional code.
-          Bridging design and engineering without friction.
-        </p>
+        <p className="home-role">{t('hero_role')}</p>
+        <p className="home-description">{t('hero_desc')}</p>
         <div className="home-actions">
-          <Link to="/projects" className="home-btn-primary">View Projects</Link>
-          <a href="/Horbatiuk_CV.pdf" download className="home-btn-secondary">Download CV</a>
-          <a href="#" className="home-btn-secondary">Figma File ↗</a>
+          <Link to="/projects" className="home-btn-primary">{t('hero_btn_projects')}</Link>
+          <a href="/Horbatiuk_CV.pdf" download className="home-btn-secondary">{t('hero_btn_cv')}</a>
+          <a href="#" className="home-btn-secondary">{t('hero_btn_figma')}</a>
         </div>
       </section>
 
@@ -148,31 +175,37 @@ export default function Home() {
       <div className="home-stats">
         <div className="home-stat">
           <span className="home-stat-num">4+</span>
-          <span className="home-stat-label">Years freelancing</span>
+          <span className="home-stat-label">{t('stat_years')}</span>
         </div>
         <div className="home-stat">
           <span className="home-stat-num">20+</span>
-          <span className="home-stat-label">Projects delivered</span>
+          <span className="home-stat-label">{t('stat_projects')}</span>
         </div>
       </div>
 
       {/* LANGUAGES SECTION */}
       <div className="home-languages">
-        <span className="lang-item"><span className="lang-code">EN</span><span className="lang-level">Upper Intermediate</span></span>
+        <span className="lang-item"><span className="lang-code">EN</span><span className="lang-level">{t('lang_en')}</span></span>
         <span className="lang-dot">·</span>
-        <span className="lang-item"><span className="lang-code">UA</span><span className="lang-level">Native</span></span>
+        <span className="lang-item"><span className="lang-code">UA</span><span className="lang-level">{t('lang_ua')}</span></span>
         <span className="lang-dot">·</span>
-        <span className="lang-item"><span className="lang-code">CZ</span><span className="lang-level">Beginner</span></span>
+        <span className="lang-item"><span className="lang-code">CZ</span><span className="lang-level">{t('lang_cz')}</span></span>
       </div>
 
       {/* SKILLS SECTION */}
       <section className="home-skills reveal">
-        <p className="home-eyebrow">Expertise</p>
-        <h2 className="home-section-title">What I work with.</h2>
+        <p className="home-eyebrow">{t('skills_eyebrow')}</p>
+        <h2 className="home-section-title">{t('skills_title')}</h2>
         <div className="skills-grid">
           {skills.map((s, i) => (
             <div key={s.name} className="skill-card reveal" style={{ transitionDelay: `${i * 80}ms` }}>
-              <span className="skill-icon">{s.icon}</span>
+              <span className="skill-icon">
+                {s.icon === 'F' ? (
+                  <img className="figma-logo" src={figmaLogo} alt="Figma" />
+                ) : (
+                  s.icon
+                )}
+              </span>
               <span className="skill-name">{s.name}</span>
               <span className="skill-level">{s.level}</span>
             </div>
@@ -183,8 +216,8 @@ export default function Home() {
       {/* PROJECTS SECTION */}
       <section className="home-projects" id="projects">
         <div className="home-projects-header">
-          <p className="home-eyebrow">Selected Works</p>
-          <h2 className="home-section-title">Things I've built.</h2>
+          <p className="home-eyebrow">{t('projects_eyebrow')}</p>
+          <h2 className="home-section-title">{t('projects_title')}</h2>
         </div>
         <div className="carousel-wrap">
           <div
@@ -220,20 +253,20 @@ export default function Home() {
       {/* ABOUT + CONTACT SECTION */}
       <section className="home-split">
         <div className="home-about reveal" id="about">
-          <p className="home-eyebrow">About</p>
-          <h2 className="home-section-title">Who I am.</h2>
-          <p className="home-about-p">Frontend developer with 4 years of freelance experience building responsive websites and interfaces.</p>
-          <p className="home-about-p">My background in UI/UX design gives me an edge — I can go from mockup to working code without handoff friction.</p>
-          <p className="home-about-p">Based in Czech Republic, available to relocate to Prague.</p>
+          <p className="home-eyebrow">{t('about_eyebrow')}</p>
+          <h2 className="home-section-title">{t('about_title')}</h2>
+          <p className="home-about-p">{t('about_p1')}</p>
+          <p className="home-about-p">{t('about_p2')}</p>
+          <p className="home-about-p">{t('about_p3')}</p>
         </div>
         <div className="home-contact reveal" id="contact">
-          <p className="home-eyebrow">Get in touch</p>
-          <h2 className="home-section-title">Let's talk.</h2>
+          <p className="home-eyebrow">{t('contact_eyebrow')}</p>
+          <h2 className="home-section-title">{t('contact_title')}</h2>
           <div className="contact-rows">
-            <div className="contact-row"><span className="c-label">Email</span><span className="c-value">ggdirtxgg@gmail.com</span></div>
-            <div className="contact-row"><span className="c-label">Phone</span><span className="c-value">+420 739 984 652</span></div>
-            <div className="contact-row"><span className="c-label">Location</span><span className="c-value">Kolín → Prague</span></div>
-            <div className="contact-row"><span className="c-label">Languages</span><span className="c-value">EN · UA · CZ</span></div>
+            <div className="contact-row"><span className="c-label">{t('contact_email')}</span><span className="c-value">ggdirtxgg@gmail.com</span></div>
+            <div className="contact-row"><span className="c-label">{t('contact_phone')}</span><span className="c-value">+420 739 984 652</span></div>
+            <div className="contact-row"><span className="c-label">{t('contact_location')}</span><span className="c-value">{t('contact_location_val')}</span></div>
+            <div className="contact-row"><span className="c-label">{t('contact_languages')}</span><span className="c-value">EN · UA · CZ</span></div>
           </div>
         </div>
       </section>
@@ -241,7 +274,7 @@ export default function Home() {
       {/* FOOTER SECTION */}
       <footer className="home-footer">
         <span className="footer-text">© 2026 Yaroslav Horbatiuk</span>
-        <span className="footer-text">Built with React</span>
+        <span className="footer-text">{t('footer_built')}</span>
       </footer>
     </div>
   );
