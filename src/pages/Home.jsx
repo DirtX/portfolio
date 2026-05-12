@@ -89,7 +89,7 @@ export default function Home() {
         curX.current += (mouseX.current - curX.current) * 0.08;
         curY.current += (mouseY.current - curY.current) * 0.08;
       }
-      el.style.background = `radial-gradient(circle 400px at ${curX.current}% ${curY.current}%, rgba(255,255,255,0.03) 0%, transparent 65%)`;
+      el.style.background = `radial-gradient(circle 400px at ${curX.current}% ${curY.current}%, rgba(255,255,255,0.06) 0%, transparent 65%)`;
       raf = requestAnimationFrame(animate);
     };
     animate();
@@ -97,9 +97,8 @@ export default function Home() {
   }, []);
 
   const handleMouseMove = (e) => {
-    const r = e.currentTarget.getBoundingClientRect();
-    mouseX.current = (e.clientX - r.left) / r.width * 100;
-    mouseY.current = (e.clientY - r.top) / r.height * 100;
+    mouseX.current = (e.clientX / window.innerWidth) * 100;
+    mouseY.current = (e.clientY / window.innerHeight) * 100;
     isHovering.current = true;
   };
 
@@ -199,13 +198,13 @@ export default function Home() {
         <div className="skills-grid">
           {skills.map((s, i) => (
             <div key={s.name} className="skill-card reveal" style={{ transitionDelay: `${i * 80}ms` }}>
-              <span className="skill-icon">
+              <div className="skill-badge">
                 {s.icon === 'F' ? (
                   <img className="figma-logo" src={figmaLogo} alt="Figma" />
                 ) : (
                   s.icon
                 )}
-              </span>
+              </div>
               <span className="skill-name">{s.name}</span>
               <span className="skill-level">{s.level}</span>
             </div>
