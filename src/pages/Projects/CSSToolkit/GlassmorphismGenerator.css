@@ -1,0 +1,33 @@
+/* ============ GLASS CARD ============ */
+.glass-preview-card {
+  width: 280px;
+  height: 200px;
+  transition: all var(--transition-base);
+}
+
+/* ============ BACKGROUND PRESETS ============ */
+.glass-presets {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+}
+
+.glass-preset {
+  height: 40px;
+  border-radius: var(--radius-md);
+  border: 0.5px solid var(--border-subtle);
+  cursor: pointer;
+  transition:
+    border-color var(--transition-base),
+    transform var(--transition-base);
+  padding: 0;
+}
+
+.glass-preset:hover {
+  transform: translateY(-2px);
+}
+
+.glass-preset.active {
+  border-color: var(--text-primary);
+  border-width: 2px;
+}

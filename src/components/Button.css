@@ -1,51 +1,70 @@
+/* ============ BASE BUTTON ============ */
 .base-btn {
   display: inline-flex;
   justify-content: center;
   align-items: center;
   padding: 0.65rem 1.4rem;
-  border-radius: 6px;
+  border-radius: var(--radius-md);
   font-size: 0.9rem;
-  transition: all 0.2s ease;
+  transition: all var(--transition-base);
   cursor: pointer;
   text-decoration: none;
 }
 
+/* ============ PRIMARY ============ */
 .btn-primary {
-  background: #f5f5f5;
-  color: #050505;
+  background: var(--text-primary);
+  color: var(--bg-primary);
   font-weight: 600;
-  border: 2px solid #f5f5f5;
+  border: 2px solid var(--text-primary);
 }
 
 .btn-primary:hover {
-  background: #ccc;
-  border-color: #ccc;
+  background: var(--accent-hover);
+  border-color: var(--accent-hover);
 }
 
-.btn-secondary, .btn-figma {
+/* ============ SECONDARY ============ */
+.btn-secondary,
+.btn-figma {
   background: transparent;
-  color: #666;
-  border: 2px solid #222;
+  color: var(--text-muted);
+  border: 2px solid var(--border-soft);
 }
 
 .btn-secondary:hover {
-  border-color: #555;
-  color: #fff;
+  border-color: var(--border-strong);
+  color: var(--accent-white);
 }
 
+/* ============ RAINBOW BORDER ============ */
 @keyframes rainbow {
-  0%   { border-color: #ff0000; }
-  17%  { border-color: #ff8800; }
-  33%  { border-color: #ffff00; }
-  50%  { border-color: #00ff88; }
-  67%  { border-color: #0088ff; }
-  83%  { border-color: #8800ff; }
-  100% { border-color: #ff0000; }
+  0% {
+    border-color: #ff0000;
+  }
+  17% {
+    border-color: #ff8800;
+  }
+  33% {
+    border-color: #ffff00;
+  }
+  50% {
+    border-color: #00ff88;
+  }
+  67% {
+    border-color: #0088ff;
+  }
+  83% {
+    border-color: #8800ff;
+  }
+  100% {
+    border-color: #ff0000;
+  }
 }
 
 .btn-figma:hover {
   border-width: 2px;
-  border-color: #555;
-  color: #fff;
+  border-color: var(--border-strong);
+  color: var(--accent-white);
   animation: rainbow 1.5s linear infinite;
 }

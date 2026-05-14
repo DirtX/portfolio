@@ -1,68 +1,63 @@
-import { useEffect, useState, useRef } from 'react';
-import { Link } from 'react-router-dom';
-import figmaLogo from '../assets/figma-logo.svg';
-import { useLang } from '../context/LanguageContext';
-import './Home.css';
+import { useEffect, useState, useRef } from "react";
+import { Link } from "react-router-dom";
+import figmaLogo from "../assets/figma-logo.svg";
+import { useLang } from "../context/LanguageContext";
+import "./Home.css";
 
-const FULL_NAME = 'Yaroslav Horbatiuk';
-
-const skills = [
-  { icon: '⚛', name: 'React', level: 'Intermediate' },
-  { icon: '{ }', name: 'HTML / CSS', level: 'Confident' },
-  { icon: 'JS', name: 'JavaScript', level: 'Confident' },
-  { icon: 'F', name: 'Figma', level: 'Confident' },
-  { icon: 'Ps', name: 'Photoshop', level: 'Confident' },
-  { icon: 'Ai', name: 'Illustrator', level: 'Intermediate' },
-];
-
-const projects = [
-  { id: 'video-compressor', tag: 'WebAssembly · FFmpeg', title: 'Video Compressor', desc: 'Client-side video compression without any server interaction.', tech: ['React', 'WASM', 'FFmpeg'] },
-  { id: 'color-palette', tag: 'Canvas API', title: 'Color Palette', desc: 'Extract dominant colors from any image instantly.', tech: ['React', 'Canvas'] },
-];
+const FULL_NAME = "Yaroslav Horbatiuk";
 
 export default function Home() {
   const { t } = useLang();
 
   const projects = [
-    { 
-      id: 'video-compressor', 
-      tag: 'WebAssembly · FFmpeg', 
-      title: t('proj_video_title'), 
-      desc: t('proj_video_desc'), 
-      tech: ['React', 'WASM', 'FFmpeg'] 
+    {
+      id: "video-compressor",
+      tag: "WebAssembly · FFmpeg",
+      title: t("proj_video_title"),
+      desc: t("proj_video_desc"),
+      tech: ["React", "WASM", "FFmpeg"],
     },
-    { 
-      id: 'color-palette', 
-      tag: 'Canvas API', 
-      title: t('proj_palette_title'), 
-      desc: t('proj_palette_desc'), 
-      tech: ['React', 'Canvas'] 
+    {
+      id: "color-palette",
+      tag: "Canvas API",
+      title: t("proj_palette_title"),
+      desc: t("proj_palette_desc"),
+      tech: ["React", "Canvas"],
+    },
+    {
+      id: "css-toolkit",
+      tag: "Pure CSS · JavaScript",
+      title: t("proj_toolkit_title"),
+      desc: t("proj_toolkit_desc"),
+      tech: ["HTML", "CSS", "JavaScript"],
+    },
+    {
+      id: "markdown-editor",
+      tag: t("proj_markdown_tag"),
+      title: t("proj_markdown_title"),
+      desc: t("proj_markdown_desc"),
+      tech: ["React", "Regex", "localStorage"],
     },
   ];
 
   const skills = [
-    { icon: '⚛', name: 'React', level: t('skill_intermediate') },
-    { icon: '{ }', name: 'HTML / CSS', level: t('skill_confident') },
-    { icon: 'JS', name: 'JavaScript', level: t('skill_confident') },
-    { icon: 'F', name: 'Figma', level: t('skill_confident') },
-    { icon: 'Ps', name: 'Photoshop', level: t('skill_confident') },
-    { icon: 'Ai', name: 'Illustrator', level: t('skill_intermediate') },
+    { icon: "⚛", name: "React", level: t("skill_intermediate") },
+    { icon: "{ }", name: "HTML / CSS", level: t("skill_confident") },
+    { icon: "JS", name: "JavaScript", level: t("skill_confident") },
+    { icon: "F", name: "Figma", level: t("skill_confident") },
+    { icon: "Ps", name: "Photoshop", level: t("skill_confident") },
+    { icon: "Ai", name: "Illustrator", level: t("skill_intermediate") },
   ];
 
-  const [displayed, setDisplayed] = useState('');
+  const [displayed, setDisplayed] = useState("");
   const [done, setDone] = useState(false);
-  const carouselRef = useRef(null);
   const spotlightRef = useRef(null);
-  const isGrabbing = useRef(false);
-  const startX = useRef(0);
-  const scrollStart = useRef(0);
   const angleRef = useRef(0);
   const curX = useRef(50);
   const curY = useRef(50);
   const mouseX = useRef(50);
   const mouseY = useRef(50);
   const isHovering = useRef(false);
-  const isPaused = useRef(false);
 
   // Feature: Typewriter
   useEffect(() => {
@@ -70,7 +65,10 @@ export default function Home() {
     const interval = setInterval(() => {
       setDisplayed(FULL_NAME.slice(0, i + 1));
       i++;
-      if (i === FULL_NAME.length) { clearInterval(interval); setDone(true); }
+      if (i === FULL_NAME.length) {
+        clearInterval(interval);
+        setDone(true);
+      }
     }, 60);
     return () => clearInterval(interval);
   }, []);
@@ -102,37 +100,17 @@ export default function Home() {
     isHovering.current = true;
   };
 
-  // Feature:Carousel auto-scroll
+  // Feature: Scroll reveal
   useEffect(() => {
-    const el = carouselRef.current;
-    if (!el) return;
-    const interval = setInterval(() => {
-      if (isPaused.current || isGrabbing.current) return;
-      el.scrollLeft += 0.4;
-      if (el.scrollLeft >= el.scrollWidth - el.clientWidth) el.scrollLeft = 0;
-    }, 16);
-    return () => clearInterval(interval);
-  }, []);
-
-  const handleCarouselMouseDown = (e) => {
-    isGrabbing.current = true;
-    startX.current = e.pageX;
-    scrollStart.current = carouselRef.current.scrollLeft;
-  };
-  const handleCarouselMouseMove = (e) => {
-    if (!isGrabbing.current) return;
-    carouselRef.current.scrollLeft = scrollStart.current - (e.pageX - startX.current);
-  };
-  const stopGrabbing = () => { isGrabbing.current = false; };
-
-  // Feature:Scroll reveal
-  useEffect(() => {
-    const items = document.querySelectorAll('.reveal');
+    const items = document.querySelectorAll(".reveal");
     const observer = new IntersectionObserver(
-      (entries) => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
+      (entries) =>
+        entries.forEach((e) => {
+          if (e.isIntersecting) e.target.classList.add("visible");
+        }),
       { threshold: 0.15 }
     );
-    items.forEach(el => observer.observe(el));
+    items.forEach((el) => observer.observe(el));
     return () => observer.disconnect();
   }, []);
 
@@ -144,29 +122,41 @@ export default function Home() {
     const y = (e.clientY - r.top) / r.height - 0.5;
     card.style.transform = `perspective(600px) rotateY(${x * 10}deg) rotateX(${-y * 10}deg) translateY(-2px)`;
   };
-  const resetTilt = (e) => { e.currentTarget.style.transform = ''; };
+  const resetTilt = (e) => {
+    e.currentTarget.style.transform = "";
+  };
+
+  const loopedProjects = [...projects, ...projects];
 
   return (
     <div
       className="home-wrapper"
       onMouseMove={handleMouseMove}
-      onMouseLeave={() => { isHovering.current = false; }}
+      onMouseLeave={() => {
+        isHovering.current = false;
+      }}
     >
       <div className="home-spotlight" ref={spotlightRef} />
 
       {/* HERO SECTION */}
       <section className="home-hero">
-        <p className="home-eyebrow">{t('hero_eyebrow')}</p>
+        <p className="home-eyebrow">{t("hero_eyebrow")}</p>
         <h1 className="home-name">
           {displayed}
           {!done && <span className="home-cursor" />}
         </h1>
-        <p className="home-role">{t('hero_role')}</p>
-        <p className="home-description">{t('hero_desc')}</p>
+        <p className="home-role">{t("hero_role")}</p>
+        <p className="home-description">{t("hero_desc")}</p>
         <div className="home-actions">
-          <Link to="/projects" className="home-btn-primary">{t('hero_btn_projects')}</Link>
-          <a href="/Horbatiuk_CV.pdf" download className="home-btn-secondary">{t('hero_btn_cv')}</a>
-          <a href="#" className="home-btn-secondary">{t('hero_btn_figma')}</a>
+          <Link to="/projects" className="home-btn-primary">
+            {t("hero_btn_projects")}
+          </Link>
+          <a href="/Horbatiuk_CV.pdf" download className="home-btn-secondary">
+            {t("hero_btn_cv")}
+          </a>
+          <a href="#" className="home-btn-figma">
+            {t("hero_btn_figma")}
+          </a>
         </div>
       </section>
 
@@ -174,39 +164,54 @@ export default function Home() {
       <div className="home-stats">
         <div className="home-stat">
           <span className="home-stat-num">4+</span>
-          <span className="home-stat-label">{t('stat_years')}</span>
+          <span className="home-stat-label">{t("stat_years")}</span>
         </div>
         <div className="home-stat">
           <span className="home-stat-num">20+</span>
-          <span className="home-stat-label">{t('stat_projects')}</span>
+          <span className="home-stat-label">{t("stat_projects")}</span>
         </div>
       </div>
 
       {/* LANGUAGES SECTION */}
       <div className="home-languages">
-        <span className="lang-item"><span className="lang-code">EN</span><span className="lang-level">{t('lang_en')}</span></span>
+        <span className="lang-item">
+          <span className="lang-code">EN</span>
+          <span className="lang-level">{t("lang_en")}</span>
+        </span>
         <span className="lang-dot">·</span>
-        <span className="lang-item"><span className="lang-code">UA</span><span className="lang-level">{t('lang_ua')}</span></span>
+        <span className="lang-item">
+          <span className="lang-code">UA</span>
+          <span className="lang-level">{t("lang_ua")}</span>
+        </span>
         <span className="lang-dot">·</span>
-        <span className="lang-item"><span className="lang-code">CZ</span><span className="lang-level">{t('lang_cz')}</span></span>
+        <span className="lang-item">
+          <span className="lang-code">CZ</span>
+          <span className="lang-level">{t("lang_cz")}</span>
+        </span>
       </div>
 
       {/* SKILLS SECTION */}
       <section className="home-skills reveal">
-        <p className="home-eyebrow">{t('skills_eyebrow')}</p>
-        <h2 className="home-section-title">{t('skills_title')}</h2>
+        <p className="home-eyebrow">{t("skills_eyebrow")}</p>
+        <h2 className="home-section-title">{t("skills_title")}</h2>
         <div className="skills-grid">
           {skills.map((s, i) => (
-            <div key={s.name} className="skill-card reveal" style={{ transitionDelay: `${i * 80}ms` }}>
+            <div
+              key={s.name}
+              className="skill-card reveal"
+              style={{ transitionDelay: `${i * 80}ms` }}
+            >
               <div className="skill-badge">
-                {s.icon === 'F' ? (
+                {s.icon === "F" ? (
                   <img className="figma-logo" src={figmaLogo} alt="Figma" />
                 ) : (
                   s.icon
                 )}
               </div>
-              <span className="skill-name">{s.name}</span>
-              <span className="skill-level">{s.level}</span>
+              <div className="skill-info">
+                <span className="skill-name">{s.name}</span>
+                <span className="skill-level">{s.level}</span>
+              </div>
             </div>
           ))}
         </div>
@@ -215,23 +220,15 @@ export default function Home() {
       {/* PROJECTS SECTION */}
       <section className="home-projects" id="projects">
         <div className="home-projects-header">
-          <p className="home-eyebrow">{t('projects_eyebrow')}</p>
-          <h2 className="home-section-title">{t('projects_title')}</h2>
+          <p className="home-eyebrow">{t("projects_eyebrow")}</p>
+          <h2 className="home-section-title">{t("projects_title")}</h2>
         </div>
         <div className="carousel-wrap">
-          <div
-            className="carousel"
-            ref={carouselRef}
-            onMouseEnter={() => { isPaused.current = true; }}
-            onMouseLeave={() => { isPaused.current = false; stopGrabbing(); }}
-            onMouseDown={handleCarouselMouseDown}
-            onMouseMove={handleCarouselMouseMove}
-            onMouseUp={stopGrabbing}
-          >
-            {projects.map(p => (
+          <div className="carousel">
+            {loopedProjects.map((p, idx) => (
               <Link
                 to={`/projects/${p.id}`}
-                key={p.id}
+                key={`${p.id}-${idx}`}
                 className="proj-card"
                 onMouseMove={handleTilt}
                 onMouseLeave={resetTilt}
@@ -241,7 +238,11 @@ export default function Home() {
                 <h3 className="proj-title">{p.title}</h3>
                 <p className="proj-desc">{p.desc}</p>
                 <div className="proj-tech">
-                  {p.tech.map(t => <span key={t} className="tech-pill">{t}</span>)}
+                  {p.tech.map((t) => (
+                    <span key={t} className="tech-pill">
+                      {t}
+                    </span>
+                  ))}
                 </div>
               </Link>
             ))}
@@ -252,20 +253,32 @@ export default function Home() {
       {/* ABOUT + CONTACT SECTION */}
       <section className="home-split">
         <div className="home-about reveal" id="about">
-          <p className="home-eyebrow">{t('about_eyebrow')}</p>
-          <h2 className="home-section-title">{t('about_title')}</h2>
-          <p className="home-about-p">{t('about_p1')}</p>
-          <p className="home-about-p">{t('about_p2')}</p>
-          <p className="home-about-p">{t('about_p3')}</p>
+          <p className="home-eyebrow">{t("about_eyebrow")}</p>
+          <h2 className="home-section-title">{t("about_title")}</h2>
+          <p className="home-about-p">{t("about_p1")}</p>
+          <p className="home-about-p">{t("about_p2")}</p>
+          <p className="home-about-p">{t("about_p3")}</p>
         </div>
         <div className="home-contact reveal" id="contact">
-          <p className="home-eyebrow">{t('contact_eyebrow')}</p>
-          <h2 className="home-section-title">{t('contact_title')}</h2>
+          <p className="home-eyebrow">{t("contact_eyebrow")}</p>
+          <h2 className="home-section-title">{t("contact_title")}</h2>
           <div className="contact-rows">
-            <div className="contact-row"><span className="c-label">{t('contact_email')}</span><span className="c-value">ggdirtxgg@gmail.com</span></div>
-            <div className="contact-row"><span className="c-label">{t('contact_phone')}</span><span className="c-value">+420 739 984 652</span></div>
-            <div className="contact-row"><span className="c-label">{t('contact_location')}</span><span className="c-value">{t('contact_location_val')}</span></div>
-            <div className="contact-row"><span className="c-label">{t('contact_languages')}</span><span className="c-value">EN · UA · CZ</span></div>
+            <div className="contact-row">
+              <span className="c-label">{t("contact_email")}</span>
+              <span className="c-value">ggdirtxgg@gmail.com</span>
+            </div>
+            <div className="contact-row">
+              <span className="c-label">{t("contact_phone")}</span>
+              <span className="c-value">+420 739 984 652</span>
+            </div>
+            <div className="contact-row">
+              <span className="c-label">{t("contact_location")}</span>
+              <span className="c-value">{t("contact_location_val")}</span>
+            </div>
+            <div className="contact-row">
+              <span className="c-label">{t("contact_languages")}</span>
+              <span className="c-value">EN · UA · CZ</span>
+            </div>
           </div>
         </div>
       </section>
@@ -273,7 +286,7 @@ export default function Home() {
       {/* FOOTER SECTION */}
       <footer className="home-footer">
         <span className="footer-text">© 2026 Yaroslav Horbatiuk</span>
-        <span className="footer-text">{t('footer_built')}</span>
+        <span className="footer-text">{t("footer_built")}</span>
       </footer>
     </div>
   );

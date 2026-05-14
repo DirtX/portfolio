@@ -1,0 +1,114 @@
+/* ============ PREVIEW BOX ============ */
+.shadow-preview-box {
+  width: 200px;
+  height: 200px;
+  background: var(--text-primary);
+  border-radius: var(--radius-xl);
+  transition: box-shadow var(--transition-base);
+}
+
+/* ============ LAYERS LIST ============ */
+.shadow-layers {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.shadow-layer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--bg-tertiary);
+  border: 0.5px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 8px 10px;
+  cursor: pointer;
+  transition:
+    background var(--transition-base),
+    border-color var(--transition-base),
+    opacity var(--transition-base);
+}
+
+.shadow-layer:hover {
+  border-color: var(--border-medium);
+}
+
+.shadow-layer.active {
+  background: var(--bg-elevated);
+  border-color: var(--border-medium);
+}
+
+.shadow-layer.dragging {
+  opacity: 0.4;
+}
+
+.shadow-layer.drag-over {
+  background: var(--bg-elevated);
+}
+
+.shadow-drag-handle {
+  color: var(--text-ghost);
+  font-size: 0.85rem;
+  cursor: grab;
+  user-select: none;
+  letter-spacing: -2px;
+}
+
+.shadow-drag-handle:active {
+  cursor: grabbing;
+}
+
+.shadow-layer-name {
+  flex: 1;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+/* ============ REMOVE BUTTON ============ */
+.shadow-remove {
+  background: transparent;
+  border: 0.5px solid var(--border-subtle);
+  color: var(--text-faint);
+  width: 22px;
+  height: 22px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    border-color var(--transition-base),
+    color var(--transition-base);
+  font-family: inherit;
+}
+
+.shadow-remove:hover:not(:disabled) {
+  border-color: var(--border-strong);
+  color: var(--text-primary);
+}
+
+.shadow-remove:disabled {
+  opacity: 0.2;
+  cursor: default;
+}
+
+/* ============ ADD BUTTON ============ */
+.shadow-add {
+  background: transparent;
+  border: 0.5px dashed var(--border-soft);
+  color: var(--text-faint);
+  height: 32px;
+  border-radius: var(--radius-md);
+  font-size: 0.75rem;
+  font-family: inherit;
+  cursor: pointer;
+  transition:
+    border-color var(--transition-base),
+    color var(--transition-base);
+}
+
+.shadow-add:hover {
+  border-color: var(--text-faint);
+  color: var(--text-primary);
+}

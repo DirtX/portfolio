@@ -1,5 +1,5 @@
-import { useState, useRef } from 'react';
-import './ColorPalette.css';
+import { useState, useRef } from "react";
+import "./ColorPalette.css";
 
 export default function ColorPalette() {
   const [colors, setColors] = useState([]);
@@ -8,8 +8,9 @@ export default function ColorPalette() {
   const [colorsCount, setColorsCount] = useState(6);
   const canvasRef = useRef(null);
 
+  // Feature: Validate and load image file
   const handleFile = (file) => {
-    if (!file || !file.type.startsWith('image/')) return;
+    if (!file || !file.type.startsWith("image/")) return;
     const url = URL.createObjectURL(file);
     setImageUrl(url);
     extractColors(url, colorsCount);
@@ -17,6 +18,7 @@ export default function ColorPalette() {
 
   const handleFileChange = (e) => handleFile(e.target.files[0]);
 
+  // Feature: Drag and drop image upload
   const handleDrop = (e) => {
     e.preventDefault();
     handleFile(e.dataTransfer.files[0]);
@@ -24,11 +26,12 @@ export default function ColorPalette() {
 
   const handleDragOver = (e) => e.preventDefault();
 
+  // Feature: Extract dominant colors from image via canvas
   const extractColors = (url, count) => {
     const img = new Image();
     img.onload = () => {
       const canvas = canvasRef.current;
-      const ctx = canvas.getContext('2d');
+      const ctx = canvas.getContext("2d");
       canvas.width = img.width;
       canvas.height = img.height;
       ctx.drawImage(img, 0, 0);
@@ -48,7 +51,7 @@ export default function ColorPalette() {
         .sort((a, b) => b[1] - a[1])
         .slice(0, count)
         .map(([key]) => {
-          const [r, g, b] = key.split(',');
+          const [r, g, b] = key.split(",");
           return rgbToHex(+r, +g, +b);
         });
 
@@ -57,15 +60,18 @@ export default function ColorPalette() {
     img.src = url;
   };
 
+  // Feature: Convert RGB values to hex string
   const rgbToHex = (r, g, b) =>
-    '#' + [r, g, b].map(v => v.toString(16).padStart(2, '0')).join('');
+    "#" + [r, g, b].map((v) => v.toString(16).padStart(2, "0")).join("");
 
+  // Feature: Copy hex value to clipboard
   const handleCopy = (hex) => {
     navigator.clipboard.writeText(hex);
     setCopied(hex);
     setTimeout(() => setCopied(null), 1500);
   };
 
+  // Feature: Re-extract colors when slider changes
   const handleCountChange = (e) => {
     const count = +e.target.value;
     setColorsCount(count);
@@ -76,11 +82,12 @@ export default function ColorPalette() {
     <div className="page-placeholder">
       <h2 className="page-header">Color Palette Generator</h2>
 
+      {/* DROPZONE */}
       <div
         className="palette-dropzone"
         onDrop={handleDrop}
         onDragOver={handleDragOver}
-        onClick={() => document.getElementById('palette-input').click()}
+        onClick={() => document.getElementById("palette-input").click()}
       >
         <span className="palette-drop-icon">↑</span>
         <p className="palette-drop-text">Drop an image here</p>
@@ -90,10 +97,11 @@ export default function ColorPalette() {
           type="file"
           accept="image/*"
           onChange={handleFileChange}
-          style={{ display: 'none' }}
+          style={{ display: "none" }}
         />
       </div>
 
+      {/* COLOR COUNT SLIDER */}
       <div className="palette-controls">
         <span className="palette-label">Colors</span>
         <input
@@ -108,25 +116,29 @@ export default function ColorPalette() {
         <span className="palette-count">{colorsCount}</span>
       </div>
 
+      {/* IMAGE PREVIEW */}
       <div className="palette-preview">
-        {imageUrl
-          ? <img src={imageUrl} alt="uploaded" className="palette-image" />
-          : <span className="palette-preview-hint">Image preview will appear here</span>
-        }
+        {imageUrl ? (
+          <img src={imageUrl} alt="uploaded" className="palette-image" />
+        ) : (
+          <span className="palette-preview-hint">Image preview will appear here</span>
+        )}
       </div>
 
+      {/* EXTRACTED COLOR GRID */}
       {colors.length > 0 && (
         <div className="palette-grid">
           {colors.map((hex) => (
             <div key={hex} className="palette-card" onClick={() => handleCopy(hex)}>
               <div className="palette-swatch" style={{ background: hex }} />
-              <span className="palette-hex">{copied === hex ? 'Copied!' : hex}</span>
+              <span className="palette-hex">{copied === hex ? "Copied!" : hex}</span>
             </div>
           ))}
         </div>
       )}
 
-      <canvas ref={canvasRef} style={{ display: 'none' }} />
+      {/* HIDDEN CANVAS FOR PIXEL READING */}
+      <canvas ref={canvasRef} style={{ display: "none" }} />
     </div>
   );
 }

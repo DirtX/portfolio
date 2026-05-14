@@ -1,30 +1,31 @@
-import { useState, useRef, useEffect } from 'react';
-import { FFmpeg } from '@ffmpeg/ffmpeg';
-import { fetchFile } from '@ffmpeg/util';
-import Button from '../../components/Button';
-import './VideoCompressor.css';
+import { useState, useRef, useEffect } from "react";
+import { FFmpeg } from "@ffmpeg/ffmpeg";
+import { fetchFile } from "@ffmpeg/util";
+import Button from "../../components/Button";
+import "./VideoCompressor.css";
 
 export default function VideoCompressor() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [isCompressing, setIsCompressing] = useState(false);
   const [progress, setProgress] = useState(0);
   const [etaSeconds, setEtaSeconds] = useState(null);
-  const [errorMessage, setErrorMessage] = useState('');
-  
+  const [errorMessage, setErrorMessage] = useState("");
+
   const [videoFile, setVideoFile] = useState(null);
-  const [targetMb, setTargetMb] = useState('9.5');
-  const [resolution, setResolution] = useState('Original');
-  
+  const [targetMb, setTargetMb] = useState("9.5");
+  const [resolution, setResolution] = useState("Original");
+
   const ffmpegRef = useRef(new FFmpeg());
   const startTimeRef = useRef(null);
 
+  // Feature: Load FFmpeg WASM engine and track progress
   useEffect(() => {
     const loadFFmpeg = async () => {
       const ffmpeg = ffmpegRef.current;
-      
-      ffmpeg.on('progress', ({ progress }) => {
+
+      ffmpeg.on("progress", ({ progress }) => {
         setProgress(progress * 100);
-        
+
         if (progress > 0 && startTimeRef.current) {
           const elapsed = (Date.now() - startTimeRef.current) / 1000;
           const totalEstimated = elapsed / progress;
@@ -32,36 +33,46 @@ export default function VideoCompressor() {
           setEtaSeconds(Math.max(0, remaining));
         }
       });
-      
+
       await ffmpeg.load();
       setIsLoaded(true);
     };
-    
+
     loadFFmpeg();
   }, []);
 
+  // Feature: Validate uploaded video file by MIME and extension
   const handleFileChange = (e) => {
     const file = e.target.files[0];
     if (!file) return;
 
-    const validMimeTypes = ['video/mp4', 'video/webm', 'video/quicktime', 'video/x-matroska', 'video/x-msvideo'];
+    const validMimeTypes = [
+      "video/mp4",
+      "video/webm",
+      "video/quicktime",
+      "video/x-matroska",
+      "video/x-msvideo",
+    ];
     const validExtensions = /\.(mp4|webm|mov|mkv|avi)$/i;
 
     if (!validMimeTypes.includes(file.type) && !validExtensions.test(file.name)) {
-      setErrorMessage('Security Error: Invalid file format. Only MP4, WEBM, MOV, MKV, and AVI are allowed.');
+      setErrorMessage(
+        "Security Error: Invalid file format. Only MP4, WEBM, MOV, MKV, and AVI are allowed."
+      );
       setVideoFile(null);
-      e.target.value = '';
+      e.target.value = "";
       return;
     }
 
-    setErrorMessage('');
+    setErrorMessage("");
     setVideoFile(file);
   };
 
+  // Feature: Read video duration before compression
   const getVideoDuration = (file) => {
     return new Promise((resolve) => {
-      const video = document.createElement('video');
-      video.preload = 'metadata';
+      const video = document.createElement("video");
+      video.preload = "metadata";
       video.onloadedmetadata = () => {
         window.URL.revokeObjectURL(video.src);
         resolve(video.duration);
@@ -70,29 +81,31 @@ export default function VideoCompressor() {
     });
   };
 
+  // Feature: Format remaining time as human readable string
   const formatEta = (seconds) => {
-    if (seconds === null || seconds === Infinity) return 'Calculating time remaining...';
+    if (seconds === null || seconds === Infinity) return "Calculating time remaining...";
     const m = Math.floor(seconds / 60);
     const s = Math.floor(seconds % 60);
-    
+
     if (m === 0) {
       return `Approx. ${s}s remaining`;
     }
     return `Approx. ${m}m ${s}s remaining`;
   };
 
+  // Feature: Compress video using FFmpeg with target size and resolution
   const startCompression = async () => {
     if (!videoFile || !isLoaded) return;
-    
+
     setIsCompressing(true);
     setProgress(0);
     setEtaSeconds(null);
-    setErrorMessage('');
+    setErrorMessage("");
     startTimeRef.current = Date.now();
 
     const ffmpeg = ffmpegRef.current;
-    const inputName = 'input.mp4';
-    const outputName = 'output.mp4';
+    const inputName = "input.mp4";
+    const outputName = "output.mp4";
 
     try {
       const duration = await getVideoDuration(videoFile);
@@ -104,40 +117,45 @@ export default function VideoCompressor() {
       }
 
       const videoBitrateStr = `${Math.floor(targetVideoBitrate / 1000)}k`;
-      const bufsizeStr = `${Math.floor(targetVideoBitrate / 1000 * 2)}k`;
+      const bufsizeStr = `${Math.floor((targetVideoBitrate / 1000) * 2)}k`;
 
       await ffmpeg.writeFile(inputName, await fetchFile(videoFile));
 
-      let args = ['-i', inputName];
-      
-      if (resolution !== 'Original') {
-        const height = resolution.replace('p', '');
-        args.push('-vf', `scale=-2:${height}`);
+      let args = ["-i", inputName];
+
+      if (resolution !== "Original") {
+        const height = resolution.replace("p", "");
+        args.push("-vf", `scale=-2:${height}`);
       }
 
       args.push(
-        '-c:v', 'libx264',
-        '-preset', 'ultrafast',
-        '-b:v', videoBitrateStr,
-        '-maxrate', videoBitrateStr,
-        '-bufsize', bufsizeStr,
-        '-c:a', 'aac',
-        '-b:a', '128k',
+        "-c:v",
+        "libx264",
+        "-preset",
+        "ultrafast",
+        "-b:v",
+        videoBitrateStr,
+        "-maxrate",
+        videoBitrateStr,
+        "-bufsize",
+        bufsizeStr,
+        "-c:a",
+        "aac",
+        "-b:a",
+        "128k",
         outputName
       );
 
       await ffmpeg.exec(args);
 
       const data = await ffmpeg.readFile(outputName);
-      
-      const blob = new Blob([data.buffer], { type: 'video/mp4' });
+      const blob = new Blob([data.buffer], { type: "video/mp4" });
       const url = URL.createObjectURL(blob);
-      
-      const a = document.createElement('a');
+
+      const a = document.createElement("a");
       a.href = url;
       a.download = `compressed_${videoFile.name}`;
       a.click();
-
     } catch (err) {
       setErrorMessage(`Compression Failed: ${err.message}`);
     } finally {
@@ -150,12 +168,13 @@ export default function VideoCompressor() {
     <div className="page-placeholder">
       <div className="compressor-container">
         <h2 className="compressor-header">Video Compressor</h2>
-        
+
+        {/* FILE UPLOAD */}
         <div className="input-group">
           <label>1. Select Video File</label>
-          <input 
-            type="file" 
-            accept="video/mp4,video/webm,video/quicktime,video/x-matroska,video/x-msvideo" 
+          <input
+            type="file"
+            accept="video/mp4,video/webm,video/quicktime,video/x-matroska,video/x-msvideo"
             onChange={handleFileChange}
             className="custom-input"
             disabled={isCompressing || !isLoaded}
@@ -163,12 +182,13 @@ export default function VideoCompressor() {
           {errorMessage && <span className="error-message">{errorMessage}</span>}
         </div>
 
+        {/* TARGET SIZE + RESOLUTION */}
         <div className="compressor-controls-row">
           <div className="input-group" style={{ flex: 1 }}>
             <label>Target Size (MB)</label>
-            <input 
-              type="number" 
-              value={targetMb} 
+            <input
+              type="number"
+              value={targetMb}
               onChange={(e) => setTargetMb(e.target.value)}
               className="custom-input"
               disabled={isCompressing}
@@ -176,8 +196,8 @@ export default function VideoCompressor() {
           </div>
           <div className="input-group" style={{ flex: 1 }}>
             <label>Resolution</label>
-            <select 
-              value={resolution} 
+            <select
+              value={resolution}
               onChange={(e) => setResolution(e.target.value)}
               className="custom-select"
               disabled={isCompressing}
@@ -190,16 +210,22 @@ export default function VideoCompressor() {
           </div>
         </div>
 
+        {/* COMPRESS BUTTON */}
         <div className="compressor-submit-btn">
           <Button
             variant={isLoaded && videoFile && !isCompressing ? "primary" : "secondary"}
             onClick={startCompression}
             disabled={!isLoaded || !videoFile || isCompressing}
           >
-            {isCompressing ? 'Compressing...' : !isLoaded ? 'Loading Engine...' : 'Start Compression'}
+            {isCompressing
+              ? "Compressing..."
+              : !isLoaded
+                ? "Loading Engine..."
+                : "Start Compression"}
           </Button>
         </div>
 
+        {/* PROGRESS BAR + ETA */}
         {isCompressing && (
           <div className="progress-section">
             <div className="progress-bar-container">

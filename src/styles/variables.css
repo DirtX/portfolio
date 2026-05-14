@@ -1,0 +1,51 @@
+:root {
+  /* ============ COLORS — BACKGROUND ============ */
+  --bg-primary: #050505;
+  --bg-secondary: #080808;
+  --bg-tertiary: #0d0d0d;
+  --bg-elevated: #111;
+  --bg-input: #0a0a0a;
+
+  /* ============ COLORS — BORDERS ============ */
+  --border-subtle: #1a1a1a;
+  --border-soft: #222;
+  --border-medium: #333;
+  --border-strong: #555;
+
+  /* ============ COLORS — TEXT ============ */
+  --text-primary: #f5f5f5;
+  --text-secondary: #888;
+  --text-muted: #666;
+  --text-subtle: #555;
+  --text-faint: #777;
+  --text-ghost: #333;
+  --text-disabled: #2a2a2a;
+  --text-light: #a0a0a0;
+
+  /* ============ COLORS — ACCENTS ============ */
+  --accent-white: #ffffff;
+  --accent-hover: #ccc;
+  --accent-error: #ff4444;
+
+  /* ============ COLORS — OVERLAYS ============ */
+  --overlay-grid: rgba(255, 255, 255, 0.03);
+  --overlay-grid-active: rgba(255, 255, 255, 0.15);
+  --overlay-white-soft: rgba(255, 255, 255, 0.1);
+  --overlay-nav-bg: rgba(5, 5, 5, 0.85);
+  --overlay-shadow-marker: rgba(0, 0, 0, 0.5);
+
+  /* ============ RADIUS ============ */
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+  --radius-2xl: 16px;
+  --radius-full: 99px;
+
+  /* ============ TRANSITIONS ============ */
+  --transition-base: 0.2s ease;
+  --transition-slow: 0.3s ease;
+
+  /* ============ SHADOWS ============ */
+  --shadow-md: 0 8px 32px rgba(0, 0, 0, 0.6);
+}

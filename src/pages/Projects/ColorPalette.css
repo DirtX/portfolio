@@ -1,71 +1,74 @@
+/* ============ DROPZONE ============ */
 .palette-dropzone {
-  border: 1px dashed #333;
-  border-radius: 12px;
+  border: 1px dashed var(--border-medium);
+  border-radius: var(--radius-xl);
   padding: 3rem 2rem;
   text-align: center;
   cursor: pointer;
-  transition: border-color 0.2s ease;
+  transition: border-color var(--transition-base);
   margin-bottom: 1.5rem;
 }
 
 .palette-dropzone:hover {
-  border-color: #666;
+  border-color: var(--text-muted);
 }
 
 .palette-drop-icon {
   display: block;
   font-size: 2rem;
-  color: #444;
+  color: var(--text-faint);
   margin-bottom: 0.75rem;
 }
 
 .palette-drop-text {
-  color: #888;
+  color: var(--text-secondary);
   font-size: 0.95rem;
   margin-bottom: 0.3rem;
 }
 
 .palette-drop-hint {
-  color: #444;
+  color: var(--text-faint);
   font-size: 0.8rem;
 }
 
+/* ============ CONTROLS ============ */
 .palette-controls {
   display: flex;
   align-items: center;
   gap: 1rem;
-  background: #0d0d0d;
-  border: 1px solid #1a1a1a;
-  border-radius: 8px;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
   padding: 0.75rem 1rem;
   margin-bottom: 1.5rem;
 }
 
 .palette-label {
-  color: #666;
+  color: var(--text-muted);
   font-size: 0.85rem;
   white-space: nowrap;
 }
 
 .palette-slider {
   flex: 1;
-  accent-color: #f5f5f5;
+  accent-color: var(--text-primary);
 }
 
 .palette-count {
-  color: #f5f5f5;
+  color: var(--text-primary);
   font-size: 0.9rem;
   font-weight: 600;
   min-width: 20px;
   text-align: right;
 }
 
+/* ============ PREVIEW ============ */
 .palette-preview {
-  border-radius: 8px;
+  border-radius: var(--radius-lg);
   overflow: hidden;
   margin-bottom: 1.5rem;
-  background: #0d0d0d;
-  border: 1px solid #1a1a1a;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-subtle);
   min-height: 200px;
   display: flex;
   align-items: center;
@@ -73,7 +76,7 @@
 }
 
 .palette-preview-hint {
-  color: #333;
+  color: var(--text-ghost);
   font-size: 0.85rem;
 }
 
@@ -83,6 +86,7 @@
   object-fit: contain;
 }
 
+/* ============ COLOR GRID ============ */
 .palette-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
@@ -90,15 +94,17 @@
 }
 
 .palette-card {
-  border: 1px solid #1a1a1a;
-  border-radius: 8px;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
   overflow: hidden;
   cursor: pointer;
-  transition: border-color 0.2s ease, transform 0.2s ease;
+  transition:
+    border-color var(--transition-base),
+    transform var(--transition-base);
 }
 
 .palette-card:hover {
-  border-color: #444;
+  border-color: var(--text-faint);
   transform: translateY(-2px);
 }
 
@@ -112,6 +118,6 @@
   text-align: center;
   padding: 0.4rem;
   font-size: 0.8rem;
-  color: #666;
-  background: #0d0d0d;
+  color: var(--text-muted);
+  background: var(--bg-tertiary);
 }

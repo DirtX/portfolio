@@ -1,0 +1,212 @@
+/* ============ WRAPPER ============ */
+.toolkit-wrapper {
+  padding: 50px 100px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.toolkit-header {
+  margin-bottom: 2rem;
+}
+
+.toolkit-desc {
+  font-size: 0.88rem;
+  color: var(--text-subtle);
+  margin-top: 0.5rem;
+}
+
+.toolkit-desc-secondary {
+  font-size: 0.78rem;
+  color: var(--text-faint);
+  margin-top: 0.3rem;
+}
+
+.toolkit-desc,
+.toolkit-desc-secondary {
+  text-align: center;
+}
+
+/* ============ TABS ============ */
+.toolkit-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 2rem;
+  border-bottom: 0.5px solid var(--border-subtle);
+  padding-bottom: 1rem;
+  justify-content: center;
+}
+
+.toolkit-tab {
+  background: transparent;
+  border: 0.5px solid var(--border-subtle);
+  color: var(--text-subtle);
+  padding: 0 16px;
+  height: 32px;
+  border-radius: var(--radius-full);
+  font-size: 0.78rem;
+  font-family: inherit;
+  cursor: pointer;
+  transition:
+    border-color var(--transition-base),
+    color var(--transition-base),
+    background var(--transition-base);
+}
+
+.toolkit-tab:hover {
+  border-color: var(--border-medium);
+  color: var(--text-primary);
+}
+
+.toolkit-tab.active {
+  background: var(--text-primary);
+  color: var(--bg-primary);
+  border-color: var(--text-primary);
+}
+
+/* ============ CONTENT ============ */
+.toolkit-content {
+  min-height: 400px;
+}
+
+.toolkit-placeholder {
+  color: var(--text-faint);
+  font-size: 0.88rem;
+}
+
+/* ============ SHARED TOOL LAYOUT ============ */
+.tool-wrapper {
+  background: var(--bg-secondary);
+  border: 0.5px solid var(--border-subtle);
+  border-radius: var(--radius-2xl);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 1000px;
+  overflow: hidden;
+}
+
+.tool-top {
+  display: grid;
+  grid-template-columns: 500px 380px;
+  gap: 1.5rem;
+  align-items: start;
+  justify-content: center;
+}
+
+.tool-preview {
+  width: 500px;
+  height: 500px;
+  border-radius: var(--radius-xl);
+  border: 0.5px solid var(--border-subtle);
+  background: var(--bg-tertiary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.tool-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  max-height: 500px;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+
+.tool-controls::-webkit-scrollbar {
+  display: none;
+}
+
+/* ============ SHARED GROUP ============ */
+.tool-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.tool-label {
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-faint);
+  display: flex;
+  align-items: center;
+}
+
+/* ============ SHARED SLIDER ============ */
+.tool-slider {
+  width: 100%;
+  accent-color: var(--text-primary);
+}
+
+/* ============ SHARED PILLS ============ */
+.tool-pills {
+  display: flex;
+  gap: 6px;
+}
+
+.tool-pill {
+  background: transparent;
+  border: 0.5px solid var(--border-subtle);
+  color: var(--text-subtle);
+  padding: 0 14px;
+  height: 30px;
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all var(--transition-base);
+}
+
+.tool-pill:hover {
+  border-color: var(--border-medium);
+  color: var(--text-primary);
+}
+
+.tool-pill.active {
+  background: var(--text-primary);
+  color: var(--bg-primary);
+  border-color: var(--text-primary);
+}
+
+/* ============ SHARED CSS OUTPUT ============ */
+.tool-output {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: var(--bg-tertiary);
+  border: 0.5px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 1rem;
+}
+
+.tool-code {
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  font-family: monospace;
+  word-break: break-all;
+  white-space: pre-wrap;
+  line-height: 1.7;
+  width: 100%;
+}
+
+.tool-copy {
+  background: var(--text-primary);
+  color: var(--bg-primary);
+  border: none;
+  padding: 0 12px;
+  height: 28px;
+  border-radius: var(--radius-md);
+  font-size: 0.72rem;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  align-self: flex-end;
+  transition: background var(--transition-base);
+}
+
+.tool-copy:hover {
+  background: var(--accent-hover);
+}
