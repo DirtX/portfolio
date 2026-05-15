@@ -1,0 +1,259 @@
+/* ============ WRAPPER ============ */
+.svg-wrapper {
+  padding: 50px 100px 80px;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* ============ HERO ============ */
+.svg-hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1rem;
+}
+
+.svg-tech {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--text-faint);
+  margin-bottom: 0.25rem;
+}
+
+.svg-tech-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.svg-tech-dot {
+  color: var(--text-ghost);
+}
+
+.svg-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  color: var(--text-primary);
+}
+
+.svg-subtitle {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.75;
+  max-width: 600px;
+}
+
+/* ============ LAYOUT ============ */
+.svg-layout {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 1.5rem;
+}
+
+/* ============ TOOLBAR ============ */
+.svg-toolbar {
+  background: var(--bg-secondary);
+  border: 0.5px solid var(--border-subtle);
+  border-radius: var(--radius-2xl);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  height: fit-content;
+}
+
+.svg-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.svg-label {
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-faint);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.svg-counter {
+  font-family: monospace;
+  font-size: 0.65rem;
+  text-transform: none;
+  letter-spacing: 0;
+  color: var(--text-ghost);
+}
+
+/* ============ TOOLS ============ */
+.svg-tools {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 6px;
+}
+
+.svg-tool {
+  background: transparent;
+  border: 0.5px solid var(--border-subtle);
+  color: var(--text-subtle);
+  padding: 0 12px;
+  height: 32px;
+  border-radius: var(--radius-md);
+  font-size: 0.75rem;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all var(--transition-base);
+}
+
+.svg-tool:hover {
+  border-color: var(--border-medium);
+  color: var(--text-primary);
+}
+
+.svg-tool.active {
+  background: var(--text-primary);
+  color: var(--bg-primary);
+  border-color: var(--text-primary);
+}
+
+/* ============ SLIDER ============ */
+.svg-slider {
+  width: 100%;
+  accent-color: var(--text-primary);
+}
+
+/* ============ ACTIONS ============ */
+.svg-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.svg-action {
+  background: transparent;
+  border: 0.5px solid var(--border-subtle);
+  color: var(--text-subtle);
+  height: 32px;
+  border-radius: var(--radius-md);
+  font-size: 0.75rem;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all var(--transition-base);
+}
+
+.svg-action:hover:not(:disabled) {
+  border-color: var(--border-medium);
+  color: var(--text-primary);
+}
+
+.svg-action:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.svg-action-primary {
+  background: var(--text-primary);
+  color: var(--bg-primary);
+  border-color: var(--text-primary);
+  font-weight: 500;
+}
+
+.svg-action-primary:hover:not(:disabled) {
+  background: var(--accent-hover);
+  border-color: var(--accent-hover);
+  color: var(--bg-primary);
+}
+
+/* ============ CANVAS ============ */
+.svg-canvas-wrap {
+  background: var(--bg-tertiary);
+  border: 0.5px solid var(--border-subtle);
+  border-radius: var(--radius-2xl);
+  overflow: hidden;
+  height: 600px;
+}
+
+.svg-canvas {
+  width: 100%;
+  height: 100%;
+  cursor: crosshair;
+  background-image:
+    linear-gradient(var(--border-subtle) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border-subtle) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* ============ HOW IT WORKS ============ */
+.svg-how {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.svg-how-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+}
+
+.svg-steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.svg-step {
+  background: var(--bg-secondary);
+  border: 0.5px solid var(--border-subtle);
+  border-radius: var(--radius-xl);
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.svg-step-num {
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: var(--text-faint);
+  letter-spacing: 0.1em;
+}
+
+.svg-step-title {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.svg-step-desc {
+  font-size: 0.75rem;
+  color: var(--text-subtle);
+  line-height: 1.6;
+}
+
+/* ============ TECH NOTE ============ */
+.svg-tech-note {
+  font-size: 0.72rem;
+  color: var(--text-faint);
+  text-align: center;
+  line-height: 1.6;
+  padding: 1rem;
+  border: 0.5px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+}
+
+.svg-tech-note strong {
+  color: var(--text-secondary);
+}

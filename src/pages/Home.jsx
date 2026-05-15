@@ -12,21 +12,21 @@ export default function Home() {
   const projects = [
     {
       id: "video-compressor",
-      tag: "WebAssembly · FFmpeg",
+      tag: "Media Tool · WebAssembly",
       title: t("proj_video_title"),
       desc: t("proj_video_desc"),
       tech: ["React", "WASM", "FFmpeg"],
     },
     {
       id: "color-palette",
-      tag: "Canvas API",
+      tag: "Image Tool · Canvas API",
       title: t("proj_palette_title"),
       desc: t("proj_palette_desc"),
       tech: ["React", "Canvas"],
     },
     {
       id: "css-toolkit",
-      tag: "Pure CSS · JavaScript",
+      tag: "CSS Tools · Generators",
       title: t("proj_toolkit_title"),
       desc: t("proj_toolkit_desc"),
       tech: ["HTML", "CSS", "JavaScript"],
@@ -37,6 +37,20 @@ export default function Home() {
       title: t("proj_markdown_title"),
       desc: t("proj_markdown_desc"),
       tech: ["React", "Regex", "localStorage"],
+    },
+    {
+      id: "svg-editor",
+      tag: "Drawing Tool · SVG",
+      title: "SVG Editor",
+      desc: "Draw shapes, lines and freehand paths. Export as SVG file ready to use in your projects.",
+      tech: ["React", "SVG", "Vector"],
+    },
+    {
+      id: "audio-extractor",
+      tag: "Media Tool · WebAssembly",
+      title: "Audio Extractor",
+      desc: "Extract audio from video files. Convert MP4, MOV, MKV to MP3 or M4A directly in your browser.",
+      tech: ["React", "WASM", "FFmpeg"],
     },
   ];
 
@@ -258,6 +272,7 @@ export default function Home() {
           <p className="home-about-p">{t("about_p1")}</p>
           <p className="home-about-p">{t("about_p2")}</p>
           <p className="home-about-p">{t("about_p3")}</p>
+          <p className="home-about-p">{t("about_p4")}</p>
         </div>
         <div className="home-contact reveal" id="contact">
           <p className="home-eyebrow">{t("contact_eyebrow")}</p>

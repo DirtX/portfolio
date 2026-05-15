@@ -7,6 +7,8 @@ import VideoCompressor from "./pages/Projects/VideoCompressor";
 import ColorPalette from "./pages/Projects/ColorPalette";
 import CSSToolkit from "./pages/Projects/CSSToolkit";
 import MarkdownEditor from "./pages/Projects/MarkdownEditor";
+import SVGEditor from "./pages/Projects/SVGEditor";
+import AudioExtractor from "./pages/Projects/AudioExtractor";
 import "./App.css";
 
 export default function App() {
@@ -28,6 +30,8 @@ export default function App() {
             <Route path="/projects/color-palette" element={<ColorPalette />} />
             <Route path="/projects/css-toolkit" element={<CSSToolkit />} />
             <Route path="/projects/markdown-editor" element={<MarkdownEditor />} />
+            <Route path="/projects/svg-editor" element={<SVGEditor />} />
+            <Route path="/projects/audio-extractor" element={<AudioExtractor />} />
           </Routes>
         </main>
       </div>

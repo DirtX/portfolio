@@ -4,7 +4,7 @@ import Tooltip from "../../../components/Tooltip";
 import "./BoxShadowGenerator.css";
 
 const defaultShadows = [
-  { x: 0, y: 10, blur: 30, spread: 0, color: "#000000", opacity: 0.3, inset: false },
+  { x: 10, y: 10, blur: 30, spread: 0, color: "#ff0000", opacity: 0.5, inset: false },
 ];
 
 export default function BoxShadowGenerator() {

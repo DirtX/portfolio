@@ -39,7 +39,7 @@ export const translations = {
     proj_palette_desc: "Extract dominant colors from any image instantly.",
     proj_toolkit_title: "CSS Toolkit",
     proj_toolkit_desc: "Visual generators for gradients, shadows, glassmorphism and more.",
-    proj_markdown_tag: "Live Preview · Parser",
+    proj_markdown_tag: "Text Editor · React",
     proj_markdown_title: "Markdown Editor",
     proj_markdown_desc:
       "Write Markdown on the left, see formatted output on the right. Notes saved locally.",
@@ -51,7 +51,10 @@ export const translations = {
       "Frontend developer with 4 years of freelance experience building responsive websites and interfaces.",
     about_p2:
       "My background in UI/UX design gives me an edge — I can go from mockup to working code without handoff friction.",
-    about_p3: "Based in Czech Republic, available to relocate to Prague.",
+    about_p3:
+      "Always eager to learn — I pick up new tools and frameworks fast and treat every project as a chance to grow. Comfortable jumping into unfamiliar codebases and stacks.",
+    about_p4:
+      "Actively learning Czech and ready to join a Czech-speaking team — I see immersion as the fastest way to level up both professionally and linguistically. Based in Kolín, ready to relocate to Prague.",
 
     // Contact
     contact_eyebrow: "Get in touch",
@@ -105,7 +108,7 @@ export const translations = {
     proj_palette_desc: "Extrahujte dominantní barvy z libovolného obrázku okamžitě.",
     proj_toolkit_title: "CSS Toolkit",
     proj_toolkit_desc: "Vizuální generátory pro gradienty, stíny, glassmorphism a další.",
-    proj_markdown_tag: "Live Preview · Parser",
+    proj_markdown_tag: "Text Editor · React",
     proj_markdown_title: "Markdown Editor",
     proj_markdown_desc:
       "Pište Markdown vlevo, formátovaný výstup vpravo. Poznámky se ukládají lokálně.",
@@ -116,7 +119,10 @@ export const translations = {
     about_p1:
       "Frontend developer s 4 lety zkušeností z freelance — tvorba responzivních webů a rozhraní.",
     about_p2: "Zázemí v UI/UX designu mi dává výhodu — od návrhu ke kódu bez zbytečného předávání.",
-    about_p3: "Žiji v Čechách, ochoten přestěhovat se do Prahy.",
+    about_p3:
+      "Vždy se chci učit nové věci — rychle se učím nové nástroje a frameworky a každý projekt beru jako příležitost k růstu. Nevadí mi skočit do neznámého kódu nebo stacku.",
+    about_p4:
+      "Aktivně se učím česky a jsem připraven nastoupit do česky mluvícího týmu — vidím to jako nejrychlejší způsob, jak se posunout profesně i jazykově. Bydlím v Kolíně, ochoten přestěhovat se do Prahy.",
 
     // Contact
     contact_eyebrow: "Spojte se se mnou",

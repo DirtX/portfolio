@@ -347,6 +347,8 @@
   transform-style: preserve-3d;
   text-decoration: none;
   color: inherit;
+  display: flex;
+  flex-direction: column;
 }
 
 .proj-card:hover {
@@ -375,6 +377,10 @@
   text-transform: uppercase;
   color: var(--text-faint);
   margin-bottom: 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
 }
 
 .proj-title {
@@ -390,6 +396,7 @@
   color: var(--text-subtle);
   line-height: 1.6;
   margin-bottom: 16px;
+  flex: 1;
 }
 
 .proj-tech {
