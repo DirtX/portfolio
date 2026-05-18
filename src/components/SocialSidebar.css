@@ -1,0 +1,111 @@
+/* ============ SIDEBAR ============ */
+.social-sidebar {
+  position: fixed;
+  right: 30px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  animation: social-sidebar-fade-in 0.6s ease-out 0.4s both;
+}
+
+@keyframes social-sidebar-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(-50%) translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(-50%) translateX(0);
+  }
+}
+
+/* ============ VERTICAL LINE ============ */
+.social-sidebar-line {
+  width: 1px;
+  height: 60px;
+  background: linear-gradient(to bottom, transparent, var(--border-medium), transparent);
+}
+
+/* ============ LINK ============ */
+.social-sidebar-link {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  background: var(--bg-secondary);
+  border: 0.5px solid var(--border-subtle);
+  border-radius: 50%;
+  color: var(--text-secondary);
+  cursor: pointer;
+  text-decoration: none;
+  transition:
+    color var(--transition-base),
+    border-color var(--transition-base),
+    background var(--transition-base),
+    transform var(--transition-base);
+  font-family: inherit;
+  padding: 0;
+}
+
+.social-sidebar-link:hover {
+  color: var(--text-primary);
+  border-color: var(--border-medium);
+  background: var(--bg-elevated);
+  transform: scale(1.08);
+}
+
+.social-sidebar-link svg {
+  flex-shrink: 0;
+  transition: transform var(--transition-base);
+}
+
+/* ============ TOOLTIP ============ */
+.social-sidebar-tooltip {
+  position: absolute;
+  right: calc(100% + 12px);
+  top: 50%;
+  transform: translateY(-50%) translateX(8px);
+  padding: 4px 10px;
+  background: var(--bg-elevated);
+  border: 0.5px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  font-size: 0.7rem;
+  color: var(--text-primary);
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition:
+    opacity var(--transition-base),
+    transform var(--transition-base);
+}
+
+.social-sidebar-link:hover .social-sidebar-tooltip {
+  opacity: 1;
+  transform: translateY(-50%) translateX(0);
+}
+
+/* ============ DISABLED ============ */
+.social-sidebar-link-disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.social-sidebar-link-disabled:hover {
+  color: var(--text-subtle);
+  border-color: var(--border-subtle);
+  background: var(--bg-secondary);
+  transform: none;
+}
+
+/* ============ MOBILE ============ */
+@media (max-width: 768px) {
+  .social-sidebar {
+    display: none;
+  }
+}
