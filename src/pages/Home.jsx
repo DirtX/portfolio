@@ -2,6 +2,7 @@ import { useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import figmaLogo from "../assets/figma-logo.svg";
 import { useLang } from "../context/LanguageContext";
+
 import "./Home.css";
 
 const FULL_NAME = "Yaroslav Horbatiuk";
@@ -13,28 +14,28 @@ export default function Home() {
     {
       id: "video-compressor",
       tag: "Media Tool · WebAssembly",
-      title: t("proj_video_title"),
+      title: "Video Compressor",
       desc: t("proj_video_desc"),
       tech: ["React", "WASM", "FFmpeg"],
     },
     {
       id: "color-palette",
       tag: "Image Tool · Canvas API",
-      title: t("proj_palette_title"),
+      title: "Color Palette",
       desc: t("proj_palette_desc"),
       tech: ["React", "Canvas"],
     },
     {
       id: "css-toolkit",
       tag: "CSS Tools · Generators",
-      title: t("proj_toolkit_title"),
+      title: "CSS Toolkit",
       desc: t("proj_toolkit_desc"),
       tech: ["HTML", "CSS", "JavaScript"],
     },
     {
       id: "markdown-editor",
       tag: t("proj_markdown_tag"),
-      title: t("proj_markdown_title"),
+      title: "Markdown Editor",
       desc: t("proj_markdown_desc"),
       tech: ["React", "Regex", "localStorage"],
     },
@@ -42,14 +43,14 @@ export default function Home() {
       id: "svg-editor",
       tag: "Drawing Tool · SVG",
       title: "SVG Editor",
-      desc: "Draw shapes, lines and freehand paths. Export as SVG file ready to use in your projects.",
+      desc: t("proj_svg_desc"),
       tech: ["React", "SVG", "Vector"],
     },
     {
       id: "audio-extractor",
       tag: "Media Tool · WebAssembly",
       title: "Audio Extractor",
-      desc: "Extract audio from video files. Convert MP4, MOV, MKV to MP3 or M4A directly in your browser.",
+      desc: t("proj_audio_desc"),
       tech: ["React", "WASM", "FFmpeg"],
     },
   ];
@@ -252,9 +253,9 @@ export default function Home() {
                 <h3 className="proj-title">{p.title}</h3>
                 <p className="proj-desc">{p.desc}</p>
                 <div className="proj-tech">
-                  {p.tech.map((t) => (
-                    <span key={t} className="tech-pill">
-                      {t}
+                  {p.tech.map((tech) => (
+                    <span key={tech} className="tech-pill">
+                      {tech}
                     </span>
                   ))}
                 </div>
@@ -278,14 +279,14 @@ export default function Home() {
           <p className="home-eyebrow">{t("contact_eyebrow")}</p>
           <h2 className="home-section-title">{t("contact_title")}</h2>
           <div className="contact-rows">
-            <div className="contact-row">
+            <a href="mailto:ggdirtxgg@gmail.com" className="contact-row contact-row-link">
               <span className="c-label">{t("contact_email")}</span>
               <span className="c-value">ggdirtxgg@gmail.com</span>
-            </div>
-            <div className="contact-row">
+            </a>
+            <a href="tel:+420739984652" className="contact-row contact-row-link">
               <span className="c-label">{t("contact_phone")}</span>
               <span className="c-value">+420 739 984 652</span>
-            </div>
+            </a>
             <div className="contact-row">
               <span className="c-label">{t("contact_location")}</span>
               <span className="c-value">{t("contact_location_val")}</span>
