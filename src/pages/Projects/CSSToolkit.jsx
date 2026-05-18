@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useLang } from "../../context/LanguageContext";
 import GradientGenerator from "./CSSToolkit/GradientGenerator";
 import BoxShadowGenerator from "./CSSToolkit/BoxShadowGenerator";
 import GlassmorphismGenerator from "./CSSToolkit/GlassmorphismGenerator";
@@ -8,57 +9,33 @@ import "./CSSToolkit.css";
 
 const TECH_STACK = ["CSS", "React", "Generators"];
 
-const TABS = [
-  {
-    id: "gradient",
-    label: "Gradient",
-    subtitle:
-      "Create linear and radial gradients with multiple color stops. Drag to reorder, adjust angle and position.",
-  },
-  {
-    id: "shadow",
-    label: "Box Shadow",
-    subtitle:
-      "Build complex shadows by stacking multiple layers. Each with its own color, offset, blur and spread.",
-  },
-  {
-    id: "glassmorphism",
-    label: "Glassmorphism",
-    subtitle:
-      "The frosted glass effect. Combine background blur, transparency and a subtle border.",
-  },
-  {
-    id: "border-radius",
-    label: "Border Radius",
-    subtitle:
-      "Round each corner independently or lock them together. Supports asymmetric horizontal and vertical radii.",
-  },
-  {
-    id: "filter",
-    label: "Filter",
-    subtitle:
-      "Apply CSS filter functions: blur, brightness, contrast, saturate, hue-rotate, grayscale, sepia and invert.",
-  },
-];
-
 export default function CSSToolkit() {
+  const { t } = useLang();
   const [activeTab, setActiveTab] = useState("gradient");
+
+  const TABS = [
+    { id: "gradient", label: "Gradient", subtitle: t("ct_sub_gradient") },
+    { id: "shadow", label: "Box Shadow", subtitle: t("ct_sub_shadow") },
+    { id: "glassmorphism", label: "Glassmorphism", subtitle: t("ct_sub_glass") },
+    { id: "border-radius", label: "Border Radius", subtitle: t("ct_sub_radius") },
+    { id: "filter", label: "Filter", subtitle: t("ct_sub_filter") },
+  ];
 
   // Feature: Scroll to top when page mounts
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
-  const activeSubtitle = TABS.find((t) => t.id === activeTab).subtitle;
+  const activeSubtitle = TABS.find((tab) => tab.id === activeTab).subtitle;
 
   return (
     <div className="toolkit-wrapper">
       {/* HERO */}
       <div className="toolkit-hero">
         <div className="toolkit-tech">
-          {TECH_STACK.map((t, i) => (
-            <span key={t} className="toolkit-tech-item">
-              {t}
+          {TECH_STACK.map((tech, i) => (
+            <span key={tech} className="toolkit-tech-item">
+              {tech}
               {i < TECH_STACK.length - 1 && <span className="toolkit-tech-dot">·</span>}
             </span>
           ))}

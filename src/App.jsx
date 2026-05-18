@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import BackgroundGrid from "./components/BackgroundGrid";
@@ -9,18 +10,27 @@ import CSSToolkit from "./pages/Projects/CSSToolkit";
 import MarkdownEditor from "./pages/Projects/MarkdownEditor";
 import SVGEditor from "./pages/Projects/SVGEditor";
 import AudioExtractor from "./pages/Projects/AudioExtractor";
+import ScrollToTop from "./components/ScrollToTop";
+import SocialSidebar from "./components/SocialSidebar";
+import ContactModal from "./components/ContactModal";
 import "./App.css";
 
 export default function App() {
+  const [phoneModalOpen, setPhoneModalOpen] = useState(false);
+
   return (
     <Router>
+      <ScrollToTop />
       <div className="app-layout">
         {/* GLOBAL BACKGROUND */}
         <BackgroundGrid />
-
         {/* STICKY NAVBAR */}
         <Navbar />
+        {/* SOCIAL SIDEBAR */}
 
+        <SocialSidebar onPhoneClick={() => setPhoneModalOpen(true)} />
+        {/* PHONE CONTACT MODAL */}
+        <ContactModal open={phoneModalOpen} onClose={() => setPhoneModalOpen(false)} />
         {/* PAGE ROUTES */}
         <main className="main-content">
           <Routes>

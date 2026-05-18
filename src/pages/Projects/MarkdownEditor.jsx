@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react";
+import { useLang } from "../../context/LanguageContext";
 import "./MarkdownEditor.css";
 
 const TECH_STACK = ["React", "Regex Parser", "localStorage"];
@@ -25,24 +26,6 @@ work too
 
 Happy writing!`;
 
-const STEPS = [
-  {
-    num: "01",
-    title: "Type or paste markdown",
-    desc: "Write in the editor on the left. All standard markdown syntax is supported.",
-  },
-  {
-    num: "02",
-    title: "See live preview",
-    desc: "The right panel updates instantly as you type — no compile step, no delay.",
-  },
-  {
-    num: "03",
-    title: "Save or download",
-    desc: "Your text is auto-saved in the browser. Download as .md when ready.",
-  },
-];
-
 const TOOLBAR = [
   { id: "h1", label: "H1", insert: "# ", block: true },
   { id: "h2", label: "H2", insert: "## ", block: true },
@@ -56,6 +39,14 @@ const TOOLBAR = [
 ];
 
 export default function MarkdownEditor() {
+  const { t } = useLang();
+
+  const STEPS = [
+    { num: "01", title: t("me_step1_title"), desc: t("me_step1_desc") },
+    { num: "02", title: t("me_step2_title"), desc: t("me_step2_desc") },
+    { num: "03", title: t("me_step3_title"), desc: t("me_step3_desc") },
+  ];
+
   const [content, setContent] = useState(DEFAULT_CONTENT);
   const editorRef = useRef(null);
 
@@ -127,25 +118,21 @@ export default function MarkdownEditor() {
     let cursorPos;
 
     if (item.wrap) {
-      // Wrap selection (bold, italic, code)
       const wrapped = `${item.insert}${selected || "text"}${item.insert}`;
       newContent = content.slice(0, start) + wrapped + content.slice(end);
       cursorPos = start + item.insert.length + (selected || "text").length + item.insert.length;
     } else if (item.block) {
-      // Block-level (headings, list, quote) — insert at start of current line
       const before = content.slice(0, start);
       const lineStart = before.lastIndexOf("\n") + 1;
       newContent = content.slice(0, lineStart) + item.insert + content.slice(lineStart);
       cursorPos = start + item.insert.length;
     } else {
-      // Plain insert (link template)
       newContent = content.slice(0, start) + item.insert + content.slice(end);
       cursorPos = start + item.insert.length;
     }
 
     setContent(newContent);
 
-    // Restore focus and cursor position after React re-renders
     requestAnimationFrame(() => {
       textarea.focus();
       textarea.setSelectionRange(cursorPos, cursorPos);
@@ -154,7 +141,7 @@ export default function MarkdownEditor() {
 
   // Feature: Clear editor and reset to empty
   const handleClear = () => {
-    if (confirm("Clear all content? This cannot be undone.")) {
+    if (confirm(t("me_confirm_clear"))) {
       setContent("");
     }
   };
@@ -179,18 +166,15 @@ export default function MarkdownEditor() {
       {/* HERO SECTION */}
       <div className="me-hero">
         <div className="me-tech">
-          {TECH_STACK.map((t, i) => (
-            <span key={t} className="me-tech-item">
-              {t}
+          {TECH_STACK.map((tech, i) => (
+            <span key={tech} className="me-tech-item">
+              {tech}
               {i < TECH_STACK.length - 1 && <span className="me-tech-dot">·</span>}
             </span>
           ))}
         </div>
         <h1 className="me-title">Markdown Editor</h1>
-        <p className="me-subtitle">
-          A live markdown editor with auto-save. Write on the left, see formatted output on the
-          right. Everything stays in your browser.
-        </p>
+        <p className="me-subtitle">{t("me_subtitle")}</p>
       </div>
 
       {/* TOOLBAR */}
@@ -210,10 +194,10 @@ export default function MarkdownEditor() {
         </div>
         <div className="me-toolbar-actions">
           <button className="me-btn-ghost" onClick={handleClear}>
-            Clear
+            {t("me_btn_clear")}
           </button>
           <button className="me-btn" onClick={handleDownload}>
-            Download .md
+            {t("me_btn_download")}
           </button>
         </div>
       </div>
@@ -223,9 +207,9 @@ export default function MarkdownEditor() {
         {/* EDITOR */}
         <div className="me-pane">
           <div className="me-pane-header">
-            <span>Editor</span>
+            <span>{t("me_pane_editor")}</span>
             <span className="me-stats">
-              {wordCount} words · {charCount} chars
+              {wordCount} {t("me_stats_words")} · {charCount} {t("me_stats_chars")}
             </span>
           </div>
           <textarea
@@ -234,15 +218,15 @@ export default function MarkdownEditor() {
             value={content}
             onChange={(e) => setContent(e.target.value)}
             spellCheck={false}
-            placeholder="Start typing markdown..."
+            placeholder={t("me_placeholder")}
           />
         </div>
 
         {/* PREVIEW */}
         <div className="me-pane">
           <div className="me-pane-header">
-            <span>Preview</span>
-            <span className="me-stats">Live</span>
+            <span>{t("me_pane_preview")}</span>
+            <span className="me-stats">{t("me_stats_live")}</span>
           </div>
           <div
             className="me-preview"
@@ -253,7 +237,7 @@ export default function MarkdownEditor() {
 
       {/* HOW IT WORKS */}
       <div className="me-how">
-        <h2 className="me-how-title">How it works</h2>
+        <h2 className="me-how-title">{t("page_how_title")}</h2>
         <div className="me-steps">
           {STEPS.map((s) => (
             <div key={s.num} className="me-step">
@@ -267,8 +251,7 @@ export default function MarkdownEditor() {
 
       {/* TECH NOTE */}
       <div className="me-tech-note">
-        Markdown is parsed with a <strong>custom regex pipeline</strong> — no external library, no
-        server roundtrip.
+        {t("page_powered_by")} <strong>regex pipeline</strong> — {t("me_tech_note")}
       </div>
     </div>
   );

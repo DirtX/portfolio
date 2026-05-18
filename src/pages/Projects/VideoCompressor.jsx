@@ -1,29 +1,20 @@
 import { useState, useRef, useEffect } from "react";
 import { FFmpeg } from "@ffmpeg/ffmpeg";
 import { fetchFile } from "@ffmpeg/util";
+import { useLang } from "../../context/LanguageContext";
 import "./VideoCompressor.css";
 
 const TECH_STACK = ["FFmpeg WASM", "React", "Web APIs"];
 
-const STEPS = [
-  {
-    num: "01",
-    title: "Select your video",
-    desc: "Drop any MP4, MOV, MKV, AVI or WEBM file. Nothing leaves your device.",
-  },
-  {
-    num: "02",
-    title: "Set target size",
-    desc: "Pick how small you want the output. Adjust resolution if needed.",
-  },
-  {
-    num: "03",
-    title: "Download",
-    desc: "Compression runs entirely in your browser via FFmpeg WebAssembly.",
-  },
-];
-
 export default function VideoCompressor() {
+  const { t } = useLang();
+
+  const STEPS = [
+    { num: "01", title: t("vc_step1_title"), desc: t("vc_step1_desc") },
+    { num: "02", title: t("vc_step2_title"), desc: t("vc_step2_desc") },
+    { num: "03", title: t("vc_step3_title"), desc: t("vc_step3_desc") },
+  ];
+
   const [isLoaded, setIsLoaded] = useState(false);
   const [isCompressing, setIsCompressing] = useState(false);
   const [progress, setProgress] = useState(0);
@@ -74,7 +65,7 @@ export default function VideoCompressor() {
 
   const handleFile = (file) => {
     if (!validateFile(file)) {
-      setErrorMessage("Invalid format. Accepted: MP4, WEBM, MOV, MKV, AVI.");
+      setErrorMessage(t("vc_err_format"));
       setVideoFile(null);
       return;
     }
@@ -107,10 +98,10 @@ export default function VideoCompressor() {
 
   // Feature: Format ETA as readable string
   const formatEta = (seconds) => {
-    if (seconds === null || seconds === Infinity) return "Calculating...";
+    if (seconds === null || seconds === Infinity) return t("vc_eta_calc");
     const m = Math.floor(seconds / 60);
     const s = Math.floor(seconds % 60);
-    return m === 0 ? `~${s}s remaining` : `~${m}m ${s}s remaining`;
+    return m === 0 ? `~${s}s ${t("vc_eta_remaining")}` : `~${m}m ${s}s ${t("vc_eta_remaining")}`;
   };
 
   // Feature: Compress video with target size and resolution
@@ -163,7 +154,7 @@ export default function VideoCompressor() {
       setOutputUrl(URL.createObjectURL(blob));
       setOutputSize((blob.size / 1024 / 1024).toFixed(1));
     } catch (err) {
-      setErrorMessage(`Compression failed: ${err.message}`);
+      setErrorMessagesetErrorMessage(`${t("vc_err_compression")} ${err.message}`);
     } finally {
       setIsCompressing(false);
       startTimeRef.current = null;
@@ -192,10 +183,7 @@ export default function VideoCompressor() {
           ))}
         </div>
         <h1 className="vc-title">Video Compressor</h1>
-        <p className="vc-subtitle">
-          Reduce video file size by up to 90% without visible quality loss. Runs entirely in your
-          browser — your files never leave your device.
-        </p>
+        <p className="vc-subtitle">{t("vc_subtitle")}</p>
       </div>
 
       {/* TOOL CARD */}
@@ -207,18 +195,18 @@ export default function VideoCompressor() {
             <div className="vc-result-info">
               <div className="vc-result-stats">
                 <div className="vc-stat">
-                  <span className="vc-stat-label">Original</span>
+                  <span className="vc-stat-label">{t("vc_stat_original")}</span>
                   <span className="vc-stat-value">
                     {(videoFile.size / 1024 / 1024).toFixed(1)} MB
                   </span>
                 </div>
                 <span className="vc-stat-arrow">→</span>
                 <div className="vc-stat">
-                  <span className="vc-stat-label">Compressed</span>
+                  <span className="vc-stat-label">{t("vc_stat_compressed")}</span>
                   <span className="vc-stat-value">{outputSize} MB</span>
                 </div>
                 <div className="vc-stat">
-                  <span className="vc-stat-label">Saved</span>
+                  <span className="vc-stat-label">{t("vc_stat_saved")}</span>
                   <span className="vc-stat-value vc-stat-saved">
                     {Math.round((1 - outputSize / (videoFile.size / 1024 / 1024)) * 100)}%
                   </span>
@@ -226,10 +214,10 @@ export default function VideoCompressor() {
               </div>
               <div className="vc-result-actions">
                 <a href={outputUrl} download={`compressed_${videoFile.name}`} className="vc-btn">
-                  Download
+                  {t("vc_btn_download")}
                 </a>
                 <button className="vc-btn-ghost" onClick={handleReset}>
-                  Compress another
+                  {t("vc_btn_another")}
                 </button>
               </div>
             </div>
@@ -265,8 +253,8 @@ export default function VideoCompressor() {
               ) : (
                 <div className="vc-drop-hint">
                   <span className="vc-drop-icon">↑</span>
-                  <p className="vc-drop-text">Drop your video here</p>
-                  <p className="vc-drop-sub">or click to browse · MP4, MOV, MKV, AVI, WEBM</p>
+                  <p className="vc-drop-text">{t("vc_drop")}</p>
+                  <p className="vc-drop-sub">{t("vc_drop_sub")}</p>
                 </div>
               )}
             </div>
@@ -276,7 +264,7 @@ export default function VideoCompressor() {
             {/* SETTINGS */}
             <div className="vc-settings">
               <div className="vc-setting-group">
-                <label className="vc-label">Target size (MB)</label>
+                <label className="vc-label">{t("vc_target_size")}</label>
                 <input
                   type="number"
                   value={targetMb}
@@ -286,14 +274,14 @@ export default function VideoCompressor() {
                 />
               </div>
               <div className="vc-setting-group">
-                <label className="vc-label">Resolution</label>
+                <label className="vc-label">{t("vc_resolution")}</label>
                 <select
                   value={resolution}
                   onChange={(e) => setResolution(e.target.value)}
                   className="vc-select"
                   disabled={isCompressing}
                 >
-                  <option value="Original">Original</option>
+                  <option value="Original">{t("vc_res_original")}</option>
                   <option value="1080p">1080p</option>
                   <option value="720p">720p</option>
                   <option value="480p">480p</option>
@@ -308,10 +296,10 @@ export default function VideoCompressor() {
               disabled={!isLoaded || !videoFile || isCompressing}
             >
               {isCompressing
-                ? "Compressing..."
+                ? t("vc_btn_compressing")
                 : !isLoaded
-                  ? "Loading engine..."
-                  : "Compress video"}
+                  ? t("vc_btn_loading")
+                  : t("vc_btn_compress")}
             </button>
 
             {/* PROGRESS */}
@@ -332,7 +320,7 @@ export default function VideoCompressor() {
 
       {/* HOW IT WORKS */}
       <div className="vc-how">
-        <h2 className="vc-how-title">How it works</h2>
+        <h2 className="vc-how-title">{t("page_how_title")}</h2>
         <div className="vc-steps">
           {STEPS.map((s) => (
             <div key={s.num} className="vc-step">
@@ -346,8 +334,7 @@ export default function VideoCompressor() {
 
       {/* TECH NOTE */}
       <div className="vc-tech-note">
-        Powered by <strong>FFmpeg WebAssembly</strong> — the same engine used in professional video
-        tools, running entirely in your browser.
+        {t("page_powered_by")} <strong>FFmpeg WebAssembly</strong> — {t("vc_tech_note")}
       </div>
     </div>
   );

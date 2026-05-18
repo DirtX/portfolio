@@ -1,27 +1,18 @@
 import { useState, useRef } from "react";
+import { useLang } from "../../context/LanguageContext";
 import "./ColorPalette.css";
 
 const TECH_STACK = ["Canvas API", "React", "Color Math"];
 
-const STEPS = [
-  {
-    num: "01",
-    title: "Drop any image",
-    desc: "PNG, JPG, WEBP, GIF — any image format works.",
-  },
-  {
-    num: "02",
-    title: "Adjust color count",
-    desc: "From 2 to 10 dominant colors extracted by pixel sampling.",
-  },
-  {
-    num: "03",
-    title: "Copy & use",
-    desc: "Click any color to copy HEX to clipboard instantly.",
-  },
-];
-
 export default function ColorPalette() {
+  const { t } = useLang();
+
+  const STEPS = [
+    { num: "01", title: t("color_palette_step1_title"), desc: t("color_palette_step1_desc") },
+    { num: "02", title: t("color_palette_step2_title"), desc: t("color_palette_step2_desc") },
+    { num: "03", title: t("color_palette_step3_title"), desc: t("color_palette_step3_desc") },
+  ];
+
   const [colors, setColors] = useState([]);
   const [imageUrl, setImageUrl] = useState(null);
   const [copied, setCopied] = useState(null);
@@ -116,18 +107,15 @@ export default function ColorPalette() {
       {/* HERO SECTION */}
       <div className="color-palette-hero">
         <div className="color-palette-tech">
-          {TECH_STACK.map((t, i) => (
-            <span key={t} className="color-palette-tech-item">
-              {t}
+          {TECH_STACK.map((tech, i) => (
+            <span key={tech} className="color-palette-tech-item">
+              {tech}
               {i < TECH_STACK.length - 1 && <span className="color-palette-tech-dot">·</span>}
             </span>
           ))}
         </div>
         <h1 className="color-palette-title">Color Palette Generator</h1>
-        <p className="color-palette-subtitle">
-          Extract the dominant colors from any image instantly. Perfect for finding color schemes,
-          matching brand colors, or just exploring.
-        </p>
+        <p className="color-palette-subtitle">{t("color_palette_subtitle")}</p>
       </div>
 
       {/* MAIN CARD */}
@@ -155,8 +143,8 @@ export default function ColorPalette() {
           ) : (
             <div className="color-palette-drop-hint">
               <span className="color-palette-drop-icon">↑</span>
-              <p className="color-palette-drop-text">Drop an image here</p>
-              <p className="color-palette-drop-sub">or click to browse · PNG, JPG, WEBP, GIF</p>
+              <p className="color-palette-drop-text">{t("color_palette_drop")}</p>
+              <p className="color-palette-drop-sub">{t("color_palette_drop_sub")}</p>
             </div>
           )}
         </div>
@@ -164,7 +152,9 @@ export default function ColorPalette() {
         {/* CONTROLS */}
         <div className="color-palette-controls">
           <div className="color-palette-controls-left">
-            <span className="color-palette-label">Colors — {colorsCount}</span>
+            <span className="color-palette-label">
+              {t("color_palette_colors")} — {colorsCount}
+            </span>
             <input
               type="range"
               min="2"
@@ -183,7 +173,7 @@ export default function ColorPalette() {
                 setColors([]);
               }}
             >
-              Upload new image
+              {t("color_palette_upload_new")}
             </button>
           )}
         </div>
@@ -203,7 +193,7 @@ export default function ColorPalette() {
                   <span className="color-palette-swatch-rgb">{hexToRgb(hex)}</span>
                 </div>
                 <span className="color-palette-swatch-copy">
-                  {copied === hex ? "Copied!" : "Copy"}
+                  {copied === hex ? t("color_palette_copied") : t("color_palette_copy")}
                 </span>
               </div>
             ))}
@@ -213,7 +203,7 @@ export default function ColorPalette() {
 
       {/* HOW IT WORKS */}
       <div className="color-palette-how">
-        <h2 className="color-palette-how-title">How it works</h2>
+        <h2 className="color-palette-how-title">{t("page_how_title")}</h2>
         <div className="color-palette-steps">
           {STEPS.map((s) => (
             <div key={s.num} className="color-palette-step">
@@ -227,8 +217,8 @@ export default function ColorPalette() {
 
       {/* TECH NOTE */}
       <div className="color-palette-tech-note">
-        Colors are extracted using <strong>Canvas API pixel sampling</strong> — no server, no
-        library, pure browser technology.
+        {t("page_powered_by")} <strong>Canvas API pixel sampling</strong> —{" "}
+        {t("color_palette_tech_note")}
       </div>
 
       {/* HIDDEN CANVAS */}

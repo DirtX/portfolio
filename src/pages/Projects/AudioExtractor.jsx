@@ -1,43 +1,28 @@
 import { useState, useRef, useEffect } from "react";
 import { FFmpeg } from "@ffmpeg/ffmpeg";
 import { fetchFile } from "@ffmpeg/util";
+import { useLang } from "../../context/LanguageContext";
 import "./AudioExtractor.css";
 
 const TECH_STACK = ["FFmpeg WASM", "React", "Web APIs"];
 
-const FORMATS = [
-  {
-    id: "mp3",
-    label: "MP3",
-    codec: "libmp3lame",
-    ext: "mp3",
-    desc: "Universal format, works everywhere",
-  },
-  { id: "m4a", label: "M4A", codec: "aac", ext: "m4a", desc: "Better quality at same bitrate" },
-  { id: "wav", label: "WAV", codec: "pcm_s16le", ext: "wav", desc: "Lossless, uncompressed audio" },
-];
-
 const BITRATES = ["8k", "16k", "32k", "64k", "96k", "128k", "192k", "256k", "320k"];
 
-const STEPS = [
-  {
-    num: "01",
-    title: "Select your video",
-    desc: "Drop any MP4, MOV, MKV, AVI or WEBM file. Nothing leaves your device.",
-  },
-  {
-    num: "02",
-    title: "Choose format & bitrate",
-    desc: "Pick MP3 or M4A. Higher bitrate = better quality, larger file.",
-  },
-  {
-    num: "03",
-    title: "Download audio",
-    desc: "Audio is extracted in your browser via FFmpeg WebAssembly.",
-  },
-];
-
 export default function AudioExtractor() {
+  const { t } = useLang();
+
+  const FORMATS = [
+    { id: "mp3", label: "MP3", codec: "libmp3lame", ext: "mp3", desc: t("ae_fmt_mp3_desc") },
+    { id: "m4a", label: "M4A", codec: "aac", ext: "m4a", desc: t("ae_fmt_m4a_desc") },
+    { id: "wav", label: "WAV", codec: "pcm_s16le", ext: "wav", desc: t("ae_fmt_wav_desc") },
+  ];
+
+  const STEPS = [
+    { num: "01", title: t("ae_step1_title"), desc: t("ae_step1_desc") },
+    { num: "02", title: t("ae_step2_title"), desc: t("ae_step2_desc") },
+    { num: "03", title: t("ae_step3_title"), desc: t("ae_step3_desc") },
+  ];
+
   const [isLoaded, setIsLoaded] = useState(false);
   const [isExtracting, setIsExtracting] = useState(false);
   const [progress, setProgress] = useState(0);
@@ -88,7 +73,7 @@ export default function AudioExtractor() {
 
   const handleFile = (file) => {
     if (!validateFile(file)) {
-      setErrorMessage("Invalid format. Accepted: MP4, WEBM, MOV, MKV, AVI.");
+      setErrorMessage(t("ae_err_format"));
       setVideoFile(null);
       return;
     }
@@ -109,10 +94,10 @@ export default function AudioExtractor() {
 
   // Feature: Format ETA as readable string
   const formatEta = (seconds) => {
-    if (seconds === null || seconds === Infinity) return "Calculating...";
+    if (seconds === null || seconds === Infinity) return t("vc_eta_calc");
     const m = Math.floor(seconds / 60);
     const s = Math.floor(seconds % 60);
-    return m === 0 ? `~${s}s remaining` : `~${m}m ${s}s remaining`;
+    return m === 0 ? `~${s}s ${t("vc_eta_remaining")}` : `~${m}m ${s}s ${t("vc_eta_remaining")}`;
   };
 
   // Feature: Extract audio from video
@@ -148,7 +133,7 @@ export default function AudioExtractor() {
       setOutputUrl(URL.createObjectURL(blob));
       setOutputSize((blob.size / 1024 / 1024).toFixed(1));
     } catch (err) {
-      setErrorMessage(`Extraction failed: ${err.message}`);
+      setErrorMessage(`${t("ae_err_extraction")} ${err.message}`);
     } finally {
       setIsExtracting(false);
       startTimeRef.current = null;
@@ -179,10 +164,7 @@ export default function AudioExtractor() {
           ))}
         </div>
         <h1 className="ae-title">Audio Extractor</h1>
-        <p className="ae-subtitle">
-          Extract audio from any video file. Convert MP4, MOV, MKV to MP3 or M4A directly in your
-          browser — no server, no upload, no limits.
-        </p>
+        <p className="ae-subtitle">{t("ae_subtitle")}</p>
       </div>
 
       {/* TOOL CARD */}
@@ -194,18 +176,18 @@ export default function AudioExtractor() {
             <div className="ae-result-info">
               <div className="ae-result-stats">
                 <div className="ae-stat">
-                  <span className="ae-stat-label">Source</span>
+                  <span className="ae-stat-label">{t("ae_stat_source")}</span>
                   <span className="ae-stat-value">
                     {(videoFile.size / 1024 / 1024).toFixed(1)} MB
                   </span>
                 </div>
                 <span className="ae-stat-arrow">{"→"}</span>
                 <div className="ae-stat">
-                  <span className="ae-stat-label">Audio</span>
+                  <span className="ae-stat-label">{t("ae_stat_audio")}</span>
                   <span className="ae-stat-value">{outputSize} MB</span>
                 </div>
                 <div className="ae-stat">
-                  <span className="ae-stat-label">Format</span>
+                  <span className="ae-stat-label">{t("ae_stat_format")}</span>
                   <span className="ae-stat-value">
                     {selectedFormat.label} · {bitrate}
                   </span>
@@ -217,10 +199,10 @@ export default function AudioExtractor() {
                   download={`${videoFile.name.replace(/\.[^/.]+$/, "")}.${selectedFormat.ext}`}
                   className="ae-btn"
                 >
-                  Download {selectedFormat.label}
+                  {t("ae_btn_download")} {selectedFormat.label}
                 </a>
                 <button className="ae-btn-ghost" onClick={handleReset}>
-                  Extract another
+                  {t("ae_btn_another")}
                 </button>
               </div>
             </div>
@@ -256,8 +238,8 @@ export default function AudioExtractor() {
               ) : (
                 <div className="ae-drop-hint">
                   <span className="ae-drop-icon">↑</span>
-                  <p className="ae-drop-text">Drop your video here</p>
-                  <p className="ae-drop-sub">or click to browse · MP4, MOV, MKV, AVI, WEBM</p>
+                  <p className="ae-drop-text">{t("ae_drop")}</p>
+                  <p className="ae-drop-sub">{t("ae_drop_sub")}</p>
                 </div>
               )}
             </div>
@@ -282,7 +264,7 @@ export default function AudioExtractor() {
             {/* BITRATE */}
             {format !== "wav" && (
               <div className="ae-setting-group">
-                <label className="ae-label">Bitrate</label>
+                <label className="ae-label">{t("ae_bitrate")}</label>
                 <div className="ae-bitrates">
                   {BITRATES.map((b) => (
                     <button
@@ -304,7 +286,11 @@ export default function AudioExtractor() {
               onClick={startExtraction}
               disabled={!isLoaded || !videoFile || isExtracting}
             >
-              {isExtracting ? "Extracting..." : !isLoaded ? "Loading engine..." : "Extract audio"}
+              {isExtracting
+                ? t("ae_btn_extracting")
+                : !isLoaded
+                  ? t("ae_btn_loading")
+                  : t("ae_btn_extract")}
             </button>
 
             {/* PROGRESS */}
@@ -325,7 +311,7 @@ export default function AudioExtractor() {
 
       {/* HOW IT WORKS */}
       <div className="ae-how">
-        <h2 className="ae-how-title">How it works</h2>
+        <h2 className="ae-how-title">{t("page_how_title")}</h2>
         <div className="ae-steps">
           {STEPS.map((s) => (
             <div key={s.num} className="ae-step">
@@ -339,8 +325,7 @@ export default function AudioExtractor() {
 
       {/* TECH NOTE */}
       <div className="ae-tech-note">
-        Powered by <strong>FFmpeg WebAssembly</strong> — professional audio processing running
-        entirely in your browser.
+        {t("page_powered_by")} <strong>FFmpeg WebAssembly</strong> — {t("ae_tech_note")}
       </div>
     </div>
   );
