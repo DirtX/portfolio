@@ -1,32 +1,115 @@
+/* ============ PREVIEW WRAP ============ */
+.radius-preview-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
 /* ============ PREVIEW BOX ============ */
 .radius-preview-box {
+  position: relative;
   width: 220px;
   height: 220px;
   background: var(--text-primary);
   transition: border-radius var(--transition-base);
 }
 
-/* ============ LOCK TOGGLE ============ */
-.radius-lock {
-  background: transparent;
-  border: 0.5px solid var(--border-subtle);
-  color: var(--text-subtle);
-  padding: 0 14px;
-  height: 32px;
-  border-radius: var(--radius-full);
-  font-size: 0.75rem;
-  font-family: inherit;
+/* ============ HINT ============ */
+.radius-hint {
+  font-size: 0.7rem;
+  color: var(--text-faint);
+  letter-spacing: 0.05em;
+  font-family: monospace;
+}
+
+/* ============ DRAG HANDLES ============ */
+.radius-handle {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  background: var(--bg-primary);
+  border: 1.5px solid #ffffff;
+  border-radius: 50%;
+  cursor: nwse-resize;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.3);
+  transition:
+    transform var(--transition-base),
+    box-shadow var(--transition-base);
+  animation: radius-handle-pulse 2s ease-in-out infinite;
+}
+
+.radius-handle:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.5);
+}
+
+.radius-handle.active {
+  transform: scale(1.1);
+  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.6);
+  animation: none;
+}
+
+@keyframes radius-handle-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.5);
+  }
+}
+
+/* Position each handle at its corner */
+.radius-handle-tl {
+  top: -17px;
+  left: -17px;
+  cursor: nwse-resize;
+}
+
+.radius-handle-tr {
+  top: -17px;
+  right: -17px;
+  cursor: nesw-resize;
+}
+
+.radius-handle-br {
+  bottom: -17px;
+  right: -17px;
+  cursor: nwse-resize;
+}
+
+.radius-handle-bl {
+  bottom: -17px;
+  left: -17px;
+  cursor: nesw-resize;
+}
+
+/* ============ SYNC CHECKBOX ============ */
+.radius-sync {
+  display: flex;
+  align-items: center;
+  gap: 10px;
   cursor: pointer;
-  transition: all var(--transition-base);
+  font-size: 0.78rem;
+  color: var(--text-subtle);
+  padding: 8px 12px;
+  border: 0.5px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  background: var(--bg-tertiary);
+  transition:
+    border-color var(--transition-base),
+    color var(--transition-base);
 }
 
-.radius-lock:hover {
+.radius-sync:hover {
   border-color: var(--border-medium);
   color: var(--text-primary);
 }
 
-.radius-lock.active {
-  background: var(--bg-elevated);
-  border-color: var(--border-medium);
-  color: var(--text-primary);
+.radius-sync-checkbox {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--text-primary);
+  cursor: pointer;
 }
