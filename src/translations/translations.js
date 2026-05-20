@@ -244,6 +244,9 @@ export const translations = {
     // ============ MARKDOWN PREVIEW LABELS (Projects card) ============
     md_label_source: "Source",
     md_label_preview: "Preview",
+
+    // ============ MOBILE SIDEBAR WITH LINKS ============
+    sidebar_find_me: "Socials",
   },
 
   cs: {
@@ -497,5 +500,8 @@ export const translations = {
     // ============ MARKDOWN PREVIEW LABELS ============
     md_label_source: "Zdroj",
     md_label_preview: "Náhled",
+
+    // ============ MOBILE SIDEBAR WITH LINKS ============
+    sidebar_find_me: "Sítě",
   },
 };
