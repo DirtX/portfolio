@@ -347,3 +347,105 @@
 .me-tech-note strong {
   color: var(--text-secondary);
 }
+
+/* ============ RESPONSIVE: LAPTOP (≤1024px) ============ */
+@media (max-width: 1024px) {
+  .me-page {
+    padding: 50px 60px 80px;
+  }
+}
+
+/* ============ RESPONSIVE: TABLET (≤768px) ============ */
+@media (max-width: 768px) {
+  .me-page {
+    padding: 40px 28px 60px;
+    gap: 2rem;
+  }
+
+  .me-title {
+    font-size: 2rem;
+  }
+
+  .me-subtitle {
+    font-size: 0.85rem;
+  }
+
+  /* Toolbar: stack groups */
+  .me-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    padding: 14px;
+  }
+
+  .me-toolbar-group {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px;
+  }
+
+  .me-toolbar-actions {
+    justify-content: center;
+  }
+
+  .me-tool-btn {
+    min-width: 36px;
+    height: 32px;
+    font-size: 0.75rem;
+  }
+
+  /* Editor + Preview stack vertically */
+  .me-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .me-pane {
+    min-height: 280px;
+  }
+
+  .me-editor {
+    font-size: 0.85rem;
+    padding: 14px;
+  }
+
+  .me-preview {
+    font-size: 0.85rem;
+    padding: 14px;
+  }
+
+  .me-steps {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+}
+
+/* ============ RESPONSIVE: SMALL MOBILE (≤480px) ============ */
+@media (max-width: 480px) {
+  .me-page {
+    padding: 32px 20px 50px;
+  }
+
+  .me-title {
+    font-size: 1.7rem;
+  }
+
+  .me-pane {
+    min-height: 240px;
+  }
+
+  .me-stats {
+    font-size: 0.65rem;
+  }
+}
+
+/* ============ EXTRA TIGHT (≤360px) ============ */
+@media (max-width: 360px) {
+  .me-page {
+    padding: 28px 16px 40px;
+  }
+
+  .me-title {
+    font-size: 1.5rem;
+  }
+}

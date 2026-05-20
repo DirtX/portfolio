@@ -106,21 +106,24 @@
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  width: 1000px;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
   overflow: hidden;
 }
 
 .tool-top {
   display: grid;
-  grid-template-columns: 500px 380px;
+  grid-template-columns: minmax(0, 500px) minmax(0, 380px);
   gap: 1.5rem;
   align-items: start;
   justify-content: center;
 }
 
 .tool-preview {
-  width: 500px;
-  height: 500px;
+  width: 100%;
+  max-width: 500px;
+  aspect-ratio: 1 / 1;
   border-radius: var(--radius-xl);
   border: 0.5px solid var(--border-subtle);
   background: var(--bg-tertiary);
@@ -128,6 +131,7 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  margin: 0 auto;
 }
 
 .tool-controls {
@@ -136,11 +140,45 @@
   gap: 1.25rem;
   max-height: 500px;
   overflow-y: auto;
-  scrollbar-width: none;
+  padding-right: 8px;
+
+  /* Custom scrollbar — Firefox */
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-subtle) transparent;
 }
 
+/* Custom scrollbar — WebKit (Chrome, Safari, Edge) */
 .tool-controls::-webkit-scrollbar {
-  display: none;
+  width: 6px;
+}
+
+.tool-controls::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.tool-controls::-webkit-scrollbar-thumb {
+  background: var(--border-subtle);
+  border-radius: var(--radius-full);
+  transition: background var(--transition-base);
+}
+
+.tool-controls::-webkit-scrollbar-thumb:hover {
+  background: var(--border-medium);
+}
+
+/* Show scrollbar on hover for desktop */
+@media (hover: hover) {
+  .tool-controls::-webkit-scrollbar-thumb {
+    background: transparent;
+  }
+
+  .tool-controls:hover::-webkit-scrollbar-thumb {
+    background: var(--border-subtle);
+  }
+
+  .tool-controls:hover::-webkit-scrollbar-thumb:hover {
+    background: var(--border-medium);
+  }
 }
 
 /* ============ SHARED GROUP ============ */
@@ -233,4 +271,123 @@
 
 .tool-copy:hover {
   background: var(--accent-hover);
+}
+
+/* ============ RESPONSIVE: LAPTOP (≤1024px) ============ */
+@media (max-width: 1024px) {
+  .toolkit-wrapper {
+    padding: 50px 60px 80px;
+  }
+
+  .tool-top {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    justify-content: stretch;
+  }
+
+  .tool-controls {
+    max-height: none;
+    overflow-y: visible;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    padding-right: 0;
+  }
+}
+
+/* ============ RESPONSIVE: TABLET (≤768px) ============ */
+@media (max-width: 768px) {
+  .toolkit-wrapper {
+    padding: 40px 28px 60px;
+  }
+
+  .toolkit-title {
+    font-size: 2rem;
+  }
+
+  .toolkit-subtitle {
+    font-size: 0.85rem;
+  }
+
+  /* Tabs: horizontal scroll on small screens */
+  .toolkit-tabs {
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 12px;
+
+    /* Edge fade to hint there's more */
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent 0,
+      #000 16px,
+      #000 calc(100% - 16px),
+      transparent 100%
+    );
+    mask-image: linear-gradient(
+      to right,
+      transparent 0,
+      #000 16px,
+      #000 calc(100% - 16px),
+      transparent 100%
+    );
+  }
+
+  .toolkit-tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .toolkit-tab {
+    flex-shrink: 0;
+    font-size: 0.75rem;
+    padding: 0 14px;
+    height: 30px;
+  }
+
+  .tool-wrapper {
+    padding: 1rem;
+    gap: 1.25rem;
+  }
+
+  .tool-pills {
+    flex-wrap: wrap;
+  }
+}
+
+/* ============ RESPONSIVE: SMALL MOBILE (≤480px) ============ */
+@media (max-width: 480px) {
+  .toolkit-wrapper {
+    padding: 32px 20px 50px;
+  }
+
+  .toolkit-title {
+    font-size: 1.7rem;
+  }
+
+  .toolkit-tab {
+    font-size: 0.7rem;
+    padding: 0 12px;
+    height: 28px;
+  }
+
+  .tool-wrapper {
+    padding: 14px;
+  }
+}
+
+/* ============ EXTRA TIGHT (≤360px) ============ */
+@media (max-width: 360px) {
+  .toolkit-wrapper {
+    padding: 28px 16px 40px;
+  }
+
+  .toolkit-title {
+    font-size: 1.5rem;
+  }
+
+  .tool-wrapper {
+    padding: 12px;
+  }
 }

@@ -113,3 +113,11 @@
   accent-color: var(--text-primary);
   cursor: pointer;
 }
+
+/* ============ MOBILE: hide drag handles and hint ============ */
+@media (max-width: 768px) {
+  .radius-handle,
+  .radius-hint {
+    display: none;
+  }
+}

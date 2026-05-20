@@ -305,3 +305,125 @@
 .color-palette-tech-note strong {
   color: var(--text-secondary);
 }
+
+/* ============ RESPONSIVE: LAPTOP (≤1024px) ============ */
+@media (max-width: 1024px) {
+  .toolkit-wrapper {
+    padding: 50px 60px 80px;
+  }
+
+  .tool-wrapper {
+    width: 100% !important;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .tool-top {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    justify-content: stretch;
+  }
+
+  .tool-preview {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    margin: 0 auto;
+  }
+
+  .tool-controls {
+    max-height: none;
+    overflow-y: visible;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+}
+
+/* ============ RESPONSIVE: TABLET (≤768px) ============ */
+@media (max-width: 768px) {
+  .toolkit-wrapper {
+    padding: 40px 28px 60px;
+  }
+
+  .toolkit-title {
+    font-size: 2rem;
+  }
+
+  .toolkit-subtitle {
+    font-size: 0.85rem;
+  }
+
+  .tool-wrapper {
+    padding: 1rem;
+    gap: 1.25rem;
+  }
+
+  /* Tabs: horizontal scroll on small screens */
+  .toolkit-tabs {
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 4px;
+    justify-content: flex-start;
+  }
+
+  .toolkit-tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .toolkit-tab {
+    flex-shrink: 0;
+    font-size: 0.75rem;
+    padding: 8px 14px;
+  }
+
+  .tool-preview {
+    min-height: 280px;
+  }
+
+  .tool-pills {
+    flex-wrap: wrap;
+  }
+}
+
+/* ============ RESPONSIVE: SMALL MOBILE (≤480px) ============ */
+@media (max-width: 480px) {
+  .toolkit-wrapper {
+    padding: 32px 20px 50px;
+  }
+
+  .toolkit-title {
+    font-size: 1.7rem;
+  }
+
+  .tool-wrapper {
+    padding: 14px;
+  }
+
+  .toolkit-tab {
+    font-size: 0.7rem;
+    padding: 6px 12px;
+  }
+
+  .tool-preview {
+    min-height: 240px;
+  }
+}
+
+/* ============ EXTRA TIGHT (≤360px) ============ */
+@media (max-width: 360px) {
+  .toolkit-wrapper {
+    padding: 28px 16px 40px;
+  }
+
+  .toolkit-title {
+    font-size: 1.5rem;
+  }
+
+  .tool-wrapper {
+    padding: 12px;
+  }
+}
