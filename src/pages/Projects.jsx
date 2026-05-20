@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useLang } from "../context/LanguageContext";
+import { useIsMobile } from "../hooks/useIsMobile";
 import "./Projects.css";
 
 // Feature: Render preview visualization based on project type
@@ -94,7 +95,6 @@ function ProjectPreview({ type }) {
 
   // Feature: CSS Toolkit — 5 mini thumbnails with corner abbreviation labels
   if (type === "css") {
-    // Feature: CSS Toolkit thumbnails — abbreviations match the actual tool order
     const CSS_THUMBS = [
       { id: "gradient", label: "GR" },
       { id: "shadow", label: "BS" },
@@ -111,7 +111,6 @@ function ProjectPreview({ type }) {
             className={`preview-css-thumb preview-css-${thumb.id}`}
             style={{ animationDelay: `${i * 0.15}s` }}
           >
-            {/* Glassmorphism shows inner glass square */}
             {thumb.id === "glass" && <div className="preview-css-glass-inner" />}
             <span className="preview-css-label">{thumb.label}</span>
           </div>
@@ -141,7 +140,7 @@ function ProjectPreview({ type }) {
         </div>
         <div className="preview-markdown-divider" />
         <div className="preview-markdown-pane preview-markdown-preview">
-          <span className="preview-markdown-label">{t("md_label_source")}</span>
+          <span className="preview-markdown-label">{t("md_label_preview")}</span>
           <div className="preview-markdown-content">
             <span className="preview-md-h">Title</span>
             <span className="preview-md-b">bold</span>
@@ -197,6 +196,7 @@ function ProjectPreview({ type }) {
 
 export default function Projects() {
   const { t } = useLang();
+  const isMobile = useIsMobile();
 
   // Feature: All projects with translated metadata
   const PROJECTS_T = [
@@ -207,6 +207,7 @@ export default function Projects() {
       desc: t("proj_video_long"),
       tech: ["React", "FFmpeg WASM", "Web APIs"],
       preview: "video",
+      desktopOnly: true,
     },
     {
       id: "audio-extractor",
@@ -215,6 +216,7 @@ export default function Projects() {
       desc: t("proj_audio_long"),
       tech: ["React", "FFmpeg WASM", "Audio"],
       preview: "audio",
+      desktopOnly: true,
     },
     {
       id: "color-palette",
@@ -247,6 +249,7 @@ export default function Projects() {
       desc: t("proj_svg_long"),
       tech: ["React", "SVG", "DOMParser"],
       preview: "svg",
+      desktopOnly: true,
     },
   ];
 
@@ -261,32 +264,66 @@ export default function Projects() {
 
       {/* GRID */}
       <div className="projects-grid">
-        {PROJECTS_T.map((proj) => (
-          <Link key={proj.id} to={`/projects/${proj.id}`} className="projects-card">
-            {/* PREVIEW */}
-            <div className="projects-card-preview">
-              <ProjectPreview type={proj.preview} />
-            </div>
+        {PROJECTS_T.map((proj) => {
+          // Feature: Lock card if it's desktop-only and we're on mobile
+          const isLocked = isMobile && proj.desktopOnly;
+          const CardTag = isLocked ? "div" : Link;
 
-            {/* CONTENT */}
-            <div className="projects-card-content">
-              <p className="projects-card-tag">{proj.tag}</p>
-              <h3 className="projects-card-title">{proj.title}</h3>
-              <p className="projects-card-desc">{proj.desc}</p>
-
-              <div className="projects-card-footer">
-                <div className="projects-card-tech">
-                  {proj.tech.map((t) => (
-                    <span key={t} className="projects-card-pill">
-                      {t}
-                    </span>
-                  ))}
+          return (
+            <CardTag
+              key={proj.id}
+              {...(!isLocked && { to: `/projects/${proj.id}` })}
+              className={`projects-card ${isLocked ? "projects-card-locked" : ""}`}
+            >
+              {/* DESKTOP-ONLY OVERLAY */}
+              {isLocked && (
+                <div className="projects-card-overlay" aria-hidden="true">
+                  <div className="projects-card-stripes" />
+                  <div className="projects-card-overlay-text">
+                    <svg
+                      width="22"
+                      height="22"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1.8"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
+                      <line x1="8" y1="21" x2="16" y2="21" />
+                      <line x1="12" y1="17" x2="12" y2="21" />
+                    </svg>
+                    <span>DESKTOP ONLY</span>
+                  </div>
                 </div>
-                <span className="projects-card-arrow">→</span>
+              )}
+
+              {/* PREVIEW */}
+              <div className="projects-card-preview">
+                <ProjectPreview type={proj.preview} />
               </div>
-            </div>
-          </Link>
-        ))}
+
+              {/* CONTENT */}
+              <div className="projects-card-content">
+                <p className="projects-card-tag">{proj.tag}</p>
+                <h3 className="projects-card-title">{proj.title}</h3>
+                <p className="projects-card-desc">{proj.desc}</p>
+
+                <div className="projects-card-footer">
+                  <div className="projects-card-tech">
+                    {proj.tech.map((tech) => (
+                      <span key={tech} className="projects-card-pill">
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                  <span className="projects-card-arrow">→</span>
+                </div>
+              </div>
+            </CardTag>
+          );
+        })}
       </div>
     </div>
   );

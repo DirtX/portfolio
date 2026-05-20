@@ -757,3 +757,74 @@
     font-size: 2.2rem;
   }
 }
+
+/* ============ DESKTOP-ONLY OVERLAY ============ */
+.projects-card-locked {
+  cursor: not-allowed;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.projects-card-locked:hover {
+  border-color: var(--border-subtle);
+  transform: none;
+}
+
+.projects-card-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  pointer-events: none;
+  border-radius: var(--radius-2xl);
+  overflow: hidden;
+}
+
+/* Diagonal stripes (white + black) — repeating gradient */
+.projects-card-stripes {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    -45deg,
+    rgba(255, 255, 255, 0.85) 0,
+    rgba(255, 255, 255, 0.85) 14px,
+    rgba(0, 0, 0, 0.9) 14px,
+    rgba(0, 0, 0, 0.9) 28px
+  );
+  opacity: 0.45;
+}
+
+/* Centered label on top of stripes */
+.projects-card-overlay-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  background: rgba(0, 0, 0, 0.85);
+  color: #ffffff;
+  padding: 14px 22px;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  letter-spacing: 0.15em;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-family: monospace;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  white-space: nowrap;
+}
+
+.projects-card-overlay-text svg {
+  opacity: 0.95;
+}
+
+/* Dim card content slightly so overlay reads better */
+.projects-card-locked .projects-card-preview,
+.projects-card-locked .projects-card-content {
+  opacity: 0.55;
+  filter: grayscale(0.3);
+}
