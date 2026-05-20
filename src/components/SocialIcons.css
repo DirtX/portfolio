@@ -1,0 +1,59 @@
+/* ============ SOCIAL ICONS ROW ============ */
+.social-icons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.social-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: var(--bg-secondary);
+  border: 0.5px solid var(--border-subtle);
+  border-radius: 50%;
+  color: var(--text-subtle);
+  cursor: pointer;
+  text-decoration: none;
+  font-family: inherit;
+  padding: 0;
+  transition:
+    color var(--transition-base),
+    border-color var(--transition-base),
+    background var(--transition-base),
+    transform var(--transition-base);
+}
+
+.social-icon:hover {
+  color: var(--text-primary);
+  border-color: var(--border-medium);
+  background: var(--bg-elevated);
+  transform: translateY(-1px);
+}
+
+.social-icon-disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.social-icon-disabled:hover {
+  color: var(--text-subtle);
+  border-color: var(--border-subtle);
+  background: var(--bg-secondary);
+  transform: none;
+}
+
+/* ============ CONTEXT MODIFIERS ============ */
+
+/* Hide on desktop, show only on mobile when inside contact section */
+.social-icons-mobile-only {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .social-icons-mobile-only {
+    display: flex;
+  }
+}

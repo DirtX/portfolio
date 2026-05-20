@@ -2,6 +2,8 @@ import { useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import figmaLogo from "../assets/figma-logo.svg";
 import { useLang } from "../context/LanguageContext";
+import { useModal } from "../context/ModalContext";
+import SocialIcons from "../components/SocialIcons";
 
 import "./Home.css";
 
@@ -9,6 +11,7 @@ const FULL_NAME = "Yaroslav Horbatiuk";
 
 export default function Home() {
   const { t } = useLang();
+  const { openContactModal } = useModal();
 
   const projects = [
     {
@@ -295,6 +298,10 @@ export default function Home() {
               <span className="c-label">{t("contact_languages")}</span>
               <span className="c-value">EN · UA · CZ</span>
             </div>
+            <div className="contact-row contact-row-social">
+              <span className="c-label">{t("sidebar_find_me") || "Find me"}</span>
+              <SocialIcons onMessageClick={openContactModal} className="social-icons-mobile-only" />
+            </div>
           </div>
         </div>
       </section>
@@ -302,6 +309,10 @@ export default function Home() {
       {/* FOOTER SECTION */}
       <footer className="home-footer">
         <span className="footer-text">© 2026 Yaroslav Horbatiuk</span>
+        <SocialIcons
+          onMessageClick={openContactModal}
+          className="social-icons-mobile-only social-icons-footer"
+        />
         <span className="footer-text">{t("footer_built")}</span>
       </footer>
     </div>
