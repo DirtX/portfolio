@@ -10,7 +10,7 @@ import "./Home.css";
 const FULL_NAME = "Yaroslav Horbatiuk";
 
 export default function Home() {
-  const { t } = useLang();
+  const { t, lang } = useLang();
   const { openContactModal } = useModal();
 
   const projects = [
@@ -169,7 +169,11 @@ export default function Home() {
           <Link to="/projects" className="home-btn-primary">
             {t("hero_btn_projects")}
           </Link>
-          <a href="/Horbatiuk_CV.pdf" download className="home-btn-secondary">
+          <a
+            href={lang === "cs" ? "../public/Horbatiuk_CV_CS.pdf" : "../public/Horbatiuk_CV_EN.pdf"}
+            download
+            className="home-btn-secondary"
+          >
             {t("hero_btn_cv")}
           </a>
           <a href="#" className="home-btn-figma">
@@ -282,9 +286,12 @@ export default function Home() {
           <p className="home-eyebrow">{t("contact_eyebrow")}</p>
           <h2 className="home-section-title">{t("contact_title")}</h2>
           <div className="contact-rows">
-            <a href="mailto:ggdirtxgg@gmail.com" className="contact-row contact-row-link">
+            <a
+              href="mailto:horbatyuk.yaroslav03@gmail.com"
+              className="contact-row contact-row-link"
+            >
               <span className="c-label">{t("contact_email")}</span>
-              <span className="c-value">ggdirtxgg@gmail.com</span>
+              <span className="c-value">horbatyuk.yaroslav03@gmail.com</span>
             </a>
             <a href="tel:+420739984652" className="contact-row contact-row-link">
               <span className="c-label">{t("contact_phone")}</span>

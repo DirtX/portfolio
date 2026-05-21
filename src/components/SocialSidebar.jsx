@@ -1,6 +1,6 @@
 import "./SocialSidebar.css";
 
-const EMAIL = "ggdirtxgg@gmail.com";
+const EMAIL = "horbatyuk.yaroslav03@gmail.com";
 
 export default function SocialSidebar({ onPhoneClick }) {
   return (

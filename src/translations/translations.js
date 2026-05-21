@@ -6,7 +6,7 @@ export const translations = {
     nav_contact: "Contact",
 
     // ============ HERO ============
-    hero_eyebrow: "Available for work · Prague",
+    hero_eyebrow: "Available for work",
     hero_role: "Frontend Developer & Designer.",
     hero_desc:
       "Translating visual concepts into clean, functional code. Bridging design and engineering without friction.",
@@ -67,7 +67,7 @@ export const translations = {
     about_p3:
       "Always eager to learn — I pick up new tools and frameworks fast and treat every project as a chance to grow. Comfortable jumping into unfamiliar codebases and stacks.",
     about_p4:
-      "Actively learning Czech and ready to join a Czech-speaking team — I see immersion as the fastest way to level up both professionally and linguistically. Based in Kolín, ready to relocate to Prague.",
+      "Actively learning Czech and ready to join a Czech-speaking team — I see immersion as the fastest way to level up both professionally and linguistically. Based in Kolín, open to relocation.",
 
     // ============ CONTACT ============
     contact_eyebrow: "Get in touch",
@@ -76,7 +76,7 @@ export const translations = {
     contact_phone: "Phone",
     contact_location: "Location",
     contact_languages: "Languages",
-    contact_location_val: "Kolín → Prague",
+    contact_location_val: "Kolín, Czechia",
 
     // ============ FOOTER ============
     footer_built: "Built with React",
@@ -256,7 +256,7 @@ export const translations = {
     nav_contact: "Kontakt",
 
     // ============ HERO ============
-    hero_eyebrow: "Hledám práci · Praha",
+    hero_eyebrow: "Hledám práci",
     hero_role: "Frontend Developer & UI/UX Designer.",
     hero_desc:
       "Převádím vizuální koncepty do čistého, funkčního kódu. Propojuji design a vývoj bez zbytečných překážek.",
@@ -319,7 +319,7 @@ export const translations = {
     about_p3:
       "Vždy se chci učit nové věci — rychle se učím nové nástroje a frameworky a každý projekt beru jako příležitost k růstu. Nevadí mi skočit do neznámého kódu nebo stacku.",
     about_p4:
-      "Aktivně se učím česky a jsem připraven nastoupit do česky mluvícího týmu — vidím to jako nejrychlejší způsob, jak se posunout profesně i jazykově. Bydlím v Kolíně, ochoten přestěhovat se do Prahy.",
+      "Aktivně se učím česky a jsem připraven nastoupit do česky mluvícího týmu — vidím to jako nejrychlejší způsob, jak se posunout profesně i jazykově. Bydlím v Kolíně, ochoten přestěhovat se za prací.",
 
     // ============ CONTACT ============
     contact_eyebrow: "Spojte se se mnou",
@@ -328,7 +328,7 @@ export const translations = {
     contact_phone: "Telefon",
     contact_location: "Místo",
     contact_languages: "Jazyky",
-    contact_location_val: "Kolín → Praha",
+    contact_location_val: "Kolín, Česko",
 
     // ============ FOOTER ============
     footer_built: "Vytvořeno v Reactu",

@@ -1,6 +1,6 @@
 import "./SocialIcons.css";
 
-const EMAIL = "ggdirtxgg@gmail.com";
+const EMAIL = "horbatyuk.yaroslav03@gmail.com";
 
 export default function SocialIcons({ onMessageClick, className = "" }) {
   return (
