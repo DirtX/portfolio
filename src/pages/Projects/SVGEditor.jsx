@@ -1,7 +1,9 @@
 import { useState, useRef } from "react";
+import { Link } from "react-router-dom";
 import ColorPicker from "../../components/ColorPicker";
 import Tooltip from "../../components/Tooltip";
 import { useLang } from "../../context/LanguageContext";
+import { useIsMobile } from "../../hooks/useIsMobile";
 import "./SVGEditor.css";
 
 const TECH_STACK = ["SVG", "React", "DOMParser"];
@@ -30,6 +32,28 @@ const elementAttrs = (el) => {
 
 export default function SVGEditor() {
   const { t } = useLang();
+  const isMobile = useIsMobile();
+
+  if (isMobile) {
+    return (
+      <div className="svg-mobile-block">
+        <div className="svg-mobile-card">
+          <div className="svg-mobile-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+              <rect x="3" y="4" width="18" height="13" rx="2" />
+              <line x1="8" y1="20" x2="16" y2="20" />
+              <line x1="12" y1="17" x2="12" y2="20" />
+            </svg>
+          </div>
+          <h1 className="svg-mobile-title">{t("desktop_only_title")}</h1>
+          <p className="svg-mobile-desc">{t("desktop_only_desc")}</p>
+          <Link to="/projects" className="svg-mobile-back">
+            {t("desktop_only_back")}
+          </Link>
+        </div>
+      </div>
+    );
+  }
 
   const TOOLS = [
     { id: "hand", label: t("svg_tool_hand") },
@@ -347,6 +371,14 @@ export default function SVGEditor() {
 
   return (
     <div className="svg-wrapper">
+      {/* MOBILE DESKTOP-ONLY NOTICE */}
+      {isMobile && (
+        <div className="svg-desktop-notice">
+          <span className="svg-desktop-notice-icon">⚠</span>
+          <span className="svg-desktop-notice-text">{t("desktop_only_notice")}</span>
+        </div>
+      )}
+
       {/* HERO */}
       <div className="svg-hero">
         <div className="svg-tech">

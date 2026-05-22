@@ -120,4 +120,9 @@
   .radius-hint {
     display: none;
   }
+
+  .radius-preview-box {
+    width: 160px;
+    height: 160px;
+  }
 }

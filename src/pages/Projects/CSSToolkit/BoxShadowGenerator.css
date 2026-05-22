@@ -112,3 +112,19 @@
   border-color: var(--text-faint);
   color: var(--text-primary);
 }
+
+/* ============ MOBILE ============ */
+@media (max-width: 768px) {
+  .shadow-preview-box {
+    width: 140px;
+    height: 140px;
+  }
+
+  .shadow-drag-handle {
+    display: none;
+  }
+
+  .shadow-layer-name {
+    font-size: 0.7rem;
+  }
+}

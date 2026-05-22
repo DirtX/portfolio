@@ -253,6 +253,14 @@ export const translations = {
     md_label_source: "Source",
     md_label_preview: "Preview",
 
+    // ============ DESKTOP ONLY ============
+    desktop_only_badge: "Desktop only",
+    desktop_only_notice: "This tool works best on desktop. Mobile support is limited.",
+    desktop_only_title: "Best on desktop",
+    desktop_only_desc:
+      "The SVG Editor needs precise mouse input and a wide canvas. Please open this project on a laptop or desktop computer for the full experience.",
+    desktop_only_back: "Back to projects",
+
     // ============ MOBILE SIDEBAR WITH LINKS ============
     sidebar_find_me: "Socials",
   },
@@ -516,6 +524,14 @@ export const translations = {
     // ============ MARKDOWN PREVIEW LABELS ============
     md_label_source: "Zdroj",
     md_label_preview: "Náhled",
+
+    // ============ DESKTOP ONLY ============
+    desktop_only_badge: "Pouze desktop",
+    desktop_only_notice: "Tento nástroj nejlépe funguje na počítači. Mobilní podpora je omezená.",
+    desktop_only_title: "Nejlépe na počítači",
+    desktop_only_desc:
+      "SVG Editor vyžaduje přesné ovládání myší a široké plátno. Otevřete tento projekt na notebooku nebo počítači pro plnohodnotný zážitek.",
+    desktop_only_back: "Zpět na projekty",
 
     // ============ MOBILE SIDEBAR WITH LINKS ============
     sidebar_find_me: "Sítě",

@@ -358,94 +358,167 @@
 /* ============ RESPONSIVE: TABLET (≤768px) ============ */
 @media (max-width: 768px) {
   .me-page {
-    padding: 40px 28px 60px;
-    gap: 2rem;
+    padding: 70px 16px 32px;
+    gap: 1rem;
+  }
+
+  .me-hero {
+    gap: 0.4rem;
+  }
+
+  .me-tech {
+    font-size: 0.6rem;
+    margin-bottom: 0;
   }
 
   .me-title {
-    font-size: 2rem;
+    font-size: 1.6rem;
   }
 
   .me-subtitle {
-    font-size: 0.85rem;
+    font-size: 0.78rem;
+    line-height: 1.5;
   }
 
-  /* Toolbar: stack groups */
   .me-toolbar {
     flex-direction: column;
     align-items: stretch;
-    gap: 12px;
-    padding: 14px;
+    gap: 8px;
+    padding: 10px;
+    overflow: hidden;
   }
 
   .me-toolbar-group {
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 6px;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 4px;
+    padding-bottom: 2px;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    width: 100%;
+    min-width: 0;
   }
 
-  .me-toolbar-actions {
-    justify-content: center;
+  .me-toolbar-group::-webkit-scrollbar {
+    display: none;
   }
 
   .me-tool-btn {
-    min-width: 36px;
-    height: 32px;
-    font-size: 0.75rem;
+    flex-shrink: 0;
+    height: 30px;
+    min-width: 34px;
+    padding: 0 10px;
+    font-size: 0.72rem;
   }
 
-  /* Editor + Preview stack vertically */
+  .me-toolbar-actions {
+    gap: 6px;
+  }
+
+  .me-btn,
+  .me-btn-ghost {
+    flex: 1;
+    height: 34px;
+    font-size: 0.75rem;
+    padding: 0 14px;
+  }
+
   .me-grid {
     grid-template-columns: 1fr;
-    gap: 16px;
+    gap: 10px;
   }
 
   .me-pane {
+    height: auto;
     min-height: 280px;
   }
 
-  .me-editor {
-    font-size: 0.85rem;
-    padding: 14px;
+  .me-pane-header {
+    padding: 8px 12px;
+    font-size: 0.6rem;
   }
 
+  .me-stats {
+    font-size: 0.58rem;
+  }
+
+  .me-editor,
   .me-preview {
-    font-size: 0.85rem;
-    padding: 14px;
+    font-size: 0.82rem;
+    padding: 12px;
+  }
+
+  .me-preview h1 {
+    font-size: 1.3rem;
+  }
+
+  .me-preview h2 {
+    font-size: 1.1rem;
+  }
+
+  .me-preview h3 {
+    font-size: 0.95rem;
+  }
+
+  .me-how {
+    gap: 0.75rem;
+  }
+
+  .me-how-title {
+    font-size: 1rem;
   }
 
   .me-steps {
     grid-template-columns: 1fr;
-    gap: 18px;
+    gap: 0.5rem;
+  }
+
+  .me-step {
+    display: grid;
+    grid-template-columns: 20px 1fr;
+    grid-template-rows: auto auto;
+    column-gap: 12px;
+    row-gap: 4px;
+    padding: 0.85rem;
+  }
+
+  .me-step-num {
+    font-size: 0.58rem;
+    grid-column: 1;
+    grid-row: 1;
+    padding-top: 2px;
+  }
+
+  .me-step-title {
+    font-size: 0.8rem;
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .me-step-desc {
+    font-size: 0.7rem;
+    line-height: 1.5;
+    grid-column: 2;
+    grid-row: 2;
+  }
+
+  .me-tech-note {
+    font-size: 0.65rem;
+    padding: 0.75rem;
   }
 }
 
 /* ============ RESPONSIVE: SMALL MOBILE (≤480px) ============ */
 @media (max-width: 480px) {
-  .me-page {
-    padding: 32px 20px 50px;
-  }
-
-  .me-title {
-    font-size: 1.7rem;
-  }
-
-  .me-pane {
-    min-height: 240px;
-  }
-
-  .me-stats {
-    font-size: 0.65rem;
+  .me-tool-btn {
+    min-width: 32px;
+    padding: 0 8px;
   }
 }
 
 /* ============ EXTRA TIGHT (≤360px) ============ */
 @media (max-width: 360px) {
   .me-page {
-    padding: 28px 16px 40px;
-  }
-
-  .me-title {
-    font-size: 1.5rem;
+    padding: 70px 12px 24px;
   }
 }

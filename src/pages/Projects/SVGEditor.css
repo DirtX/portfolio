@@ -9,6 +9,30 @@
   gap: 2rem;
 }
 
+/* ============ DESKTOP ONLY NOTICE ============ */
+.svg-desktop-notice {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--bg-elevated);
+  border: 0.5px solid var(--border-medium);
+  border-radius: var(--radius-lg);
+  padding: 10px 14px;
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.svg-desktop-notice-icon {
+  font-size: 1rem;
+  color: var(--text-primary);
+  flex-shrink: 0;
+}
+
+.svg-desktop-notice-text {
+  flex: 1;
+}
+
 /* ============ HERO ============ */
 .svg-hero {
   display: flex;
@@ -382,4 +406,72 @@
 
 .svg-tech-note strong {
   color: var(--text-secondary);
+}
+
+/* ============ MOBILE BLOCK ============ */
+.svg-mobile-block {
+  width: 100%;
+  min-height: calc(100vh - 60px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 70px 16px 32px;
+}
+
+.svg-mobile-card {
+  width: 100%;
+  max-width: 360px;
+  background: var(--bg-secondary);
+  border: 0.5px solid var(--border-subtle);
+  border-radius: var(--radius-2xl);
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1rem;
+}
+
+.svg-mobile-icon {
+  width: 48px;
+  height: 48px;
+  color: var(--text-faint);
+}
+
+.svg-mobile-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.svg-mobile-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+}
+
+.svg-mobile-desc {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.svg-mobile-back {
+  margin-top: 0.5rem;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  padding: 0 24px;
+  background: transparent;
+  color: var(--text-primary);
+  border: 0.5px solid var(--border-medium);
+  border-radius: var(--radius-full);
+  font-size: 0.82rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: border-color var(--transition-base);
+}
+
+.svg-mobile-back:hover {
+  border-color: var(--border-strong);
 }

@@ -31,3 +31,15 @@
   border-color: var(--text-primary);
   border-width: 2px;
 }
+
+/* ============ MOBILE ============ */
+@media (max-width: 768px) {
+  .glass-preview-card {
+    width: 200px;
+    height: 140px;
+  }
+
+  .glass-preset {
+    height: 32px;
+  }
+}

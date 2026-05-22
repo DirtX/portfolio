@@ -3,6 +3,8 @@
   padding: 50px 100px;
   max-width: 1400px;
   margin: 0 auto;
+  width: 100%;
+  min-width: 0;
 }
 
 /* ============ HERO ============ */
@@ -90,6 +92,8 @@
 /* ============ CONTENT ============ */
 .toolkit-content {
   min-height: 400px;
+  min-width: 0;
+  width: 100%;
 }
 
 .toolkit-placeholder {
@@ -107,6 +111,7 @@
   flex-direction: column;
   gap: 1.5rem;
   width: 100%;
+  min-width: 0;
   max-width: 1000px;
   margin: 0 auto;
   overflow: hidden;
@@ -305,15 +310,26 @@
 /* ============ RESPONSIVE: TABLET (≤768px) ============ */
 @media (max-width: 768px) {
   .toolkit-wrapper {
-    padding: 40px 28px 60px;
+    padding: 70px 16px 32px;
+  }
+
+  .toolkit-hero {
+    gap: 0.4rem;
+    margin-bottom: 1rem;
+  }
+
+  .toolkit-tech {
+    font-size: 0.6rem;
+    margin-bottom: 0;
   }
 
   .toolkit-title {
-    font-size: 2rem;
+    font-size: 1.6rem;
   }
 
   .toolkit-subtitle {
-    font-size: 0.85rem;
+    font-size: 0.78rem;
+    line-height: 1.5;
   }
 
   /* Tabs: horizontal scroll on small screens */
@@ -323,7 +339,8 @@
     justify-content: flex-start;
     scrollbar-width: none;
     -webkit-overflow-scrolling: touch;
-    padding-bottom: 12px;
+    padding-bottom: 10px;
+    margin-bottom: 1rem;
 
     /* Edge fade to hint there's more */
     -webkit-mask-image: linear-gradient(
@@ -348,53 +365,93 @@
 
   .toolkit-tab {
     flex-shrink: 0;
-    font-size: 0.75rem;
-    padding: 0 14px;
-    height: 30px;
+    font-size: 0.72rem;
+    padding: 0 12px;
+    height: 28px;
+  }
+
+  .toolkit-content {
+    min-height: 0;
   }
 
   .tool-wrapper {
-    padding: 1rem;
-    gap: 1.25rem;
+    padding: 0.85rem;
+    gap: 1rem;
+  }
+
+  .tool-top {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1rem;
+  }
+
+  .tool-preview {
+    max-width: 100%;
+    aspect-ratio: 1 / 1;
+  }
+
+  .tool-controls {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .tool-label {
+    font-size: 0.6rem;
   }
 
   .tool-pills {
     flex-wrap: wrap;
+    gap: 4px;
+  }
+
+  .tool-pill {
+    padding: 0 10px;
+    height: 26px;
+    font-size: 0.68rem;
+  }
+
+  .tool-output {
+    padding: 0.75rem;
+  }
+
+  .tool-code {
+    font-size: 0.7rem;
+    line-height: 1.6;
+  }
+
+  .tool-copy {
+    height: 26px;
+    font-size: 0.65rem;
   }
 }
 
 /* ============ RESPONSIVE: SMALL MOBILE (≤480px) ============ */
 @media (max-width: 480px) {
   .toolkit-wrapper {
-    padding: 32px 20px 50px;
-  }
-
-  .toolkit-title {
-    font-size: 1.7rem;
-  }
-
-  .toolkit-tab {
-    font-size: 0.7rem;
-    padding: 0 12px;
-    height: 28px;
+    padding: 70px 14px 28px;
   }
 
   .tool-wrapper {
-    padding: 14px;
+    padding: 0.75rem;
+  }
+
+  .toolkit-tab {
+    font-size: 0.68rem;
+    padding: 0 10px;
   }
 }
 
 /* ============ EXTRA TIGHT (≤360px) ============ */
 @media (max-width: 360px) {
   .toolkit-wrapper {
-    padding: 28px 16px 40px;
+    padding: 70px 12px 24px;
   }
 
   .toolkit-title {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
   }
 
   .tool-wrapper {
-    padding: 12px;
+    padding: 0.65rem;
   }
 }

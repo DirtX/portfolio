@@ -59,7 +59,7 @@ export default function Home() {
   ];
 
   const skills = [
-    { icon: "⚛", name: "React", level: t("skill_intermediate") },
+    { icon: "⚛\uFE0E", name: "React", level: t("skill_intermediate") },
     { icon: "{ }", name: "HTML / CSS", level: t("skill_confident") },
     { icon: "JS", name: "JavaScript", level: t("skill_confident") },
     { icon: "F", name: "Figma", level: t("skill_confident") },

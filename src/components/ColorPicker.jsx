@@ -159,7 +159,6 @@ export default function ColorPicker({ value, onChange }) {
               onTouchStart={(e) => {
                 draggingCanvas.current = true;
                 handleCanvasMove(e);
-                if (e.cancelable) e.preventDefault();
               }}
             >
               <div className="color-picker-canvas-overlay" />
@@ -179,7 +178,6 @@ export default function ColorPicker({ value, onChange }) {
               onTouchStart={(e) => {
                 draggingHue.current = true;
                 handleHueMove(e);
-                if (e.cancelable) e.preventDefault();
               }}
             >
               <div

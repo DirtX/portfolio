@@ -23,10 +23,16 @@
 }
 
 .nav-logo {
-  font-weight: 600;
-  font-size: 0.95rem;
-  letter-spacing: -0.01em;
   color: var(--text-primary);
+  display: inline-flex;
+  align-items: center;
+  height: 28px;
+}
+
+.nav-logo-svg {
+  height: 22px;
+  width: auto;
+  display: block;
 }
 
 .nav-links {
