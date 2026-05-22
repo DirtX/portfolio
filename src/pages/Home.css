@@ -685,6 +685,19 @@
 
   .home-actions {
     gap: 8px;
+    width: 100%;
+    max-width: 320px;
+  }
+
+  .home-btn-primary {
+    flex-basis: 100%;
+    justify-content: center;
+  }
+
+  .home-btn-secondary,
+  .home-btn-figma {
+    flex: 1;
+    justify-content: center;
   }
 
   .home-btn-primary,

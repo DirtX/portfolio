@@ -203,6 +203,13 @@
   accent-color: var(--text-primary);
 }
 
+/* Larger slider on touch devices for easier interaction */
+@media (hover: none) and (pointer: coarse) {
+  .tool-slider {
+    height: 28px;
+  }
+}
+
 /* ============ SHARED PILLS ============ */
 .tool-pills {
   display: flex;

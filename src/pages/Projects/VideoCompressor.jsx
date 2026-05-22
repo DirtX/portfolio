@@ -2,12 +2,15 @@ import { useState, useRef, useEffect } from "react";
 import { FFmpeg } from "@ffmpeg/ffmpeg";
 import { fetchFile } from "@ffmpeg/util";
 import { useLang } from "../../context/LanguageContext";
+import { useIsMobile } from "../../hooks/useIsMobile";
 import "./VideoCompressor.css";
 
 const TECH_STACK = ["FFmpeg WASM", "React", "Web APIs"];
+const MOBILE_MAX_MB = 50;
 
 export default function VideoCompressor() {
   const { t } = useLang();
+  const isMobile = useIsMobile();
 
   const STEPS = [
     { num: "01", title: t("vc_step1_title"), desc: t("vc_step1_desc") },
@@ -66,6 +69,12 @@ export default function VideoCompressor() {
   const handleFile = (file) => {
     if (!validateFile(file)) {
       setErrorMessage(t("vc_err_format"));
+      setVideoFile(null);
+      return;
+    }
+    // Feature: Block oversized files on mobile to avoid OOM crashes
+    if (isMobile && file.size > MOBILE_MAX_MB * 1024 * 1024) {
+      setErrorMessage(t("vc_err_mobile_size").replace("{mb}", MOBILE_MAX_MB));
       setVideoFile(null);
       return;
     }
@@ -258,6 +267,12 @@ export default function VideoCompressor() {
                 </div>
               )}
             </div>
+
+            {isMobile && (
+              <p className="vc-mobile-notice">
+                {t("vc_mobile_notice").replace("{mb}", MOBILE_MAX_MB)}
+              </p>
+            )}
 
             {errorMessage && <p className="vc-error">{errorMessage}</p>}
 

@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import { useLang } from "../context/LanguageContext";
-import { useIsMobile } from "../hooks/useIsMobile";
 import "./Projects.css";
 
 // Feature: Render preview visualization based on project type
@@ -196,7 +195,6 @@ function ProjectPreview({ type }) {
 
 export default function Projects() {
   const { t } = useLang();
-  const isMobile = useIsMobile();
 
   // Feature: All projects with translated metadata
   const PROJECTS_T = [
@@ -207,7 +205,6 @@ export default function Projects() {
       desc: t("proj_video_long"),
       tech: ["React", "FFmpeg WASM", "Web APIs"],
       preview: "video",
-      desktopOnly: true,
     },
     {
       id: "audio-extractor",
@@ -216,7 +213,6 @@ export default function Projects() {
       desc: t("proj_audio_long"),
       tech: ["React", "FFmpeg WASM", "Audio"],
       preview: "audio",
-      desktopOnly: true,
     },
     {
       id: "color-palette",
@@ -249,7 +245,6 @@ export default function Projects() {
       desc: t("proj_svg_long"),
       tech: ["React", "SVG", "DOMParser"],
       preview: "svg",
-      desktopOnly: true,
     },
   ];
 
@@ -265,40 +260,8 @@ export default function Projects() {
       {/* GRID */}
       <div className="projects-grid">
         {PROJECTS_T.map((proj) => {
-          // Feature: Lock card if it's desktop-only and we're on mobile
-          const isLocked = isMobile && proj.desktopOnly;
-          const CardTag = isLocked ? "div" : Link;
-
           return (
-            <CardTag
-              key={proj.id}
-              {...(!isLocked && { to: `/projects/${proj.id}` })}
-              className={`projects-card ${isLocked ? "projects-card-locked" : ""}`}
-            >
-              {/* DESKTOP-ONLY OVERLAY */}
-              {isLocked && (
-                <div className="projects-card-overlay" aria-hidden="true">
-                  <div className="projects-card-stripes" />
-                  <div className="projects-card-overlay-text">
-                    <svg
-                      width="22"
-                      height="22"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="1.8"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    >
-                      <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
-                      <line x1="8" y1="21" x2="16" y2="21" />
-                      <line x1="12" y1="17" x2="12" y2="21" />
-                    </svg>
-                    <span>DESKTOP ONLY</span>
-                  </div>
-                </div>
-              )}
-
+            <Link key={proj.id} to={`/projects/${proj.id}`} className="projects-card">
               {/* PREVIEW */}
               <div className="projects-card-preview">
                 <ProjectPreview type={proj.preview} />
@@ -321,7 +284,7 @@ export default function Projects() {
                   <span className="projects-card-arrow">→</span>
                 </div>
               </div>
-            </CardTag>
+            </Link>
           );
         })}
       </div>

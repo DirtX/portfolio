@@ -2,14 +2,17 @@ import { useState, useRef, useEffect } from "react";
 import { FFmpeg } from "@ffmpeg/ffmpeg";
 import { fetchFile } from "@ffmpeg/util";
 import { useLang } from "../../context/LanguageContext";
+import { useIsMobile } from "../../hooks/useIsMobile";
 import "./AudioExtractor.css";
 
 const TECH_STACK = ["FFmpeg WASM", "React", "Web APIs"];
+const MOBILE_MAX_MB = 100;
 
 const BITRATES = ["8k", "16k", "32k", "64k", "96k", "128k", "192k", "256k", "320k"];
 
 export default function AudioExtractor() {
   const { t } = useLang();
+  const isMobile = useIsMobile();
 
   const FORMATS = [
     { id: "mp3", label: "MP3", codec: "libmp3lame", ext: "mp3", desc: t("ae_fmt_mp3_desc") },
@@ -74,6 +77,12 @@ export default function AudioExtractor() {
   const handleFile = (file) => {
     if (!validateFile(file)) {
       setErrorMessage(t("ae_err_format"));
+      setVideoFile(null);
+      return;
+    }
+    // Feature: Block oversized files on mobile to avoid OOM crashes
+    if (isMobile && file.size > MOBILE_MAX_MB * 1024 * 1024) {
+      setErrorMessage(t("ae_err_mobile_size").replace("{mb}", MOBILE_MAX_MB));
       setVideoFile(null);
       return;
     }
@@ -243,6 +252,12 @@ export default function AudioExtractor() {
                 </div>
               )}
             </div>
+
+            {isMobile && (
+              <p className="ae-mobile-notice">
+                {t("ae_mobile_notice").replace("{mb}", MOBILE_MAX_MB)}
+              </p>
+            )}
 
             {errorMessage && <p className="ae-error">{errorMessage}</p>}
 

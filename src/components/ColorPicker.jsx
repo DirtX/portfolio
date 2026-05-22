@@ -1,12 +1,20 @@
-import { useState, useRef, useEffect } from 'react';
-import { createPortal } from 'react-dom';
-import './ColorPicker.css';
+import { useState, useRef, useEffect } from "react";
+import { createPortal } from "react-dom";
+import "./ColorPicker.css";
+
+// Feature: extract clientX/clientY from mouse or touch event
+const getPoint = (e) => {
+  if (e.touches && e.touches.length > 0) {
+    return { x: e.touches[0].clientX, y: e.touches[0].clientY };
+  }
+  return { x: e.clientX, y: e.clientY };
+};
 
 export default function ColorPicker({ value, onChange }) {
   const [open, setOpen] = useState(false);
   const [hsv, setHsv] = useState(() => hexToHsv(value));
   const [coords, setCoords] = useState({ top: 0, left: 0 });
-  const [hexInput, setHexInput] = useState(value.replace('#', '').toUpperCase());
+  const [hexInput, setHexInput] = useState(value.replace("#", "").toUpperCase());
   const wrapperRef = useRef(null);
   const dropdownRef = useRef(null);
   const canvasRef = useRef(null);
@@ -14,26 +22,32 @@ export default function ColorPicker({ value, onChange }) {
   const draggingCanvas = useRef(false);
   const draggingHue = useRef(false);
 
-  // Feature: close on outside click
+  // Feature: close on outside click or tap
   useEffect(() => {
     const handleClick = (e) => {
       if (
-        wrapperRef.current && !wrapperRef.current.contains(e.target) &&
-        dropdownRef.current && !dropdownRef.current.contains(e.target)
+        wrapperRef.current &&
+        !wrapperRef.current.contains(e.target) &&
+        dropdownRef.current &&
+        !dropdownRef.current.contains(e.target)
       ) {
         setOpen(false);
       }
     };
-    document.addEventListener('mousedown', handleClick);
-    return () => document.removeEventListener('mousedown', handleClick);
+    document.addEventListener("mousedown", handleClick);
+    document.addEventListener("touchstart", handleClick);
+    return () => {
+      document.removeEventListener("mousedown", handleClick);
+      document.removeEventListener("touchstart", handleClick);
+    };
   }, []);
 
   useEffect(() => {
     const newHsv = hexToHsv(value);
-    setHsv(prev => ({
-      h: (newHsv.s < 0.01 || newHsv.v < 0.01) ? prev.h : newHsv.h,
+    setHsv((prev) => ({
+      h: newHsv.s < 0.01 || newHsv.v < 0.01 ? prev.h : newHsv.h,
       s: newHsv.s,
-      v: newHsv.v
+      v: newHsv.v,
     }));
   }, [value]);
 
@@ -47,8 +61,9 @@ export default function ColorPicker({ value, onChange }) {
   const handleCanvasMove = (e) => {
     if (!canvasRef.current) return;
     const r = canvasRef.current.getBoundingClientRect();
-    const x = Math.max(0, Math.min(1, (e.clientX - r.left) / r.width));
-    const y = Math.max(0, Math.min(1, (e.clientY - r.top) / r.height));
+    const p = getPoint(e);
+    const x = Math.max(0, Math.min(1, (p.x - r.left) / r.width));
+    const y = Math.max(0, Math.min(1, (p.y - r.top) / r.height));
     updateColor({ ...hsv, s: x, v: 1 - y });
   };
 
@@ -56,44 +71,65 @@ export default function ColorPicker({ value, onChange }) {
   const handleHueMove = (e) => {
     if (!hueRef.current) return;
     const r = hueRef.current.getBoundingClientRect();
-    const x = Math.max(0, Math.min(1, (e.clientX - r.left) / r.width));
+    const p = getPoint(e);
+    const x = Math.max(0, Math.min(1, (p.x - r.left) / r.width));
     updateColor({ ...hsv, h: x * 360 });
   };
 
-  // Feature: drag tracking on window
+  // Feature: drag tracking (mouse + touch)
   useEffect(() => {
     const onMove = (e) => {
-      if (draggingCanvas.current) handleCanvasMove(e);
-      if (draggingHue.current) handleHueMove(e);
+      if (draggingCanvas.current) {
+        handleCanvasMove(e);
+        if (e.cancelable) e.preventDefault();
+      }
+      if (draggingHue.current) {
+        handleHueMove(e);
+        if (e.cancelable) e.preventDefault();
+      }
     };
     const onUp = () => {
       draggingCanvas.current = false;
       draggingHue.current = false;
     };
-    window.addEventListener('mousemove', onMove);
-    window.addEventListener('mouseup', onUp);
+    window.addEventListener("mousemove", onMove);
+    window.addEventListener("mouseup", onUp);
+    window.addEventListener("touchmove", onMove, { passive: false });
+    window.addEventListener("touchend", onUp);
     return () => {
-      window.removeEventListener('mousemove', onMove);
-      window.removeEventListener('mouseup', onUp);
+      window.removeEventListener("mousemove", onMove);
+      window.removeEventListener("mouseup", onUp);
+      window.removeEventListener("touchmove", onMove);
+      window.removeEventListener("touchend", onUp);
     };
   }, [hsv]);
 
   useEffect(() => {
-    setHexInput(value.replace('#', '').toUpperCase());
+    setHexInput(value.replace("#", "").toUpperCase());
   }, [value]);
 
-    const handleHexInput = (e) => {
-        const cleaned = e.target.value.replace(/[^0-9A-Fa-f]/g, '').toUpperCase().slice(0, 6);
-        setHexInput(cleaned);
-        if (/^[0-9A-F]{6}$/.test(cleaned)) onChange('#' + cleaned);
-    };
+  const handleHexInput = (e) => {
+    const cleaned = e.target.value
+      .replace(/[^0-9A-Fa-f]/g, "")
+      .toUpperCase()
+      .slice(0, 6);
+    setHexInput(cleaned);
+    if (/^[0-9A-F]{6}$/.test(cleaned)) onChange("#" + cleaned);
+  };
 
   const handleToggle = (e) => {
     if (!open) {
       const r = e.currentTarget.getBoundingClientRect();
-      setCoords({ top: r.bottom + 8, left: r.left });
+      // Feature: clamp dropdown inside viewport for small screens
+      const DROPDOWN_W = 220;
+      const MARGIN = 8;
+      let left = r.left;
+      const maxLeft = window.innerWidth - DROPDOWN_W - MARGIN;
+      if (left > maxLeft) left = Math.max(MARGIN, maxLeft);
+      if (left < MARGIN) left = MARGIN;
+      setCoords({ top: r.bottom + 8, left });
     }
-    setOpen(prev => !prev);
+    setOpen((prev) => !prev);
   };
 
   const hueColor = hsvToHex({ h: hsv.h, s: 1, v: 1 });
@@ -105,50 +141,67 @@ export default function ColorPicker({ value, onChange }) {
         <span className="color-picker-hex-label">{value}</span>
       </button>
 
-      {open && createPortal(
-        <div
-          className="color-picker-dropdown"
-          ref={dropdownRef}
-          style={{ top: coords.top, left: coords.left }}
-        >
+      {open &&
+        createPortal(
           <div
-            className="color-picker-canvas"
-            ref={canvasRef}
-            style={{ background: `linear-gradient(to right, white, ${hueColor})` }}
-            onMouseDown={(e) => { draggingCanvas.current = true; handleCanvasMove(e); }}
-          >
-            <div className="color-picker-canvas-overlay" />
-            <div
-              className="color-picker-marker"
-              style={{ left: `${hsv.s * 100}%`, top: `${(1 - hsv.v) * 100}%` }}
-            />
-          </div>
-
-          <div
-            className="color-picker-hue"
-            ref={hueRef}
-            onMouseDown={(e) => { draggingHue.current = true; handleHueMove(e); }}
+            className="color-picker-dropdown"
+            ref={dropdownRef}
+            style={{ top: coords.top, left: coords.left }}
           >
             <div
-              className="color-picker-hue-marker"
-              style={{ left: `${(hsv.h / 360) * 100}%` }}
-            />
-          </div>
+              className="color-picker-canvas"
+              ref={canvasRef}
+              style={{ background: `linear-gradient(to right, white, ${hueColor})` }}
+              onMouseDown={(e) => {
+                draggingCanvas.current = true;
+                handleCanvasMove(e);
+              }}
+              onTouchStart={(e) => {
+                draggingCanvas.current = true;
+                handleCanvasMove(e);
+                if (e.cancelable) e.preventDefault();
+              }}
+            >
+              <div className="color-picker-canvas-overlay" />
+              <div
+                className="color-picker-marker"
+                style={{ left: `${hsv.s * 100}%`, top: `${(1 - hsv.v) * 100}%` }}
+              />
+            </div>
 
-          <div className="color-picker-hex-row">
-            <span className="color-picker-hex-sign">#</span>
-            <input
+            <div
+              className="color-picker-hue"
+              ref={hueRef}
+              onMouseDown={(e) => {
+                draggingHue.current = true;
+                handleHueMove(e);
+              }}
+              onTouchStart={(e) => {
+                draggingHue.current = true;
+                handleHueMove(e);
+                if (e.cancelable) e.preventDefault();
+              }}
+            >
+              <div
+                className="color-picker-hue-marker"
+                style={{ left: `${(hsv.h / 360) * 100}%` }}
+              />
+            </div>
+
+            <div className="color-picker-hex-row">
+              <span className="color-picker-hex-sign">#</span>
+              <input
                 type="text"
                 value={hexInput}
                 onChange={handleHexInput}
                 className="color-picker-hex-input"
                 maxLength={6}
                 spellCheck={false}
-            />
-          </div>
-        </div>,
-        document.body
-      )}
+              />
+            </div>
+          </div>,
+          document.body
+        )}
     </div>
   );
 }
@@ -183,6 +236,10 @@ function hsvToHex({ h, s, v }) {
   else if (h < 240) [r, g, b] = [0, x, c];
   else if (h < 300) [r, g, b] = [x, 0, c];
   else [r, g, b] = [c, 0, x];
-  const toHex = (n) => Math.round((n + m) * 255).toString(16).padStart(2, '0').toUpperCase();
-  return '#' + toHex(r) + toHex(g) + toHex(b);
+  const toHex = (n) =>
+    Math.round((n + m) * 255)
+      .toString(16)
+      .padStart(2, "0")
+      .toUpperCase();
+  return "#" + toHex(r) + toHex(g) + toHex(b);
 }

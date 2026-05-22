@@ -15,6 +15,15 @@
   transition:
     background var(--transition-base),
     opacity var(--transition-base);
+  flex-wrap: wrap;
+}
+
+/* On narrow screens, give the slider its own row */
+@media (max-width: 480px) {
+  .gen-slider-sm {
+    order: 10;
+    flex-basis: 100%;
+  }
 }
 
 .gen-stop-row.dragging {
@@ -36,6 +45,13 @@
 
 .gen-drag-handle:active {
   cursor: grabbing;
+}
+
+/* Hide reorder handle on touch — HTML5 drag-and-drop isn't supported there */
+@media (hover: none) and (pointer: coarse) {
+  .gen-drag-handle {
+    display: none;
+  }
 }
 
 .gen-stop-pos {

@@ -118,6 +118,10 @@ export const translations = {
       "the same engine used in professional video tools, running entirely in your browser.",
     vc_err_format: "Invalid format. Accepted: MP4, WEBM, MOV, MKV, AVI.",
     vc_err_compression: "Compression failed:",
+    vc_err_mobile_size:
+      "File too large for mobile (max {mb} MB). Open this tool on a computer for larger files.",
+    vc_mobile_notice:
+      "Mobile limit: {mb} MB max. Files are processed locally in your browser and never uploaded.",
     vc_eta_calc: "Calculating...",
     vc_eta_remaining: "remaining",
 
@@ -144,6 +148,10 @@ export const translations = {
     ae_tech_note: "professional audio processing running entirely in your browser.",
     ae_err_format: "Invalid format. Accepted: MP4, WEBM, MOV, MKV, AVI.",
     ae_err_extraction: "Extraction failed:",
+    ae_err_mobile_size:
+      "File too large for mobile (max {mb} MB). Open this tool on a computer for larger files.",
+    ae_mobile_notice:
+      "Mobile limit: {mb} MB max. Files are processed locally in your browser and never uploaded.",
     ae_fmt_mp3_desc: "Universal format, works everywhere",
     ae_fmt_m4a_desc: "Better quality at same bitrate",
     ae_fmt_wav_desc: "Lossless, uncompressed audio",
@@ -371,6 +379,10 @@ export const translations = {
       "stejný engine, jaký používají profesionální video nástroje, běžící zcela ve vašem prohlížeči.",
     vc_err_format: "Neplatný formát. Akceptováno: MP4, WEBM, MOV, MKV, AVI.",
     vc_err_compression: "Komprese selhala:",
+    vc_err_mobile_size:
+      "Soubor je pro mobil příliš velký (max. {mb} MB). Pro větší soubory otevřete tento nástroj na počítači.",
+    vc_mobile_notice:
+      "Mobilní limit: max. {mb} MB. Soubory se zpracovávají lokálně ve vašem prohlížeči a nikam se neodesílají.",
     vc_eta_calc: "Počítám...",
     vc_eta_remaining: "zbývá",
 
@@ -398,6 +410,10 @@ export const translations = {
     ae_tech_note: "profesionální zpracování zvuku běžící zcela ve vašem prohlížeči.",
     ae_err_format: "Neplatný formát. Akceptováno: MP4, WEBM, MOV, MKV, AVI.",
     ae_err_extraction: "Extrakce selhala:",
+    ae_err_mobile_size:
+      "Soubor je pro mobil příliš velký (max. {mb} MB). Pro větší soubory otevřete tento nástroj na počítači.",
+    ae_mobile_notice:
+      "Mobilní limit: max. {mb} MB. Soubory se zpracovávají lokálně ve vašem prohlížeči a nikam se neodesílají.",
     ae_fmt_mp3_desc: "Univerzální formát, funguje všude",
     ae_fmt_m4a_desc: "Lepší kvalita při stejném bitrate",
     ae_fmt_wav_desc: "Bezztrátový, nekomprimovaný zvuk",

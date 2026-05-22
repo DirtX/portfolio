@@ -170,7 +170,7 @@ export default function Home() {
             {t("hero_btn_projects")}
           </Link>
           <a
-            href={lang === "cs" ? "../public/Horbatiuk_CV_CS.pdf" : "../public/Horbatiuk_CV_EN.pdf"}
+            href={lang === "cs" ? "/Horbatiuk_CV_CS.pdf" : "/Horbatiuk_CV_EN.pdf"}
             download
             className="home-btn-secondary"
           >
