@@ -163,7 +163,7 @@ export default function VideoCompressor() {
       setOutputUrl(URL.createObjectURL(blob));
       setOutputSize((blob.size / 1024 / 1024).toFixed(1));
     } catch (err) {
-      setErrorMessagesetErrorMessage(`${t("vc_err_compression")} ${err.message}`);
+      setErrorMessage(`${t("vc_err_compression")} ${err.message}`);
     } finally {
       setIsCompressing(false);
       startTimeRef.current = null;

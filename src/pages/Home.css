@@ -890,19 +890,6 @@
     margin-bottom: 28px;
   }
 
-  .home-actions {
-    flex-direction: column;
-    width: 100%;
-    max-width: 240px;
-  }
-
-  .home-btn-primary,
-  .home-btn-secondary,
-  .home-btn-figma {
-    width: 100%;
-    justify-content: center;
-  }
-
   /* LANGUAGES */
   .home-languages {
     padding: 14px 20px;
