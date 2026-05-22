@@ -5,10 +5,17 @@
 }
 
 html,
+body {
+  background-color: #050505;
+  color-scheme: dark;
+  overscroll-behavior-y: none;
+}
+
+html,
 body,
 #root {
   font-size: 18px;
-  min-height: 100vh;
+  min-height: 100dvh;
   color: var(--text-primary);
   font-family:
     "Inter",
