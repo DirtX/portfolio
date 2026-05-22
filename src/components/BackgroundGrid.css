@@ -9,6 +9,7 @@
   background-color: var(--bg-primary);
   z-index: -1;
   overflow: hidden;
+  pointer-events: none;
 }
 
 /* ============ GRID CELL ============ */

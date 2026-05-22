@@ -17,9 +17,14 @@ export default function BackgroundGrid() {
     return () => window.removeEventListener("resize", calculateGrid);
   }, []);
 
-  // Feature: Highlight grid cell under mouse cursor
+  // Feature: Highlight grid cell under mouse cursor (throttled)
   useEffect(() => {
+    let lastFrame = 0;
     const handleMouseMove = (e) => {
+      const now = performance.now();
+      if (now - lastFrame < 50) return;
+      lastFrame = now;
+
       const col = Math.floor(e.clientX / 50);
       const row = Math.floor(e.clientY / 50);
       const index = row * gridConfig.columns + col;
@@ -33,7 +38,7 @@ export default function BackgroundGrid() {
       }
     };
 
-    window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener("mousemove", handleMouseMove, { passive: true });
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, [gridConfig]);
 
