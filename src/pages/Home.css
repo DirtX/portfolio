@@ -524,17 +524,15 @@
 /* ============ REVEAL ANIMATION ============ */
 .reveal {
   opacity: 0;
-  filter: blur(12px);
   transform: translateY(16px) scale(0.98);
   transition:
     opacity 0.8s ease,
-    filter 0.8s ease,
     transform 0.8s ease;
+  will-change: opacity, transform;
 }
 
 .reveal.visible {
   opacity: 1;
-  filter: blur(0);
   transform: translateY(0) scale(1);
 }
 
