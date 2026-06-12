@@ -85,7 +85,6 @@ export const translations = {
     modal_eyebrow: "Reach out",
     modal_title: "How would you like to connect?",
     modal_whatsapp_desc: "Chat or call instantly",
-    modal_viber_desc: "Chat or call",
     modal_cancel: "Cancel",
 
     // ============ SHARED PROJECT PAGE STRINGS ============
@@ -353,7 +352,6 @@ export const translations = {
     modal_eyebrow: "Kontaktujte mě",
     modal_title: "Jak se chcete spojit?",
     modal_whatsapp_desc: "Chat nebo hovor okamžitě",
-    modal_viber_desc: "Chat nebo hovor",
     modal_cancel: "Zrušit",
 
     // ============ SHARED PROJECT PAGE STRINGS ============
