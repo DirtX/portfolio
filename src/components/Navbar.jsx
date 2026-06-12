@@ -69,7 +69,7 @@ export default function Navbar() {
           {t("nav_contact")}
         </button>
         <button className="nav-lang" onClick={toggleLang}>
-          {lang === "en" ? "CZ" : "EN"}
+          {lang === "en" ? "EN" : "CZ"}
         </button>
       </div>
     </nav>

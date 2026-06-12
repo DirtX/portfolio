@@ -176,9 +176,6 @@ export default function Home() {
           >
             {t("hero_btn_cv")}
           </a>
-          <a href="#" className="home-btn-figma">
-            {t("hero_btn_figma")}
-          </a>
         </div>
       </section>
 
