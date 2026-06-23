@@ -4,6 +4,7 @@ import { fetchFile } from "@ffmpeg/util";
 import { useLang } from "../../context/LanguageContext";
 import { useIsMobile } from "../../hooks/useIsMobile";
 import "./AudioExtractor.css";
+import BackButton from "../../components/BackButton";
 
 const TECH_STACK = ["FFmpeg WASM", "React", "Web APIs"];
 const MOBILE_MAX_MB = 100;
@@ -162,6 +163,7 @@ export default function AudioExtractor() {
 
   return (
     <div className="ae-page">
+      <BackButton />
       {/* HERO SECTION */}
       <div className="ae-hero">
         <div className="ae-tech">

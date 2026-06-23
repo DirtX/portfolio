@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useLang } from "../context/LanguageContext";
 import "./Projects.css";
+import BackButton from "../components/BackButton";
 
 // Feature: Render preview visualization based on project type
 function ProjectPreview({ type }) {
@@ -250,6 +251,7 @@ export default function Projects() {
 
   return (
     <div className="projects-page">
+      <BackButton to="/" />
       {/* HERO */}
       <div className="projects-hero">
         <p className="projects-eyebrow">{t("projects_eyebrow")}</p>

@@ -4,6 +4,7 @@ import { fetchFile } from "@ffmpeg/util";
 import { useLang } from "../../context/LanguageContext";
 import { useIsMobile } from "../../hooks/useIsMobile";
 import "./VideoCompressor.css";
+import BackButton from "../../components/BackButton";
 
 const TECH_STACK = ["FFmpeg WASM", "React", "Web APIs"];
 const MOBILE_MAX_MB = 50;
@@ -181,6 +182,7 @@ export default function VideoCompressor() {
 
   return (
     <div className="vc-page">
+      <BackButton />
       {/* HERO SECTION */}
       <div className="vc-hero">
         <div className="vc-tech">

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Tooltip from "../../../components/Tooltip";
 import "./FilterGenerator.css";
+import BackButton from "../../../components/BackButton";
 
 const PRESET_IMAGES = [
   "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600",

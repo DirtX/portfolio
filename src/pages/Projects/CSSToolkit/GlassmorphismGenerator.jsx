@@ -2,6 +2,7 @@ import { useState } from "react";
 import ColorPicker from "../../../components/ColorPicker";
 import Tooltip from "../../../components/Tooltip";
 import "./GlassmorphismGenerator.css";
+import BackButton from "../../../components/BackButton";
 
 const PRESET_BACKGROUNDS = [
   "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",

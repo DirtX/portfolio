@@ -5,6 +5,7 @@ import Tooltip from "../../components/Tooltip";
 import { useLang } from "../../context/LanguageContext";
 import { useIsMobile } from "../../hooks/useIsMobile";
 import "./SVGEditor.css";
+import BackButton from "../../components/BackButton";
 
 const TECH_STACK = ["SVG", "React", "DOMParser"];
 
@@ -371,6 +372,7 @@ export default function SVGEditor() {
 
   return (
     <div className="svg-wrapper">
+      <BackButton />
       {/* MOBILE DESKTOP-ONLY NOTICE */}
       {isMobile && (
         <div className="svg-desktop-notice">

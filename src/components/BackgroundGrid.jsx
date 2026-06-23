@@ -1,57 +1,54 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./BackgroundGrid.css";
 
 export default function BackgroundGrid() {
-  const [gridConfig, setGridConfig] = useState({ columns: 0, rows: 0 });
+  const [cells, setCells] = useState([]);
+  const lastKeyRef = useRef("");
+  const idRef = useRef(0);
+  const frameRef = useRef(0);
+  const posRef = useRef({ x: 0, y: 0 });
 
-  // Feature: Calculate grid size based on viewport
+  // Feature: Spawn a fading highlight on the cell under the cursor
   useEffect(() => {
-    const calculateGrid = () => {
-      const columns = Math.floor(window.innerWidth / 50) + 1;
-      const rows = Math.floor(window.innerHeight / 50) + 1;
-      setGridConfig({ columns, rows });
+    const spawn = () => {
+      frameRef.current = 0;
+      const col = Math.floor(posRef.current.x / 50);
+      const row = Math.floor(posRef.current.y / 50);
+      const key = `${col}-${row}`;
+      // Skip if cursor is still over the same cell
+      if (key === lastKeyRef.current) return;
+      lastKeyRef.current = key;
+
+      const id = idRef.current++;
+      setCells((prev) => [...prev, { id, col, row }]);
+      // Remove after the fade-out finishes
+      setTimeout(() => {
+        setCells((prev) => prev.filter((c) => c.id !== id));
+      }, 900);
     };
 
-    calculateGrid();
-    window.addEventListener("resize", calculateGrid);
-    return () => window.removeEventListener("resize", calculateGrid);
+    const handleMouseMove = (e) => {
+      posRef.current = { x: e.clientX, y: e.clientY };
+      if (frameRef.current) return;
+      frameRef.current = requestAnimationFrame(spawn);
+    };
+
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+      if (frameRef.current) cancelAnimationFrame(frameRef.current);
+    };
   }, []);
 
-  // Feature: Highlight grid cell under mouse cursor (throttled)
-  useEffect(() => {
-    let lastFrame = 0;
-    const handleMouseMove = (e) => {
-      const now = performance.now();
-      if (now - lastFrame < 50) return;
-      lastFrame = now;
-
-      const col = Math.floor(e.clientX / 50);
-      const row = Math.floor(e.clientY / 50);
-      const index = row * gridConfig.columns + col;
-
-      const cell = document.getElementById(`cell-${index}`);
-      if (cell) {
-        cell.classList.add("active");
-        setTimeout(() => {
-          cell.classList.remove("active");
-        }, 50);
-      }
-    };
-
-    window.addEventListener("mousemove", handleMouseMove, { passive: true });
-    return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, [gridConfig]);
-
-  const totalCells = gridConfig.columns * gridConfig.rows;
-
   return (
-    <div
-      className="bg-grid-container"
-      style={{ gridTemplateColumns: `repeat(${gridConfig.columns}, 50px)` }}
-    >
-      {/* GRID CELLS */}
-      {Array.from({ length: totalCells }).map((_, index) => (
-        <div key={index} id={`cell-${index}`} className="bg-grid-cell" />
+    <div className="bg-grid-container">
+      {/* ACTIVE CELLS */}
+      {cells.map((c) => (
+        <div
+          key={c.id}
+          className="bg-grid-cell"
+          style={{ transform: `translate(${c.col * 50}px, ${c.row * 50}px)` }}
+        />
       ))}
     </div>
   );

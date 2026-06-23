@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import Tooltip from "../../../components/Tooltip";
 import "./BorderRadiusGenerator.css";
+import BackButton from "../../../components/BackButton";
 
 const MIN_RADIUS = 0;
 const MAX_RADIUS = 100;

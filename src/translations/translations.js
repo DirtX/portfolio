@@ -3,6 +3,7 @@ export const translations = {
     // ============ NAVBAR ============
     nav_about: "About",
     nav_projects: "Projects",
+    back_to_projects: "Back to projects",
     nav_contact: "Contact",
 
     // ============ HERO ============
@@ -268,6 +269,7 @@ export const translations = {
     // ============ NAVBAR ============
     nav_about: "O mně",
     nav_projects: "Projekty",
+    back_to_projects: "Zpět na projekty",
     nav_contact: "Kontakt",
 
     // ============ HERO ============

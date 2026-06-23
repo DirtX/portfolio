@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { useLang } from "../../context/LanguageContext";
 import "./MarkdownEditor.css";
+import BackButton from "../../components/BackButton";
 
 const TECH_STACK = ["React", "Regex Parser", "localStorage"];
 
@@ -163,6 +164,7 @@ export default function MarkdownEditor() {
 
   return (
     <div className="me-page">
+      <BackButton />
       {/* HERO SECTION */}
       <div className="me-hero">
         <div className="me-tech">

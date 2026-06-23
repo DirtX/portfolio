@@ -2,6 +2,7 @@ import { useState, useRef } from "react";
 import ColorPicker from "../../../components/ColorPicker";
 import Tooltip from "../../../components/Tooltip";
 import "./GradientGenerator.css";
+import BackButton from "../../../components/BackButton";
 
 const TYPES = ["linear", "radial", "conic"];
 
@@ -148,6 +149,7 @@ export default function GradientGenerator() {
 
   return (
     <div className="tool-wrapper">
+      <BackButton />
       {/* TOP: PREVIEW + CONTROLS */}
       <div className="tool-top">
         <div className="tool-preview" style={{ background: gradient }} />

@@ -6,6 +6,7 @@ import GlassmorphismGenerator from "./CSSToolkit/GlassmorphismGenerator";
 import BorderRadiusGenerator from "./CSSToolkit/BorderRadiusGenerator";
 import FilterGenerator from "./CSSToolkit/FilterGenerator";
 import "./CSSToolkit.css";
+import BackButton from "../../components/BackButton";
 
 const TECH_STACK = ["CSS", "React", "Generators"];
 
@@ -30,6 +31,7 @@ export default function CSSToolkit() {
 
   return (
     <div className="toolkit-wrapper">
+      <BackButton />
       {/* HERO */}
       <div className="toolkit-hero">
         <div className="toolkit-tech">

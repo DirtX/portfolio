@@ -1,0 +1,54 @@
+/* ===== BACK BUTTON ===== */
+.back-button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  margin-bottom: -56px;
+  color: var(--text-light);
+  text-decoration: none;
+  transition:
+    transform 0.2s ease,
+    color 0.2s ease;
+}
+
+/* Pulsing glow behind the arrow */
+.back-button::before {
+  content: "";
+  position: absolute;
+  inset: -40%;
+  background: radial-gradient(
+    circle at center,
+    rgba(245, 245, 245, 0.4) 0%,
+    rgba(245, 245, 245, 0.15) 30%,
+    rgba(245, 245, 245, 0.04) 55%,
+    rgba(245, 245, 245, 0) 80%
+  );
+  filter: blur(6px);
+  animation: back-glow-pulse 4s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.back-button:hover {
+  color: var(--text-primary);
+  transform: translateX(-4px);
+}
+
+.back-button-arrow {
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes back-glow-pulse {
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(0.9);
+  }
+}

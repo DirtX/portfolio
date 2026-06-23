@@ -2,6 +2,7 @@ import { useState } from "react";
 import ColorPicker from "../../../components/ColorPicker";
 import Tooltip from "../../../components/Tooltip";
 import "./BoxShadowGenerator.css";
+import BackButton from "../../../components/BackButton";
 
 const defaultShadows = [
   { x: 10, y: 10, blur: 30, spread: 0, color: "#ff0000", opacity: 0.5, inset: false },

@@ -1,6 +1,7 @@
 import { useState, useRef } from "react";
 import { useLang } from "../../context/LanguageContext";
 import "./ColorPalette.css";
+import BackButton from "../../components/BackButton";
 
 const TECH_STACK = ["Canvas API", "React", "Color Math"];
 
@@ -104,6 +105,7 @@ export default function ColorPalette() {
 
   return (
     <div className="color-palette-page">
+      <BackButton />
       {/* HERO SECTION */}
       <div className="color-palette-hero">
         <div className="color-palette-tech">
