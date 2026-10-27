@@ -24,7 +24,6 @@
   height: 50px;
   background-color: var(--overlay-grid-active);
   animation: grid-cell-fade 1.5s ease forwards;
-  will-change: opacity;
   pointer-events: none;
 }
 

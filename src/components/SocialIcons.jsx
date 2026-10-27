@@ -20,11 +20,11 @@ export default function SocialIcons({ onMessageClick, className = "" }) {
 
       {/* LINKEDIN — placeholder */}
       <a
-        href="#"
+        href="https://www.linkedin.com/in/yaroslav-horbatiuk-1792a93b9/"
         target="_blank"
         rel="noopener noreferrer"
-        className="social-icon social-icon-disabled"
-        aria-label="LinkedIn (coming soon)"
+        className="social-icon"
+        aria-label="LinkedIn"
         onClick={(e) => e.preventDefault()}
         title="Coming soon"
       >

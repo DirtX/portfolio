@@ -158,7 +158,6 @@ export default function Home() {
 
       {/* HERO SECTION */}
       <section className="home-hero">
-        <p className="home-eyebrow">{t("hero_eyebrow")}</p>
         <h1 className="home-name">
           {displayed}
           {!done && <span className="home-cursor" />}
