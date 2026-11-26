@@ -45,7 +45,7 @@ export const translations = {
     proj_dict_desc:
       "Czech vocabulary for Ukrainian and English speakers: 15,000 words from A1 to C2 with audio and spaced repetition.",
     proj_dict_long:
-      "Czech vocabulary for Ukrainian and English speakers: about 15,000 words and phrases from A1 to C2, each with an example sentence and native Czech audio. Eight practice modes with spaced repetition, lessons with level tests, an interactive atlas, and progress sync across devices.",
+      "Czech vocabulary for Ukrainian and English speakers: about 15,000 words and phrases from A1 to C2, each with an example sentence and native Czech audio. 15 practice modes with spaced repetition, lessons with level tests, an interactive atlas, and progress sync across devices.",
     proj_dict_example_tr: "Our family lives in a big city.",
     proj_video_desc: "Client-side video compression without any server interaction.",
     proj_video_long:
@@ -400,7 +400,7 @@ export const translations = {
     proj_dict_desc:
       "Česká slovní zásoba pro Ukrajince a anglicky mluvící: 15 000 slov od A1 do C2 se zvukem a opakováním v intervalech.",
     proj_dict_long:
-      "Česká slovní zásoba pro Ukrajince a anglicky mluvící: asi 15 000 slov a frází od A1 do C2, každé s ukázkovou větou a nahrávkou rodilého mluvčího. Osm režimů procvičování s opakováním v intervalech, lekce s testy úrovní, interaktivní atlas a synchronizace postupu mezi zařízeními.",
+      "Česká slovní zásoba pro Ukrajince a anglicky mluvící: asi 15 000 slov a frází od A1 do C2, každé s ukázkovou větou a nahrávkou rodilého mluvčího. 15 režimů procvičování s opakováním v intervalech, lekce s testy úrovní, interaktivní atlas a synchronizace postupu mezi zařízeními.",
     proj_dict_example_tr: "Наша родина живе у великому місті.",
     proj_video_desc: "Komprese videa na straně klienta bez jakékoli serverové interakce.",
     proj_video_long:
