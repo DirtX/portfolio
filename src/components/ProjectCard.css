@@ -2,7 +2,7 @@
 .project-card {
   border: 1px solid var(--border-soft);
   border-radius: var(--radius-lg);
-  padding: 1.5rem;
+  padding: 27px;
   transition: border-color var(--transition-slow);
   display: block;
   text-decoration: none;
@@ -17,12 +17,12 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 0.5rem;
+  margin-bottom: 9px;
 }
 
 .project-arrow {
   color: var(--text-faint);
-  font-size: 1.2rem;
+  font-size: 22px;
   transition:
     transform var(--transition-base),
     color var(--transition-base);
@@ -35,20 +35,20 @@
 
 /* ============ CONTENT ============ */
 .project-title {
-  font-size: 1.5rem;
-  margin-bottom: 0.5rem;
+  font-size: 27px;
+  margin-bottom: 9px;
   color: var(--accent-white);
 }
 
 .project-desc {
   color: var(--text-secondary);
-  margin-bottom: 1.5rem;
+  margin-bottom: 27px;
   line-height: 1.5;
 }
 
 /* ============ TECH STACK ============ */
 .tech-stack {
   display: flex;
-  gap: 0.5rem;
+  gap: 9px;
   flex-wrap: wrap;
 }

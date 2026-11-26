@@ -4,6 +4,9 @@ import figmaLogo from "../assets/figma-logo.svg";
 import { useLang } from "../context/LanguageContext";
 import { useModal } from "../context/ModalContext";
 import SocialIcons from "../components/SocialIcons";
+import FeaturedProjectCard from "../components/FeaturedProjectCard";
+import ProjectEntryCard from "../components/ProjectEntryCard";
+import { getProjects } from "../data/projects";
 
 import "./Home.css";
 
@@ -13,50 +16,7 @@ export default function Home() {
   const { t, lang } = useLang();
   const { openContactModal } = useModal();
 
-  const projects = [
-    {
-      id: "video-compressor",
-      tag: "Media Tool · WebAssembly",
-      title: "Video Compressor",
-      desc: t("proj_video_desc"),
-      tech: ["React", "WASM", "FFmpeg"],
-    },
-    {
-      id: "color-palette",
-      tag: "Image Tool · Canvas API",
-      title: "Color Palette",
-      desc: t("proj_palette_desc"),
-      tech: ["React", "Canvas"],
-    },
-    {
-      id: "css-toolkit",
-      tag: "CSS Tools · Generators",
-      title: "CSS Toolkit",
-      desc: t("proj_toolkit_desc"),
-      tech: ["HTML", "CSS", "JavaScript"],
-    },
-    {
-      id: "markdown-editor",
-      tag: t("proj_markdown_tag"),
-      title: "Markdown Editor",
-      desc: t("proj_markdown_desc"),
-      tech: ["React", "Regex", "localStorage"],
-    },
-    {
-      id: "svg-editor",
-      tag: "Drawing Tool · SVG",
-      title: "SVG Editor",
-      desc: t("proj_svg_desc"),
-      tech: ["React", "SVG", "Vector"],
-    },
-    {
-      id: "audio-extractor",
-      tag: "Media Tool · WebAssembly",
-      title: "Audio Extractor",
-      desc: t("proj_audio_desc"),
-      tech: ["React", "WASM", "FFmpeg"],
-    },
-  ];
+  const projects = getProjects(t);
 
   const skills = [
     { icon: "⚛\uFE0E", name: "React", level: t("skill_intermediate") },
@@ -144,7 +104,13 @@ export default function Home() {
     e.currentTarget.style.transform = "";
   };
 
-  const loopedProjects = [...projects, ...projects];
+  // Featured project leads each half of the loop so the seam stays seamless
+  const loopedProjects = [
+    { featured: true, key: "featured-a" },
+    ...projects.map((p) => ({ ...p, key: `${p.id}-a` })),
+    { featured: true, key: "featured-b" },
+    ...projects.map((p) => ({ ...p, key: `${p.id}-b` })),
+  ];
 
   return (
     <div
@@ -243,27 +209,23 @@ export default function Home() {
         </div>
         <div className="carousel-wrap">
           <div className="carousel">
-            {loopedProjects.map((p, idx) => (
-              <Link
-                to={`/projects/${p.id}`}
-                key={`${p.id}-${idx}`}
-                className="proj-card"
-                onMouseMove={handleTilt}
-                onMouseLeave={resetTilt}
-              >
-                <span className="proj-arrow">↗</span>
-                <p className="proj-tag">{p.tag}</p>
-                <h3 className="proj-title">{p.title}</h3>
-                <p className="proj-desc">{p.desc}</p>
-                <div className="proj-tech">
-                  {p.tech.map((tech) => (
-                    <span key={tech} className="tech-pill">
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-              </Link>
-            ))}
+            {loopedProjects.map((p) =>
+              p.featured ? (
+                <FeaturedProjectCard
+                  key={p.key}
+                  variant="carousel"
+                  onMouseMove={handleTilt}
+                  onMouseLeave={resetTilt}
+                />
+              ) : (
+                <ProjectEntryCard
+                  key={p.key}
+                  project={p}
+                  onMouseMove={handleTilt}
+                  onMouseLeave={resetTilt}
+                />
+              )
+            )}
           </div>
         </div>
       </section>

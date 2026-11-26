@@ -6,7 +6,7 @@
   padding: 50px 40px 80px;
   display: flex;
   flex-direction: column;
-  gap: 3rem;
+  gap: 54px;
 }
 
 /* ============ HERO ============ */
@@ -15,26 +15,26 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  gap: 1rem;
+  gap: 18px;
 }
 
 .projects-eyebrow {
-  font-size: 0.7rem;
+  font-size: 13px;
   text-transform: uppercase;
   letter-spacing: 0.15em;
   color: var(--text-faint);
-  margin-bottom: 0.25rem;
+  margin-bottom: 4px;
 }
 
 .projects-title {
-  font-size: 2.8rem;
+  font-size: 50px;
   font-weight: 800;
   letter-spacing: -0.04em;
   color: var(--text-primary);
 }
 
 .projects-subtitle {
-  font-size: 0.95rem;
+  font-size: 17px;
   color: var(--text-secondary);
   line-height: 1.75;
   max-width: 600px;
@@ -44,7 +44,7 @@
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 1.5rem;
+  gap: 27px;
 }
 
 /* ============ CARD ============ */
@@ -187,7 +187,7 @@
 }
 
 .preview-video-size {
-  font-size: 0.72rem;
+  font-size: 13px;
   font-family: monospace;
   color: var(--text-faint);
   font-weight: 500;
@@ -198,7 +198,7 @@
 }
 
 .preview-video-arrow {
-  font-size: 2rem;
+  font-size: 36px;
   color: var(--text-secondary);
   font-weight: 300;
   margin-bottom: 32px;
@@ -287,7 +287,7 @@
 }
 
 .preview-audio-arrow {
-  font-size: 2rem;
+  font-size: 36px;
   color: var(--text-secondary);
   font-weight: 300;
 }
@@ -388,7 +388,7 @@
   position: absolute;
   bottom: 3px;
   right: 5px;
-  font-size: 0.6rem;
+  font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.04em;
   font-family: monospace;
@@ -500,7 +500,7 @@
 }
 
 .preview-markdown-label {
-  font-size: 0.55rem;
+  font-size: 10px;
   text-transform: uppercase;
   letter-spacing: 0.12em;
   color: var(--text-ghost);
@@ -515,7 +515,7 @@
   gap: 8px;
   justify-content: center;
   font-family: monospace;
-  font-size: 0.72rem;
+  font-size: 13px;
   white-space: nowrap;
 }
 
@@ -546,7 +546,7 @@
 }
 
 .preview-md-h {
-  font-size: 1rem;
+  font-size: 18px;
   font-weight: 700;
   color: var(--text-primary);
 }
@@ -557,7 +557,7 @@
 }
 
 .preview-md-li {
-  font-size: 0.78rem;
+  font-size: 14px;
   color: var(--text-secondary);
 }
 
@@ -678,31 +678,36 @@
 
 /* ============ CARD CONTENT ============ */
 .projects-card-content {
-  padding: 1.5rem;
+  padding: 27px;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 9px;
   flex: 1;
 }
 
+/* Running head — same as the dictionary entry cards */
 .projects-card-tag {
-  font-size: 0.62rem;
+  font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 0.12em;
   color: var(--text-faint);
+  padding-bottom: 12px;
+  border-bottom: 0.5px solid var(--border-soft);
 }
 
 .projects-card-title {
-  font-size: 1.25rem;
+  font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Times New Roman", serif;
+  font-size: 28px;
   font-weight: 700;
+  line-height: 1.15;
   color: var(--text-primary);
-  letter-spacing: -0.02em;
-  margin-top: 4px;
+  letter-spacing: -0.01em;
+  margin-top: 8px;
 }
 
 .projects-card-desc {
-  font-size: 0.85rem;
-  color: var(--text-subtle);
+  font-size: 15px;
+  color: var(--text-light);
   line-height: 1.65;
   margin-bottom: 12px;
   flex: 1;
@@ -724,7 +729,7 @@
 }
 
 .projects-card-pill {
-  font-size: 0.65rem;
+  font-size: 12px;
   color: var(--text-faint);
   border: 0.5px solid var(--border-subtle);
   padding: 3px 9px;
@@ -732,7 +737,7 @@
 }
 
 .projects-card-arrow {
-  font-size: 1.1rem;
+  font-size: 20px;
   color: var(--text-ghost);
   transition: transform var(--transition-base);
   flex-shrink: 0;
@@ -754,6 +759,6 @@
   }
 
   .projects-title {
-    font-size: 2.2rem;
+    font-size: 40px;
   }
 }

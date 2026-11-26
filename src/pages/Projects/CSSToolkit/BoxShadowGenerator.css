@@ -48,7 +48,7 @@
 
 .shadow-drag-handle {
   color: var(--text-ghost);
-  font-size: 0.85rem;
+  font-size: 15px;
   cursor: grab;
   user-select: none;
   letter-spacing: -2px;
@@ -60,7 +60,7 @@
 
 .shadow-layer-name {
   flex: 1;
-  font-size: 0.75rem;
+  font-size: 14px;
   color: var(--text-secondary);
 }
 
@@ -73,7 +73,7 @@
   height: 22px;
   border-radius: var(--radius-sm);
   cursor: pointer;
-  font-size: 0.9rem;
+  font-size: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -100,7 +100,7 @@
   color: var(--text-faint);
   height: 32px;
   border-radius: var(--radius-md);
-  font-size: 0.75rem;
+  font-size: 14px;
   font-family: inherit;
   cursor: pointer;
   transition:
@@ -125,6 +125,6 @@
   }
 
   .shadow-layer-name {
-    font-size: 0.7rem;
+    font-size: 13px;
   }
 }

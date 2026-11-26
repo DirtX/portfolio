@@ -46,7 +46,7 @@
   align-items: center;
   justify-content: center;
   color: var(--text-faint);
-  font-size: 1.2rem;
+  font-size: 22px;
   transition:
     border-color var(--transition-base),
     color var(--transition-base);
@@ -64,13 +64,13 @@
   color: var(--text-subtle);
   height: 32px;
   border-radius: var(--radius-md);
-  font-size: 0.75rem;
+  font-size: 14px;
   font-family: inherit;
   cursor: pointer;
   transition:
     border-color var(--transition-base),
     color var(--transition-base);
-  margin-top: 0.5rem;
+  margin-top: 9px;
 }
 
 .filter-reset:hover {
@@ -86,6 +86,6 @@
   }
 
   .filter-upload {
-    font-size: 1rem;
+    font-size: 18px;
   }
 }

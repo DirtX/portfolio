@@ -35,6 +35,13 @@ export const translations = {
     projects_title: "Things I've built.",
     projects_subtitle:
       "A collection of small but functional tools — each one a focused exploration of a specific web technology. All running entirely client-side.",
+    proj_dict_live: "Live product",
+    proj_dict_pos: "noun · web app",
+    proj_dict_desc:
+      "Czech vocabulary for Ukrainian and English speakers: 15,000 words from A1 to C2 with audio and spaced repetition.",
+    proj_dict_long:
+      "Czech vocabulary for Ukrainian and English speakers: about 15,000 words and phrases from A1 to C2, each with an example sentence and native Czech audio. Eight practice modes with spaced repetition, lessons with level tests, an interactive atlas, and progress sync across devices.",
+    proj_dict_example_tr: "Our family lives in a big city.",
     proj_video_desc: "Client-side video compression without any server interaction.",
     proj_video_long:
       "Compress video files up to 90% smaller without visible quality loss. Runs entirely in your browser via FFmpeg WASM — no server uploads.",
@@ -48,7 +55,6 @@ export const translations = {
     proj_toolkit_desc: "Visual generators for gradients, shadows, glassmorphism and more.",
     proj_toolkit_long:
       "Five visual generators in one: gradients, box shadows, glassmorphism, border radius and CSS filters. Tweak controls, copy code.",
-    proj_markdown_tag: "Text Editor · React",
 
     proj_markdown_desc:
       "Write Markdown on the left, see formatted output on the right. Notes saved locally.",
@@ -302,6 +308,13 @@ export const translations = {
     projects_subtitle:
       "Sbírka malých, ale funkčních nástrojů — každý je zaměřený průzkum konkrétní webové technologie. Vše běží zcela na straně klienta.",
 
+    proj_dict_live: "Živý produkt",
+    proj_dict_pos: "podst. jm. · webová aplikace",
+    proj_dict_desc:
+      "Česká slovní zásoba pro Ukrajince a anglicky mluvící: 15 000 slov od A1 do C2 se zvukem a opakováním v intervalech.",
+    proj_dict_long:
+      "Česká slovní zásoba pro Ukrajince a anglicky mluvící: asi 15 000 slov a frází od A1 do C2, každé s ukázkovou větou a nahrávkou rodilého mluvčího. Osm režimů procvičování s opakováním v intervalech, lekce s testy úrovní, interaktivní atlas a synchronizace postupu mezi zařízeními.",
+    proj_dict_example_tr: "Наша родина живе у великому місті.",
     proj_video_desc: "Komprese videa na straně klienta bez jakékoli serverové interakce.",
     proj_video_long:
       "Komprimujte video soubory až o 90 % menší bez viditelné ztráty kvality. Běží zcela ve vašem prohlížeči přes FFmpeg WASM — žádné nahrávání na server.",
@@ -317,7 +330,6 @@ export const translations = {
     proj_toolkit_desc: "Vizuální generátory pro gradienty, stíny, glassmorphism a další.",
     proj_toolkit_long:
       "Pět vizuálních generátorů v jednom: gradienty, stíny, glassmorphism, zaoblení rohů a CSS filtry. Upravujte ovládací prvky, kopírujte kód.",
-    proj_markdown_tag: "Text Editor · React",
 
     proj_markdown_desc:
       "Pište Markdown vlevo, formátovaný výstup vpravo. Poznámky se ukládají lokálně.",

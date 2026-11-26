@@ -30,7 +30,7 @@
 }
 
 .color-picker-hex-label {
-  font-size: 0.75rem;
+  font-size: 14px;
   color: var(--text-secondary);
   font-family: monospace;
 }
@@ -127,7 +127,7 @@
 }
 
 .color-picker-hex-sign {
-  font-size: 0.78rem;
+  font-size: 14px;
   color: var(--text-faint);
   font-family: monospace;
 }
@@ -136,7 +136,7 @@
   background: none;
   border: none;
   color: var(--text-primary);
-  font-size: 0.78rem;
+  font-size: 14px;
   font-family: monospace;
   width: 100%;
   outline: none;

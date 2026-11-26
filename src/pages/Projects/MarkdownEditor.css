@@ -6,7 +6,7 @@
   padding: 50px 20px 80px;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 36px;
 }
 
 /* ============ HERO ============ */
@@ -15,18 +15,18 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  gap: 1rem;
+  gap: 18px;
 }
 
 .me-tech {
   display: flex;
   align-items: center;
   gap: 6px;
-  font-size: 0.7rem;
+  font-size: 13px;
   text-transform: uppercase;
   letter-spacing: 0.15em;
   color: var(--text-faint);
-  margin-bottom: 0.25rem;
+  margin-bottom: 4px;
 }
 
 .me-tech-item {
@@ -40,14 +40,14 @@
 }
 
 .me-title {
-  font-size: 2.5rem;
+  font-size: 45px;
   font-weight: 800;
   letter-spacing: -0.04em;
   color: var(--text-primary);
 }
 
 .me-subtitle {
-  font-size: 0.95rem;
+  font-size: 17px;
   color: var(--text-secondary);
   line-height: 1.75;
   max-width: 600px;
@@ -58,7 +58,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem;
+  gap: 18px;
   background: var(--bg-secondary);
   border: 0.5px solid var(--border-subtle);
   border-radius: var(--radius-xl);
@@ -80,7 +80,7 @@
   min-width: 32px;
   padding: 0 10px;
   border-radius: var(--radius-md);
-  font-size: 0.78rem;
+  font-size: 14px;
   font-family: inherit;
   cursor: pointer;
   transition: all var(--transition-base);
@@ -104,7 +104,7 @@
   height: 30px;
   padding: 0 14px;
   border-radius: var(--radius-md);
-  font-size: 0.78rem;
+  font-size: 14px;
   font-weight: 600;
   font-family: inherit;
   cursor: pointer;
@@ -122,7 +122,7 @@
   height: 30px;
   padding: 0 14px;
   border-radius: var(--radius-md);
-  font-size: 0.78rem;
+  font-size: 14px;
   font-family: inherit;
   cursor: pointer;
   transition: all var(--transition-base);
@@ -156,7 +156,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 12px 16px;
-  font-size: 0.68rem;
+  font-size: 12px;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: var(--text-faint);
@@ -165,7 +165,7 @@
 
 .me-stats {
   font-family: monospace;
-  font-size: 0.65rem;
+  font-size: 12px;
   text-transform: none;
   letter-spacing: 0;
   color: var(--text-ghost);
@@ -180,7 +180,7 @@
   resize: none;
   color: var(--text-primary);
   font-family: monospace;
-  font-size: 0.9rem;
+  font-size: 16px;
   line-height: 1.7;
   padding: 16px;
 }
@@ -195,35 +195,35 @@
   overflow-y: auto;
   padding: 16px;
   color: var(--text-primary);
-  font-size: 0.95rem;
+  font-size: 17px;
   line-height: 1.7;
   scrollbar-width: thin;
   scrollbar-color: var(--border-subtle) transparent;
 }
 
 .me-preview h1 {
-  font-size: 1.8rem;
+  font-size: 32px;
   font-weight: 700;
-  margin: 1rem 0 0.5rem;
+  margin: 18px 0 9px;
   color: var(--text-primary);
 }
 
 .me-preview h2 {
-  font-size: 1.4rem;
+  font-size: 25px;
   font-weight: 700;
-  margin: 1rem 0 0.5rem;
+  margin: 18px 0 9px;
   color: var(--text-primary);
 }
 
 .me-preview h3 {
-  font-size: 1.1rem;
+  font-size: 20px;
   font-weight: 600;
-  margin: 0.8rem 0 0.4rem;
+  margin: 14px 0 7px;
   color: var(--text-primary);
 }
 
 .me-preview p {
-  margin: 0.5rem 0;
+  margin: 9px 0;
   color: var(--text-secondary);
 }
 
@@ -241,7 +241,7 @@
   border: 0.5px solid var(--border-subtle);
   padding: 2px 6px;
   border-radius: var(--radius-sm);
-  font-size: 0.85rem;
+  font-size: 15px;
   color: var(--text-primary);
 }
 
@@ -250,7 +250,7 @@
   border: 0.5px solid var(--border-subtle);
   padding: 12px 16px;
   border-radius: var(--radius-md);
-  margin: 0.5rem 0;
+  margin: 9px 0;
   overflow-x: auto;
 }
 
@@ -258,19 +258,19 @@
   background: none;
   border: none;
   padding: 0;
-  font-size: 0.85rem;
+  font-size: 15px;
 }
 
 .me-preview blockquote {
   border-left: 3px solid var(--border-medium);
   padding-left: 12px;
   color: var(--text-muted);
-  margin: 0.5rem 0;
+  margin: 9px 0;
   font-style: italic;
 }
 
 .me-preview ul {
-  margin: 0.5rem 0;
+  margin: 9px 0;
   padding-left: 20px;
   color: var(--text-secondary);
 }
@@ -288,11 +288,11 @@
 .me-how {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 27px;
 }
 
 .me-how-title {
-  font-size: 1.2rem;
+  font-size: 22px;
   font-weight: 700;
   color: var(--text-primary);
   letter-spacing: -0.02em;
@@ -301,45 +301,45 @@
 .me-steps {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
+  gap: 18px;
 }
 
 .me-step {
   background: var(--bg-secondary);
   border: 0.5px solid var(--border-subtle);
   border-radius: var(--radius-xl);
-  padding: 1.25rem;
+  padding: 22px;
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
 
 .me-step-num {
-  font-size: 0.65rem;
+  font-size: 12px;
   font-weight: 700;
   color: var(--text-faint);
   letter-spacing: 0.1em;
 }
 
 .me-step-title {
-  font-size: 0.85rem;
+  font-size: 15px;
   font-weight: 600;
   color: var(--text-primary);
 }
 
 .me-step-desc {
-  font-size: 0.75rem;
+  font-size: 14px;
   color: var(--text-subtle);
   line-height: 1.6;
 }
 
 /* ============ TECH NOTE ============ */
 .me-tech-note {
-  font-size: 0.72rem;
+  font-size: 13px;
   color: var(--text-faint);
   text-align: center;
   line-height: 1.6;
-  padding: 1rem;
+  padding: 18px;
   border: 0.5px solid var(--border-subtle);
   border-radius: var(--radius-lg);
 }
@@ -359,24 +359,24 @@
 @media (max-width: 768px) {
   .me-page {
     padding: 70px 16px 32px;
-    gap: 1rem;
+    gap: 18px;
   }
 
   .me-hero {
-    gap: 0.4rem;
+    gap: 7px;
   }
 
   .me-tech {
-    font-size: 0.6rem;
+    font-size: 11px;
     margin-bottom: 0;
   }
 
   .me-title {
-    font-size: 1.6rem;
+    font-size: 29px;
   }
 
   .me-subtitle {
-    font-size: 0.78rem;
+    font-size: 14px;
     line-height: 1.5;
   }
 
@@ -408,7 +408,7 @@
     height: 30px;
     min-width: 34px;
     padding: 0 10px;
-    font-size: 0.72rem;
+    font-size: 13px;
   }
 
   .me-toolbar-actions {
@@ -419,7 +419,7 @@
   .me-btn-ghost {
     flex: 1;
     height: 34px;
-    font-size: 0.75rem;
+    font-size: 14px;
     padding: 0 14px;
   }
 
@@ -435,42 +435,42 @@
 
   .me-pane-header {
     padding: 8px 12px;
-    font-size: 0.6rem;
+    font-size: 11px;
   }
 
   .me-stats {
-    font-size: 0.58rem;
+    font-size: 10px;
   }
 
   .me-editor,
   .me-preview {
-    font-size: 0.82rem;
+    font-size: 15px;
     padding: 12px;
   }
 
   .me-preview h1 {
-    font-size: 1.3rem;
+    font-size: 23px;
   }
 
   .me-preview h2 {
-    font-size: 1.1rem;
+    font-size: 20px;
   }
 
   .me-preview h3 {
-    font-size: 0.95rem;
+    font-size: 17px;
   }
 
   .me-how {
-    gap: 0.75rem;
+    gap: 14px;
   }
 
   .me-how-title {
-    font-size: 1rem;
+    font-size: 18px;
   }
 
   .me-steps {
     grid-template-columns: 1fr;
-    gap: 0.5rem;
+    gap: 9px;
   }
 
   .me-step {
@@ -479,32 +479,32 @@
     grid-template-rows: auto auto;
     column-gap: 12px;
     row-gap: 4px;
-    padding: 0.85rem;
+    padding: 15px;
   }
 
   .me-step-num {
-    font-size: 0.58rem;
+    font-size: 10px;
     grid-column: 1;
     grid-row: 1;
     padding-top: 2px;
   }
 
   .me-step-title {
-    font-size: 0.8rem;
+    font-size: 14px;
     grid-column: 2;
     grid-row: 1;
   }
 
   .me-step-desc {
-    font-size: 0.7rem;
+    font-size: 13px;
     line-height: 1.5;
     grid-column: 2;
     grid-row: 2;
   }
 
   .me-tech-note {
-    font-size: 0.65rem;
-    padding: 0.75rem;
+    font-size: 12px;
+    padding: 14px;
   }
 }
 

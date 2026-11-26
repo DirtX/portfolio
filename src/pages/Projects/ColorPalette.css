@@ -6,7 +6,7 @@
   padding: 50px 20px 80px;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 36px;
 }
 
 /* ============ HERO ============ */
@@ -15,18 +15,18 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  gap: 1rem;
+  gap: 18px;
 }
 
 .color-palette-tech {
   display: flex;
   align-items: center;
   gap: 6px;
-  font-size: 0.7rem;
+  font-size: 13px;
   text-transform: uppercase;
   letter-spacing: 0.15em;
   color: var(--text-faint);
-  margin-bottom: 0.25rem;
+  margin-bottom: 4px;
 }
 
 .color-palette-tech-item {
@@ -40,14 +40,14 @@
 }
 
 .color-palette-title {
-  font-size: 2.5rem;
+  font-size: 45px;
   font-weight: 800;
   letter-spacing: -0.04em;
   color: var(--text-primary);
 }
 
 .color-palette-subtitle {
-  font-size: 0.95rem;
+  font-size: 17px;
   color: var(--text-secondary);
   line-height: 1.75;
   max-width: 500px;
@@ -58,10 +58,10 @@
   background: var(--bg-secondary);
   border: 0.5px solid var(--border-subtle);
   border-radius: var(--radius-2xl);
-  padding: 1.5rem;
+  padding: 27px;
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
+  gap: 22px;
 }
 
 /* ============ DROPZONE ============ */
@@ -100,22 +100,22 @@
   flex-direction: column;
   align-items: center;
   gap: 8px;
-  padding: 2rem;
+  padding: 36px;
 }
 
 .color-palette-drop-icon {
-  font-size: 1.5rem;
+  font-size: 27px;
   color: var(--text-faint);
 }
 
 .color-palette-drop-text {
-  font-size: 0.9rem;
+  font-size: 16px;
   color: var(--text-secondary);
   font-weight: 500;
 }
 
 .color-palette-drop-sub {
-  font-size: 0.72rem;
+  font-size: 13px;
   color: var(--text-faint);
 }
 
@@ -131,7 +131,7 @@
 .color-palette-controls {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 18px;
 }
 
 .color-palette-controls-left {
@@ -142,7 +142,7 @@
 }
 
 .color-palette-label {
-  font-size: 0.68rem;
+  font-size: 12px;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: var(--text-faint);
@@ -160,7 +160,7 @@
   padding: 0 14px;
   height: 32px;
   border-radius: var(--radius-full);
-  font-size: 0.72rem;
+  font-size: 13px;
   font-family: inherit;
   cursor: pointer;
   white-space: nowrap;
@@ -182,7 +182,7 @@
 .color-palette-swatch-card {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 18px;
   padding: 10px 14px;
   border: 0.5px solid var(--border-subtle);
   border-radius: var(--radius-lg);
@@ -218,20 +218,20 @@
 }
 
 .color-palette-swatch-hex {
-  font-size: 0.88rem;
+  font-size: 16px;
   font-weight: 600;
   color: var(--text-primary);
   font-family: monospace;
 }
 
 .color-palette-swatch-rgb {
-  font-size: 0.72rem;
+  font-size: 13px;
   color: var(--text-faint);
   font-family: monospace;
 }
 
 .color-palette-swatch-copy {
-  font-size: 0.68rem;
+  font-size: 12px;
   color: var(--text-faint);
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -246,11 +246,11 @@
 .color-palette-how {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 27px;
 }
 
 .color-palette-how-title {
-  font-size: 1.2rem;
+  font-size: 22px;
   font-weight: 700;
   color: var(--text-primary);
   letter-spacing: -0.02em;
@@ -259,45 +259,45 @@
 .color-palette-steps {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
+  gap: 18px;
 }
 
 .color-palette-step {
   background: var(--bg-secondary);
   border: 0.5px solid var(--border-subtle);
   border-radius: var(--radius-xl);
-  padding: 1.25rem;
+  padding: 22px;
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
 
 .color-palette-step-num {
-  font-size: 0.65rem;
+  font-size: 12px;
   font-weight: 700;
   color: var(--text-faint);
   letter-spacing: 0.1em;
 }
 
 .color-palette-step-title {
-  font-size: 0.85rem;
+  font-size: 15px;
   font-weight: 600;
   color: var(--text-primary);
 }
 
 .color-palette-step-desc {
-  font-size: 0.75rem;
+  font-size: 14px;
   color: var(--text-subtle);
   line-height: 1.6;
 }
 
 /* ============ TECH NOTE ============ */
 .color-palette-tech-note {
-  font-size: 0.72rem;
+  font-size: 13px;
   color: var(--text-faint);
   text-align: center;
   line-height: 1.6;
-  padding: 1rem;
+  padding: 18px;
   border: 0.5px solid var(--border-subtle);
   border-radius: var(--radius-lg);
 }
@@ -310,30 +310,30 @@
 @media (max-width: 768px) {
   .color-palette-page {
     padding: 70px 16px 32px;
-    gap: 1rem;
+    gap: 18px;
   }
 
   .color-palette-hero {
-    gap: 0.4rem;
+    gap: 7px;
   }
 
   .color-palette-tech {
-    font-size: 0.6rem;
+    font-size: 11px;
     margin-bottom: 0;
   }
 
   .color-palette-title {
-    font-size: 1.6rem;
+    font-size: 29px;
   }
 
   .color-palette-subtitle {
-    font-size: 0.78rem;
+    font-size: 14px;
     line-height: 1.5;
   }
 
   .color-palette-card {
-    padding: 1rem;
-    gap: 0.85rem;
+    padding: 18px;
+    gap: 15px;
   }
 
   .color-palette-dropzone {
@@ -341,21 +341,21 @@
   }
 
   .color-palette-drop-icon {
-    font-size: 1.1rem;
+    font-size: 20px;
   }
 
   .color-palette-drop-text {
-    font-size: 0.82rem;
+    font-size: 15px;
   }
 
   .color-palette-drop-sub {
-    font-size: 0.65rem;
+    font-size: 12px;
   }
 
   .color-palette-controls {
     flex-direction: column;
     align-items: stretch;
-    gap: 0.6rem;
+    gap: 11px;
   }
 
   .color-palette-controls-left {
@@ -363,12 +363,12 @@
   }
 
   .color-palette-label {
-    font-size: 0.6rem;
+    font-size: 11px;
   }
 
   .color-palette-reset {
     height: 34px;
-    font-size: 0.75rem;
+    font-size: 14px;
     align-self: center;
     padding: 0 18px;
   }
@@ -376,7 +376,7 @@
   .color-palette-swatches {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 0.5rem;
+    gap: 9px;
   }
 
   .color-palette-swatch-card {
@@ -396,11 +396,11 @@
   }
 
   .color-palette-swatch-hex {
-    font-size: 0.78rem;
+    font-size: 14px;
   }
 
   .color-palette-swatch-rgb {
-    font-size: 0.6rem;
+    font-size: 11px;
   }
 
   .color-palette-swatch-copy {
@@ -408,16 +408,16 @@
   }
 
   .color-palette-how {
-    gap: 0.75rem;
+    gap: 14px;
   }
 
   .color-palette-how-title {
-    font-size: 1rem;
+    font-size: 18px;
   }
 
   .color-palette-steps {
     grid-template-columns: 1fr;
-    gap: 0.5rem;
+    gap: 9px;
   }
 
   .color-palette-step {
@@ -426,31 +426,31 @@
     grid-template-rows: auto auto;
     column-gap: 12px;
     row-gap: 4px;
-    padding: 0.85rem;
+    padding: 15px;
   }
 
   .color-palette-step-num {
-    font-size: 0.58rem;
+    font-size: 10px;
     grid-column: 1;
     grid-row: 1;
     padding-top: 2px;
   }
 
   .color-palette-step-title {
-    font-size: 0.8rem;
+    font-size: 14px;
     grid-column: 2;
     grid-row: 1;
   }
 
   .color-palette-step-desc {
-    font-size: 0.7rem;
+    font-size: 13px;
     line-height: 1.5;
     grid-column: 2;
     grid-row: 2;
   }
 
   .color-palette-tech-note {
-    font-size: 0.65rem;
-    padding: 0.75rem;
+    font-size: 12px;
+    padding: 14px;
   }
 }

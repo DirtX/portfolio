@@ -28,7 +28,7 @@
 }
 
 .home-eyebrow {
-  font-size: 0.68rem;
+  font-size: 12px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--text-faint);
@@ -36,7 +36,7 @@
 }
 
 .home-name {
-  font-size: 3.5rem;
+  font-size: 63px;
   font-weight: 800;
   letter-spacing: -0.04em;
   line-height: 1.05;
@@ -66,7 +66,7 @@
 }
 
 .home-role {
-  font-size: 3.5rem;
+  font-size: 63px;
   font-weight: 800;
   letter-spacing: -0.04em;
   line-height: 1.05;
@@ -75,7 +75,7 @@
 }
 
 .home-description {
-  font-size: 0.95rem;
+  font-size: 17px;
   color: var(--text-subtle);
   max-width: 420px;
   line-height: 1.75;
@@ -95,7 +95,7 @@
   padding: 0 20px;
   height: 36px;
   border-radius: var(--radius-full);
-  font-size: 0.8rem;
+  font-size: 14px;
   font-weight: 500;
   display: flex;
   align-items: center;
@@ -113,7 +113,7 @@
   padding: 0 20px;
   height: 36px;
   border-radius: var(--radius-full);
-  font-size: 0.8rem;
+  font-size: 14px;
   border: 0.5px solid var(--border-soft);
   display: flex;
   align-items: center;
@@ -150,7 +150,7 @@
 }
 
 .home-stat-num {
-  font-size: 1.8rem;
+  font-size: 32px;
   font-weight: 700;
   letter-spacing: -0.04em;
   line-height: 1;
@@ -159,7 +159,7 @@
 }
 
 .home-stat-label {
-  font-size: 0.65rem;
+  font-size: 12px;
   color: var(--text-faint);
   text-transform: uppercase;
   letter-spacing: 0.1em;
@@ -172,7 +172,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 1.5rem;
+  gap: 27px;
   height: 50px;
   border-bottom: 0.5px solid var(--border-subtle);
   padding: 0 24px;
@@ -181,24 +181,24 @@
 .lang-item {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 9px;
 }
 
 .lang-code {
-  font-size: 0.72rem;
+  font-size: 13px;
   font-weight: 600;
   color: var(--text-primary);
   letter-spacing: 0.05em;
 }
 
 .lang-level {
-  font-size: 0.68rem;
+  font-size: 12px;
   color: var(--text-faint);
 }
 
 .lang-dot {
   color: var(--border-soft);
-  font-size: 0.8rem;
+  font-size: 14px;
 }
 
 /* ============ SKILLS ============ */
@@ -210,7 +210,7 @@
 }
 
 .home-section-title {
-  font-size: 1.6rem;
+  font-size: 29px;
   font-weight: 700;
   letter-spacing: -0.03em;
   color: var(--text-primary);
@@ -255,7 +255,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.6rem;
+  font-size: 29px;
   font-weight: 600;
   color: var(--text-secondary);
   flex-shrink: 0;
@@ -279,13 +279,13 @@
 }
 
 .skill-name {
-  font-size: 0.95rem;
+  font-size: 17px;
   font-weight: 900;
   color: var(--text-primary);
 }
 
 .skill-level {
-  font-size: 0.7rem;
+  font-size: 13px;
   color: var(--text-faint);
 }
 
@@ -340,84 +340,6 @@
   }
 }
 
-.proj-card {
-  flex: 0 0 260px;
-  background: var(--bg-secondary);
-  border: 0.5px solid var(--border-subtle);
-  border-radius: var(--radius-xl);
-  padding: 24px;
-  position: relative;
-  transition: border-color var(--transition-base);
-  transform-style: preserve-3d;
-  text-decoration: none;
-  color: inherit;
-  display: flex;
-  flex-direction: column;
-}
-
-.proj-card:hover {
-  border-color: var(--text-disabled);
-}
-
-.proj-arrow {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  color: var(--text-disabled);
-  font-size: 0.8rem;
-  transition:
-    color var(--transition-base),
-    transform var(--transition-base);
-}
-
-.proj-card:hover .proj-arrow {
-  color: var(--text-muted);
-  transform: translate(2px, -2px);
-}
-
-.proj-tag {
-  font-size: 0.62rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--text-faint);
-  margin-bottom: 12px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 100%;
-}
-
-.proj-title {
-  font-size: 0.95rem;
-  font-weight: 600;
-  letter-spacing: -0.02em;
-  color: var(--text-primary);
-  margin-bottom: 8px;
-}
-
-.proj-desc {
-  font-size: 0.78rem;
-  color: var(--text-subtle);
-  line-height: 1.6;
-  margin-bottom: 16px;
-  flex: 1;
-}
-
-.proj-tech {
-  display: flex;
-  gap: 6px;
-  flex-wrap: wrap;
-}
-
-.tech-pill {
-  font-size: 0.62rem;
-  padding: 3px 8px;
-  background: var(--bg-tertiary);
-  border: 0.5px solid var(--border-subtle);
-  border-radius: var(--radius-full);
-  color: var(--text-subtle);
-}
-
 /* ============ CAROUSEL PROGRESS ============ */
 .carousel-progress {
   width: calc(100% - 100px);
@@ -454,7 +376,7 @@
 }
 
 .home-about-p {
-  font-size: 0.88rem;
+  font-size: 16px;
   color: var(--text-secondary);
   line-height: 1.85;
   margin-bottom: 14px;
@@ -493,14 +415,14 @@
 }
 
 .c-label {
-  font-size: 0.65rem;
+  font-size: 12px;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: var(--text-secondary);
 }
 
 .c-value {
-  font-size: 0.82rem;
+  font-size: 15px;
   color: var(--text-muted);
 }
 
@@ -517,7 +439,7 @@
 }
 
 .footer-text {
-  font-size: 0.68rem;
+  font-size: 12px;
   color: var(--text-faint);
 }
 
@@ -605,7 +527,7 @@
   .skill-badge {
     width: 52px;
     height: 52px;
-    font-size: 1.3rem;
+    font-size: 23px;
   }
 
   .figma-logo {
@@ -673,11 +595,11 @@
 
   .home-name,
   .home-role {
-    font-size: 2.2rem;
+    font-size: 40px;
   }
 
   .home-description {
-    font-size: 0.9rem;
+    font-size: 16px;
     max-width: 100%;
   }
 
@@ -702,7 +624,7 @@
   .home-btn-secondary,
   .home-btn-figma {
     padding: 0 14px;
-    font-size: 0.75rem;
+    font-size: 14px;
     height: 34px;
   }
 
@@ -716,13 +638,13 @@
   }
 
   .home-stat-num {
-    font-size: 1.5rem;
+    font-size: 27px;
   }
 
   /* LANGUAGES */
   .home-languages {
     flex-wrap: wrap;
-    gap: 0.6rem;
+    gap: 11px;
     height: auto;
     padding: 16px 28px;
   }
@@ -733,7 +655,7 @@
   }
 
   .home-section-title {
-    font-size: 1.3rem;
+    font-size: 23px;
     margin-bottom: 24px;
   }
 
@@ -760,7 +682,7 @@
   .skill-badge {
     width: 44px;
     height: 44px;
-    font-size: 1rem;
+    font-size: 18px;
     border-radius: var(--radius-md);
   }
 
@@ -774,12 +696,12 @@
   }
 
   .skill-name {
-    font-size: 0.8rem;
+    font-size: 14px;
     text-align: center;
   }
 
   .skill-level {
-    font-size: 0.62rem;
+    font-size: 11px;
     text-align: center;
   }
 
@@ -819,11 +741,6 @@
     animation-play-state: running;
   }
 
-  .proj-card {
-    flex: 0 0 230px;
-    padding: 18px;
-    scroll-snap-align: start;
-  }
 
   /* Hide carousel progress on mobile (no auto-anim) */
   .carousel-progress {
@@ -846,7 +763,7 @@
   }
 
   .home-about-p {
-    font-size: 0.85rem;
+    font-size: 15px;
     line-height: 1.7;
   }
 
@@ -861,7 +778,7 @@
   }
 
   .footer-text {
-    font-size: 0.62rem;
+    font-size: 11px;
   }
 }
 
@@ -875,16 +792,16 @@
 
   .home-name,
   .home-role {
-    font-size: 1.85rem;
+    font-size: 33px;
   }
 
   .home-eyebrow {
-    font-size: 0.62rem;
+    font-size: 11px;
     margin-bottom: 18px;
   }
 
   .home-description {
-    font-size: 0.84rem;
+    font-size: 15px;
     margin-bottom: 28px;
   }
 
@@ -911,7 +828,7 @@
   .skill-badge {
     width: 40px;
     height: 40px;
-    font-size: 0.9rem;
+    font-size: 16px;
   }
 
   .figma-logo {
@@ -920,11 +837,11 @@
   }
 
   .skill-name {
-    font-size: 0.75rem;
+    font-size: 14px;
   }
 
   .skill-level {
-    font-size: 0.58rem;
+    font-size: 10px;
   }
 
   /* PROJECTS */
@@ -940,9 +857,6 @@
     padding-right: 20px;
   }
 
-  .proj-card {
-    flex: 0 0 220px;
-  }
 
   /* ABOUT + CONTACT */
   .home-about,
@@ -951,7 +865,7 @@
   }
 
   .home-section-title {
-    font-size: 1.15rem;
+    font-size: 21px;
   }
 
   /* FOOTER */
@@ -971,28 +885,28 @@
 
   .home-name,
   .home-role {
-    font-size: 1.6rem;
+    font-size: 29px;
   }
 
   .home-stat-num {
-    font-size: 1.3rem;
+    font-size: 23px;
   }
 
   .home-stat-label {
-    font-size: 0.6rem;
+    font-size: 11px;
   }
 
   .home-languages {
-    gap: 0.45rem;
+    gap: 8px;
     padding: 12px 16px;
   }
 
   .lang-code {
-    font-size: 0.68rem;
+    font-size: 12px;
   }
 
   .lang-level {
-    font-size: 0.62rem;
+    font-size: 11px;
   }
 
   .home-skills {
@@ -1011,9 +925,6 @@
     padding-right: 16px;
   }
 
-  .proj-card {
-    flex: 0 0 200px;
-  }
 
   .home-about,
   .home-contact {

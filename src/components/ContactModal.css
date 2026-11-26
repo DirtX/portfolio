@@ -27,10 +27,10 @@
   background: var(--bg-elevated);
   border: 0.5px solid rgba(255, 255, 255, 0.08);
   border-radius: var(--radius-2xl);
-  padding: 1.75rem;
+  padding: 32px;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 27px;
   box-shadow:
     0 20px 60px rgba(0, 0, 0, 0.4),
     inset 0 1px 0 rgba(255, 255, 255, 0.05);
@@ -64,14 +64,14 @@
 }
 
 .contact-modal-eyebrow {
-  font-size: 0.62rem;
+  font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 0.15em;
   color: var(--text-faint);
 }
 
 .contact-modal-title {
-  font-size: 1.1rem;
+  font-size: 20px;
   font-weight: 600;
   color: var(--text-primary);
   letter-spacing: -0.02em;
@@ -126,13 +126,13 @@
 }
 
 .contact-modal-option-label {
-  font-size: 0.88rem;
+  font-size: 16px;
   font-weight: 500;
   color: var(--text-primary);
 }
 
 .contact-modal-option-desc {
-  font-size: 0.72rem;
+  font-size: 13px;
   color: var(--text-faint);
   white-space: nowrap;
   overflow: hidden;
@@ -141,7 +141,7 @@
 
 .contact-modal-option-arrow {
   color: var(--text-ghost);
-  font-size: 0.95rem;
+  font-size: 17px;
   transition: transform var(--transition-base);
 }
 
@@ -157,7 +157,7 @@
   color: var(--text-faint);
   height: 36px;
   border-radius: var(--radius-md);
-  font-size: 0.78rem;
+  font-size: 14px;
   font-family: inherit;
   cursor: pointer;
   transition: all var(--transition-base);

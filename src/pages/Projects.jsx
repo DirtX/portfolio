@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 import { useLang } from "../context/LanguageContext";
 import "./Projects.css";
 import BackButton from "../components/BackButton";
+import FeaturedProjectCard from "../components/FeaturedProjectCard";
+import { getProjects } from "../data/projects";
 
 // Feature: Render preview visualization based on project type
 function ProjectPreview({ type }) {
@@ -197,57 +199,7 @@ function ProjectPreview({ type }) {
 export default function Projects() {
   const { t } = useLang();
 
-  // Feature: All projects with translated metadata
-  const PROJECTS_T = [
-    {
-      id: "video-compressor",
-      tag: "Media Tool · WebAssembly",
-      title: "Video Compressor",
-      desc: t("proj_video_long"),
-      tech: ["React", "FFmpeg WASM", "Web APIs"],
-      preview: "video",
-    },
-    {
-      id: "audio-extractor",
-      tag: "Media Tool · WebAssembly",
-      title: "Audio Extractor",
-      desc: t("proj_audio_long"),
-      tech: ["React", "FFmpeg WASM", "Audio"],
-      preview: "audio",
-    },
-    {
-      id: "color-palette",
-      tag: "Image Tool · Canvas API",
-      title: "Color Palette",
-      desc: t("proj_palette_long"),
-      tech: ["React", "Canvas", "Color Math"],
-      preview: "palette",
-    },
-    {
-      id: "css-toolkit",
-      tag: "CSS Tools · Generators",
-      title: "CSS Toolkit",
-      desc: t("proj_toolkit_long"),
-      tech: ["React", "CSS", "Generators"],
-      preview: "css",
-    },
-    {
-      id: "markdown-editor",
-      tag: "Text Editor · React",
-      title: "Markdown Editor",
-      desc: t("proj_markdown_long"),
-      tech: ["React", "Regex", "Storage"],
-      preview: "markdown",
-    },
-    {
-      id: "svg-editor",
-      tag: "Drawing Tool · SVG",
-      title: "SVG Editor",
-      desc: t("proj_svg_long"),
-      tech: ["React", "SVG", "DOMParser"],
-      preview: "svg",
-    },
-  ];
+  const projects = getProjects(t);
 
   return (
     <div className="projects-page">
@@ -261,7 +213,10 @@ export default function Projects() {
 
       {/* GRID */}
       <div className="projects-grid">
-        {PROJECTS_T.map((proj) => {
+        {/* FLAGSHIP — full row */}
+        <FeaturedProjectCard variant="grid" />
+
+        {projects.map((proj) => {
           return (
             <Link key={proj.id} to={`/projects/${proj.id}`} className="projects-card">
               {/* PREVIEW */}
@@ -273,7 +228,7 @@ export default function Projects() {
               <div className="projects-card-content">
                 <p className="projects-card-tag">{proj.tag}</p>
                 <h3 className="projects-card-title">{proj.title}</h3>
-                <p className="projects-card-desc">{proj.desc}</p>
+                <p className="projects-card-desc">{proj.long}</p>
 
                 <div className="projects-card-footer">
                   <div className="projects-card-tech">

@@ -1,0 +1,188 @@
+/* ============ PROJECT ENTRY CARD ============
+ * Reuses the dictionary card base (.dict-card, .dict-body, .dict-running-head,
+ * .dict-headword, .dict-pill) from FeaturedProjectCard.css.
+ */
+
+/* 320px = enough room for three tech pills on one line */
+.entry-card {
+  flex: 0 0 320px;
+}
+
+.entry-body {
+  padding: 24px 16px 24px 20px;
+}
+
+/* Tech pills always stay on a single line (carousel cards) */
+.entry-card .dict-tech,
+.dict-card--carousel .dict-tech {
+  flex-wrap: nowrap;
+}
+
+.entry-card .dict-pill,
+.dict-card--carousel .dict-pill {
+  white-space: nowrap;
+}
+
+/* Narrow card: smaller running head so "Category · Tech" fits on one line */
+.entry-card .dict-running-head {
+  font-size: 10px;
+  letter-spacing: 0.06em;
+}
+
+.entry-category {
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.entry-title {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.entry-desc {
+  flex: 1;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text-light);
+  margin-bottom: 14px;
+}
+
+/* ============ SIDE RAIL ============ */
+.entry-rail {
+  flex: 0 0 24px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 0;
+  border-left: 0.5px solid var(--border-subtle);
+  background: var(--bg-tertiary);
+  color: var(--text-ghost);
+  overflow: hidden;
+  transition: color var(--transition-base);
+}
+
+.entry-card:hover .entry-rail {
+  color: var(--text-muted);
+}
+
+/* Video — film strip sprockets */
+.entry-rail--video {
+  background-color: var(--bg-tertiary);
+  background-image: repeating-linear-gradient(
+    to bottom,
+    var(--border-medium) 0 8px,
+    transparent 8px 16px
+  );
+  background-size: 8px 100%;
+  background-position: center 12px;
+  background-repeat: no-repeat;
+}
+
+.entry-card:hover .entry-rail--video {
+  background-image: repeating-linear-gradient(
+    to bottom,
+    var(--border-strong) 0 8px,
+    transparent 8px 16px
+  );
+}
+
+/* Audio — level meter bars */
+.entry-rail--audio {
+  align-items: center;
+}
+
+.entry-rail--audio span {
+  height: 2px;
+  background: currentColor;
+  border-radius: var(--radius-full);
+}
+
+/* Palette — the extracted swatches */
+.entry-rail--palette {
+  padding: 0;
+  justify-content: stretch;
+}
+
+.entry-rail--palette span {
+  flex: 1;
+  width: 100%;
+}
+
+/* CSS — ruler ticks (short every 6px, long every 30px) */
+.entry-rail--css {
+  background-image:
+    repeating-linear-gradient(to bottom, var(--border-strong) 0 1px, transparent 1px 30px),
+    repeating-linear-gradient(to bottom, var(--border-medium) 0 1px, transparent 1px 6px);
+  background-size:
+    12px 100%,
+    6px 100%;
+  background-position:
+    right top,
+    right top;
+  background-repeat: no-repeat;
+}
+
+/* Markdown — editor gutter line numbers */
+.entry-rail--markdown span {
+  font-family: "JetBrains Mono", "SFMono-Regular", Menlo, Consolas, monospace;
+  font-size: 9px;
+  line-height: 1;
+}
+
+/* SVG — bezier path with anchor points */
+.entry-rail--svg {
+  padding: 0;
+}
+
+.entry-rail--svg svg {
+  width: 100%;
+  height: 100%;
+}
+
+.entry-rail-anchor {
+  fill: var(--bg-secondary);
+  stroke: currentColor;
+  stroke-width: 1;
+}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width: 768px) {
+  .entry-card {
+    flex-basis: 300px;
+    scroll-snap-align: start;
+  }
+
+  .entry-body {
+    padding: 18px 14px 18px 18px;
+  }
+
+  .entry-title {
+    font-size: 22px;
+  }
+
+  .entry-card .dict-pill,
+  .dict-card--carousel .dict-pill {
+    font-size: 10px;
+    padding: 3px 7px;
+  }
+}
+
+@media (max-width: 480px) {
+  .entry-card {
+    flex-basis: 300px;
+  }
+}
+
+@media (max-width: 360px) {
+  .entry-card {
+    flex-basis: 280px;
+  }
+
+  .entry-rail {
+    flex-basis: 16px;
+  }
+}

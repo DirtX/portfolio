@@ -1,3 +1,15 @@
+/* ============ BREAKPOINTS (max-width, desktop-first) ============
+ * CSS variables cannot be used inside @media, so these values are
+ * hardcoded in every file. Keep them in sync with Figma frames:
+ *   > 1280px  — desktop (design frame: 1440)
+ *   1280px    — narrow desktop
+ *   1024px    — tablet landscape (also useIsMobile in JS)
+ *   768px     — tablet portrait
+ *   480px     — mobile
+ *   360px     — small mobile
+ * All sizes are in px (base font-size: 18px).
+ */
+
 :root {
   /* ============ COLORS — BACKGROUND ============ */
   --bg-primary: #050505;

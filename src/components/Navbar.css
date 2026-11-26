@@ -37,14 +37,14 @@
 
 .nav-links {
   display: flex;
-  gap: 2rem;
+  gap: 36px;
 }
 
 .nav-link {
   background: none;
   border: none;
   color: var(--text-subtle);
-  font-size: 0.78rem;
+  font-size: 14px;
   cursor: pointer;
   font-family: inherit;
   transition: color var(--transition-base);
@@ -60,7 +60,7 @@
   background: transparent;
   border: 0.5px solid var(--text-disabled);
   color: var(--text-primary);
-  font-size: 0.72rem;
+  font-size: 13px;
   font-weight: 600;
   letter-spacing: 0.08em;
   padding: 0 10px;
@@ -85,15 +85,15 @@
   }
 
   .nav-links {
-    gap: 1rem;
+    gap: 18px;
   }
 
   .nav-link {
-    font-size: 0.78rem;
+    font-size: 14px;
   }
 
   .nav-lang {
-    font-size: 0.7rem;
+    font-size: 13px;
     padding: 4px 10px;
   }
 }
@@ -104,24 +104,24 @@
   }
 
   .nav-links {
-    gap: 0.7rem;
+    gap: 13px;
   }
 
   .nav-link {
-    font-size: 0.72rem;
+    font-size: 13px;
   }
 }
 
 @media (max-width: 360px) {
   .nav-logo {
-    font-size: 0.85rem;
+    font-size: 15px;
   }
 
   .nav-links {
-    gap: 0.5rem;
+    gap: 9px;
   }
 
   .nav-link {
-    font-size: 0.68rem;
+    font-size: 12px;
   }
 }
