@@ -1,54 +1,68 @@
-/* ===== BACK BUTTON ===== */
+/* ===== BACK BUTTON =====
+ * Circle with arrow + label saying where it leads.
+ * Height 40px; the negative margin keeps the page hero where it was.
+ */
 .back-button {
-  position: relative;
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  height: 40px;
+  margin-bottom: -40px;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color var(--transition-base);
+}
+
+.back-button-circle {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 56px;
-  height: 56px;
-  margin-bottom: -56px;
-  color: var(--text-light);
-  text-decoration: none;
+  width: 40px;
+  height: 40px;
+  border: 0.5px solid var(--border-medium);
+  border-radius: 50%;
+  background: var(--bg-secondary);
   transition:
-    transform 0.2s ease,
-    color 0.2s ease;
+    border-color var(--transition-base),
+    background-color var(--transition-base);
 }
 
-/* Pulsing glow behind the arrow */
-.back-button::before {
-  content: "";
-  position: absolute;
-  inset: -40%;
-  background: radial-gradient(
-    circle at center,
-    rgba(245, 245, 245, 0.4) 0%,
-    rgba(245, 245, 245, 0.15) 30%,
-    rgba(245, 245, 245, 0.04) 55%,
-    rgba(245, 245, 245, 0) 80%
-  );
-  filter: blur(6px);
-  animation: back-glow-pulse 4s ease-in-out infinite;
-  pointer-events: none;
+.back-button-circle svg {
+  transition: transform var(--transition-base);
+}
+
+.back-button-label {
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
 }
 
 .back-button:hover {
   color: var(--text-primary);
-  transform: translateX(-4px);
 }
 
-.back-button-arrow {
-  position: relative;
-  z-index: 1;
+.back-button:hover .back-button-circle {
+  border-color: var(--text-primary);
+  background: var(--bg-elevated);
 }
 
-@keyframes back-glow-pulse {
-  0%,
-  100% {
-    opacity: 0.3;
-    transform: scale(0.8);
-  }
-  50% {
-    opacity: 0.8;
-    transform: scale(0.9);
+.back-button:hover .back-button-circle svg {
+  transform: translateX(-3px);
+}
+
+.back-button:focus-visible {
+  outline: none;
+}
+
+.back-button:focus-visible .back-button-circle {
+  outline: 1px solid var(--text-primary);
+  outline-offset: 3px;
+}
+
+/* Mobile: just the circle, label hidden to save space */
+@media (max-width: 480px) {
+  .back-button-label {
+    display: none;
   }
 }

@@ -50,7 +50,9 @@ export default function ProjectEntryCard({ project, ...rest }) {
         {/* RUNNING HEAD */}
         <div className="dict-running-head">
           <span className="entry-category">{category}</span>
-          <span className="dict-domain">{tech}</span>
+          <span className="dict-domain">
+            {tech} <span className="card-arrow">→</span>
+          </span>
         </div>
 
         {/* HEADWORD */}

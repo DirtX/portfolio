@@ -24,7 +24,9 @@ export default function FeaturedProjectCard({ variant = "carousel", ...rest }) {
             <span className="dict-live-dot" />
             {t("proj_dict_live")}
           </span>
-          <span className="dict-domain">{P.domain} ↗</span>
+          <span className="dict-domain">
+            {P.domain} <span className="card-arrow card-arrow--out">↗</span>
+          </span>
         </div>
 
         {/* HEADWORD */}
@@ -56,6 +58,18 @@ export default function FeaturedProjectCard({ variant = "carousel", ...rest }) {
           ))}
         </div>
       </div>
+
+      {/* KEY FIGURES — Projects page only, fills the wide card */}
+      {variant === "grid" && (
+        <aside className="dict-aside">
+          {P.stats.map((s) => (
+            <div key={s.key} className="dict-stat">
+              <span className="dict-stat-num">{s.value}</span>
+              <span className="dict-stat-label">{t(s.key)}</span>
+            </div>
+          ))}
+        </aside>
+      )}
 
       {/* THUMB INDEX — letter tabs on the edge of a printed dictionary */}
       <div className="dict-thumb" aria-hidden="true">

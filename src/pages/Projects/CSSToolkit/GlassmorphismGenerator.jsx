@@ -1,5 +1,6 @@
 import { useState } from "react";
 import ColorPicker from "../../../components/ColorPicker";
+import { useLang } from "../../../context/LanguageContext";
 import Tooltip from "../../../components/Tooltip";
 import "./GlassmorphismGenerator.css";
 
@@ -11,6 +12,7 @@ const PRESET_BACKGROUNDS = [
 ];
 
 export default function GlassmorphismGenerator() {
+  const { t } = useLang();
   const [bgIndex, setBgIndex] = useState(0);
   const [blur, setBlur] = useState(16);
   const [opacity, setOpacity] = useState(0.15);
@@ -63,8 +65,8 @@ border-radius: ${borderRadius}px;`;
           {/* BACKGROUND PRESETS */}
           <div className="tool-group">
             <label className="tool-label">
-              Background
-              <Tooltip text="Glassmorphism only works on top of a colorful background. Try different presets to see the effect." />
+              {t("ct_gm_bg")}
+              <Tooltip text={t("ct_gm_bg_tip")} />
             </label>
             <div className="glass-presets">
               {PRESET_BACKGROUNDS.map((bg, i) => (
@@ -81,8 +83,8 @@ border-radius: ${borderRadius}px;`;
           {/* BLUR */}
           <div className="tool-group">
             <label className="tool-label">
-              Blur — {blur}px
-              <Tooltip text="How much the background behind the glass gets blurred. Higher = more frosted look." />
+              {t("ct_blur")} — {blur}px
+              <Tooltip text={t("ct_gm_blur_tip")} />
             </label>
             <input
               type="range"
@@ -97,8 +99,8 @@ border-radius: ${borderRadius}px;`;
           {/* OPACITY */}
           <div className="tool-group">
             <label className="tool-label">
-              Background opacity — {Math.round(opacity * 100)}%
-              <Tooltip text="How see-through the glass card is. Lower values let more background show through." />
+              {t("ct_gm_bg_opacity")} — {Math.round(opacity * 100)}%
+              <Tooltip text={t("ct_gm_bg_opacity_tip")} />
             </label>
             <input
               type="range"
@@ -114,8 +116,8 @@ border-radius: ${borderRadius}px;`;
           {/* SATURATION */}
           <div className="tool-group">
             <label className="tool-label">
-              Saturation — {saturation}%
-              <Tooltip text="Boosts color intensity of what's behind the glass. Makes the effect more vivid." />
+              {t("ct_gm_saturation")} — {saturation}%
+              <Tooltip text={t("ct_gm_saturation_tip")} />
             </label>
             <input
               type="range"
@@ -130,8 +132,8 @@ border-radius: ${borderRadius}px;`;
           {/* BORDER RADIUS */}
           <div className="tool-group">
             <label className="tool-label">
-              Border radius — {borderRadius}px
-              <Tooltip text="How rounded the corners of the glass card are." />
+              {t("ct_gm_radius")} — {borderRadius}px
+              <Tooltip text={t("ct_gm_radius_tip")} />
             </label>
             <input
               type="range"
@@ -146,8 +148,8 @@ border-radius: ${borderRadius}px;`;
           {/* BORDER OPACITY */}
           <div className="tool-group">
             <label className="tool-label">
-              Border opacity — {Math.round(borderOpacity * 100)}%
-              <Tooltip text="A thin outline that gives the glass card definition and depth." />
+              {t("ct_gm_border_opacity")} — {Math.round(borderOpacity * 100)}%
+              <Tooltip text={t("ct_gm_border_opacity_tip")} />
             </label>
             <input
               type="range"
@@ -163,8 +165,8 @@ border-radius: ${borderRadius}px;`;
           {/* COLOR */}
           <div className="tool-group">
             <label className="tool-label">
-              Color
-              <Tooltip text="Tint color of the glass effect. White gives a neutral frosted look, other colors give a tinted glass." />
+              {t("ct_color")}
+              <Tooltip text={t("ct_gm_color_tip")} />
             </label>
             <ColorPicker value={color} onChange={setColor} />
           </div>
@@ -177,7 +179,7 @@ border-radius: ${borderRadius}px;`;
         <div className="tool-output">
           <code className="tool-code">{css}</code>
           <button className="tool-copy" onClick={handleCopy}>
-            {copied ? "Copied!" : "Copy"}
+            {copied ? t("ct_copied") : t("ct_copy")}
           </button>
         </div>
       </div>

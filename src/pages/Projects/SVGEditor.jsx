@@ -562,7 +562,12 @@ function SVGEditorApp() {
             <label className="svg-label">
               {t("svg_actions")}
               <span className="svg-counter">
-                {shapes.length} {shapes.length === 1 ? t("svg_shape") : t("svg_shapes")}
+                {shapes.length}{" "}
+                {shapes.length === 1
+                  ? t("svg_shape")
+                  : shapes.length >= 2 && shapes.length <= 4
+                    ? t("svg_shapes")
+                    : t("svg_shapes_many")}
               </span>
             </label>
             <div className="svg-actions">

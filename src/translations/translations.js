@@ -4,11 +4,12 @@ export const translations = {
     nav_about: "About",
     nav_projects: "Projects",
     back_to_projects: "Back to projects",
+    back_home: "Back home",
     nav_contact: "Contact",
 
     // ============ HERO ============
     hero_eyebrow: "Available for work",
-    hero_role: "Frontend Developer & Designer.",
+    hero_role: "Frontend Developer & UI/UX Designer.",
     hero_desc:
       "Translating visual concepts into clean, functional code. Bridging design and engineering without friction.",
     hero_btn_projects: "View Projects",
@@ -17,7 +18,7 @@ export const translations = {
 
     // ============ STATS ============
     stat_years: "Years freelancing",
-    stat_projects: "Projects delivered",
+    stat_projects: "Freelance projects",
 
     // ============ LANGUAGES ============
     lang_en: "Upper Intermediate",
@@ -35,6 +36,10 @@ export const translations = {
     projects_title: "Things I've built.",
     projects_subtitle:
       "A collection of small but functional tools — each one a focused exploration of a specific web technology. All running entirely client-side.",
+    fig_label: "Fig.",
+    proj_dict_stat_words: "words and phrases",
+    proj_dict_stat_modes: "practice modes",
+    proj_dict_stat_ui: "interface",
     proj_dict_live: "Live product",
     proj_dict_pos: "noun · web app",
     proj_dict_desc:
@@ -44,7 +49,7 @@ export const translations = {
     proj_dict_example_tr: "Our family lives in a big city.",
     proj_video_desc: "Client-side video compression without any server interaction.",
     proj_video_long:
-      "Compress video files up to 90% smaller without visible quality loss. Runs entirely in your browser via FFmpeg WASM — no server uploads.",
+      "Make video files up to 90% smaller without visible quality loss. Runs entirely in your browser via FFmpeg.wasm — no server uploads.",
     proj_audio_desc: "Extract audio from any video file in your browser.",
     proj_audio_long:
       "Extract audio from video files in MP3, M4A or WAV format. All processing happens in the browser.",
@@ -133,7 +138,7 @@ export const translations = {
 
     // ============ AUDIO EXTRACTOR ============
     ae_subtitle:
-      "Extract audio from any video file. Convert MP4, MOV, MKV to MP3 or M4A directly in your browser — no server, no upload, no limits.",
+      "Extract audio from any video file. Convert MP4, MOV, MKV to MP3, M4A or WAV directly in your browser — no server, no uploads.",
     ae_drop: "Drop your video here",
     ae_drop_sub: "or click to browse · MP4, MOV, MKV, AVI, WEBM",
     ae_bitrate: "Bitrate",
@@ -148,7 +153,7 @@ export const translations = {
     ae_step1_title: "Select your video",
     ae_step1_desc: "Drop any MP4, MOV, MKV, AVI or WEBM file. Nothing leaves your device.",
     ae_step2_title: "Choose format & bitrate",
-    ae_step2_desc: "Pick MP3 or M4A. Higher bitrate = better quality, larger file.",
+    ae_step2_desc: "Pick MP3, M4A or WAV. Higher bitrate = better quality, larger file.",
     ae_step3_title: "Download audio",
     ae_step3_desc: "Audio is extracted in your browser via FFmpeg WebAssembly.",
     ae_tech_note: "professional audio processing running entirely in your browser.",
@@ -180,14 +185,93 @@ export const translations = {
     color_palette_tech_note: "no server, no library, pure browser technology.",
 
     // ============ CSS TOOLKIT ============
+    ct_copy: "Copy",
+    ct_copied: "Copied!",
+    ct_color: "Color",
+    ct_type: "Type",
+    ct_blur: "Blur",
+    ct_opacity: "Opacity",
+    ct_br_sync: "Edit all corners together",
+    ct_br_sync_tip:
+      "When checked, changing one corner changes all four. Uncheck to set each independently.",
+    ct_br_tl: "Top left",
+    ct_br_tr: "Top right",
+    ct_br_br: "Bottom right",
+    ct_br_bl: "Bottom left",
+    ct_bs_layers: "Layers",
+    ct_bs_layers_tip:
+      "You can stack multiple shadows on the same element to create depth or complex effects.",
+    ct_bs_layer_inset: "Inset shadow",
+    ct_bs_layer_drop: "Drop shadow",
+    ct_bs_type_tip:
+      "Outset puts the shadow outside the element. Inset puts it inside, making the element look pressed in.",
+    ct_bs_outset: "Outset",
+    ct_bs_inset: "Inset",
+    ct_bs_x: "X offset",
+    ct_bs_x_tip: "Horizontal shadow position. Positive moves right, negative moves left.",
+    ct_bs_y: "Y offset",
+    ct_bs_y_tip: "Vertical shadow position. Positive moves down, negative moves up.",
+    ct_bs_blur_tip:
+      "How soft the shadow edges are. 0 = sharp edge, higher = smoother and more spread out.",
+    ct_bs_spread: "Spread",
+    ct_bs_spread_tip:
+      "Makes the shadow bigger or smaller than the element. Negative shrinks it, positive expands it.",
+    ct_bs_color_tip: "The base color of the shadow before opacity is applied.",
+    ct_bs_opacity_tip: "How transparent the shadow is. 0% = invisible, 100% = fully solid color.",
+    ct_ft_image: "Image",
+    ct_ft_image_tip: "Pick a preset image or upload your own to see how the filter looks.",
+    ct_ft_blur_tip: "Softens the image, making it look out of focus. Higher = more blurred.",
+    ct_ft_brightness: "Brightness",
+    ct_ft_brightness_tip:
+      "How light or dark the image is. 100% = original, 0% = pure black, 200% = very bright.",
+    ct_ft_contrast: "Contrast",
+    ct_ft_contrast_tip:
+      "Difference between dark and bright areas. 0% = all gray, 100% = original, 200% = very contrasty.",
+    ct_ft_saturate: "Saturate",
+    ct_ft_saturate_tip:
+      "Color intensity. 0% = black and white, 100% = original, 200% = very vivid colors.",
+    ct_ft_hue: "Hue rotate",
+    ct_ft_hue_tip: "Shifts all colors around the color wheel. Try 180° to invert colors.",
+    ct_ft_sepia: "Sepia",
+    ct_ft_sepia_tip: "Old-photo brownish tint. 100% = full vintage look.",
+    ct_ft_grayscale: "Grayscale",
+    ct_ft_grayscale_tip: "Removes color. 100% = pure black and white.",
+    ct_ft_invert: "Invert",
+    ct_ft_invert_tip: "Flips all colors to their opposite. 100% = negative photo effect.",
+    ct_ft_reset: "Reset all filters",
+    ct_gm_bg: "Background",
+    ct_gm_bg_tip:
+      "Glassmorphism only works on top of a colorful background. Try different presets to see the effect.",
+    ct_gm_blur_tip:
+      "How much the background behind the glass gets blurred. Higher = more frosted look.",
+    ct_gm_bg_opacity: "Background opacity",
+    ct_gm_bg_opacity_tip:
+      "How see-through the glass card is. Lower values let more background show through.",
+    ct_gm_saturation: "Saturation",
+    ct_gm_saturation_tip:
+      "Boosts color intensity of what's behind the glass. Makes the effect more vivid.",
+    ct_gm_radius: "Border radius",
+    ct_gm_radius_tip: "How rounded the corners of the glass card are.",
+    ct_gm_border_opacity: "Border opacity",
+    ct_gm_border_opacity_tip: "A thin outline that gives the glass card definition and depth.",
+    ct_gm_color_tip:
+      "Tint color of the glass effect. White gives a neutral frosted look, other colors give a tinted glass.",
+    ct_gr_type_tip:
+      "Linear goes in a straight line. Radial spreads from the center outwards. Conic wraps around like a pie chart.",
+    ct_gr_angle: "Angle",
+    ct_gr_angle_tip:
+      "Direction the gradient flows. 0° goes upward, 90° to the right, 180° downward.",
+    ct_gr_colors: "Colors",
+    ct_gr_colors_tip:
+      "Drag the dots on the timeline to reposition. Tap empty space on the bar to add a stop.",
+    ct_gr_remove_stop: "Remove stop",
     ct_sub_gradient:
-      "Create linear and radial gradients with multiple color stops. Drag to reorder, adjust angle and position.",
+      "Create linear, radial and conic gradients with multiple color stops. Drag stops along the bar and adjust the angle.",
     ct_sub_shadow:
       "Build complex shadows by stacking multiple layers. Each with its own color, offset, blur and spread.",
     ct_sub_glass:
       "The frosted glass effect. Combine background blur, transparency and a subtle border.",
-    ct_sub_radius:
-      "Round each corner independently. Adjust four sliders to shape the perfect curve.",
+    ct_sub_radius: "Round each corner independently: drag the handles or use the four sliders.",
     ct_sub_filter:
       "Apply CSS filter functions: blur, brightness, contrast, saturate, hue-rotate, grayscale, sepia and invert.",
 
@@ -239,6 +323,7 @@ export const translations = {
     svg_export: "Export SVG",
     svg_shape: "shape",
     svg_shapes: "shapes",
+    svg_shapes_many: "shapes",
     svg_hint_hand: "Drag the canvas to pan around.",
     svg_hint_empty: "Import a SVG or draw something to start editing.",
     svg_hint_select: "Click any shape to edit its properties.",
@@ -256,12 +341,9 @@ export const translations = {
       "SVG files are parsed with DOMParser and rendered as native React elements — no canvas raster, infinitely scalable output.",
 
     // ============ MARKDOWN PREVIEW LABELS (Projects card) ============
-    md_label_source: "Source",
-    md_label_preview: "Preview",
 
     // ============ DESKTOP ONLY ============
     desktop_only_badge: "Desktop only",
-    desktop_only_notice: "This tool works best on desktop. Mobile support is limited.",
     desktop_only_title: "Best on desktop",
     desktop_only_desc:
       "The SVG Editor needs precise mouse input and a wide canvas. Please open this project on a laptop or desktop computer for the full experience.",
@@ -276,6 +358,7 @@ export const translations = {
     nav_about: "O mně",
     nav_projects: "Projekty",
     back_to_projects: "Zpět na projekty",
+    back_home: "Zpět domů",
     nav_contact: "Kontakt",
 
     // ============ HERO ============
@@ -288,8 +371,8 @@ export const translations = {
     hero_btn_figma: "Figma soubor ↗",
 
     // ============ STATS ============
-    stat_years: "Let freelancingu",
-    stat_projects: "Dokončených projektů",
+    stat_years: "Let na volné noze",
+    stat_projects: "Projektů na volné noze",
 
     // ============ LANGUAGES ============
     lang_en: "Vyšší středně pokročilý",
@@ -308,6 +391,10 @@ export const translations = {
     projects_subtitle:
       "Sbírka malých, ale funkčních nástrojů — každý je zaměřený průzkum konkrétní webové technologie. Vše běží zcela na straně klienta.",
 
+    fig_label: "Obr.",
+    proj_dict_stat_words: "slov a frází",
+    proj_dict_stat_modes: "režimů procvičování",
+    proj_dict_stat_ui: "rozhraní",
     proj_dict_live: "Živý produkt",
     proj_dict_pos: "podst. jm. · webová aplikace",
     proj_dict_desc:
@@ -317,7 +404,7 @@ export const translations = {
     proj_dict_example_tr: "Наша родина живе у великому місті.",
     proj_video_desc: "Komprese videa na straně klienta bez jakékoli serverové interakce.",
     proj_video_long:
-      "Komprimujte video soubory až o 90 % menší bez viditelné ztráty kvality. Běží zcela ve vašem prohlížeči přes FFmpeg WASM — žádné nahrávání na server.",
+      "Zmenšete video soubory až o 90 % bez viditelné ztráty kvality. Běží celé ve vašem prohlížeči přes FFmpeg.wasm — nic se nenahrává na server.",
 
     proj_audio_desc: "Extrahujte zvuk z libovolného videa přímo v prohlížeči.",
     proj_audio_long:
@@ -343,10 +430,10 @@ export const translations = {
     about_eyebrow: "O mně",
     about_title: "Kdo jsem.",
     about_p1:
-      "Frontend developer s 4 lety zkušeností z freelance — tvorba responzivních webů a rozhraní.",
+      "Frontend developer se 4 lety zkušeností na volné noze — tvorba responzivních webů a rozhraní.",
     about_p2: "Zázemí v UI/UX designu mi dává výhodu — od návrhu ke kódu bez zbytečného předávání.",
     about_p3:
-      "Vždy se chci učit nové věci — rychle se učím nové nástroje a frameworky a každý projekt beru jako příležitost k růstu. Nevadí mi skočit do neznámého kódu nebo stacku.",
+      "Rád se učím nové věci — nové nástroje a frameworky zvládám rychle a každý projekt beru jako příležitost k růstu. Nevadí mi pustit se do neznámého kódu nebo stacku.",
     about_p4:
       "Aktivně se učím česky a jsem připraven nastoupit do česky mluvícího týmu — vidím to jako nejrychlejší způsob, jak se posunout profesně i jazykově. Bydlím v Kolíně, ochoten přestěhovat se za prací.",
 
@@ -370,7 +457,7 @@ export const translations = {
 
     // ============ SHARED PROJECT PAGE STRINGS ============
     page_how_title: "Jak to funguje",
-    page_powered_by: "Pohání",
+    page_powered_by: "Běží na",
 
     // ============ VIDEO COMPRESSOR ============
     vc_subtitle:
@@ -408,7 +495,7 @@ export const translations = {
 
     // ============ AUDIO EXTRACTOR ============
     ae_subtitle:
-      "Extrahujte zvuk z libovolného video souboru. Převádějte MP4, MOV, MKV na MP3 nebo M4A přímo ve vašem prohlížeči — žádný server, žádné nahrávání, žádné limity.",
+      "Extrahujte zvuk z libovolného video souboru. Převádějte MP4, MOV, MKV na MP3, M4A nebo WAV přímo v prohlížeči — žádný server, žádné nahrávání.",
     ae_drop: "Přetáhněte video sem",
     ae_drop_sub: "nebo klikněte pro výběr · MP4, MOV, MKV, AVI, WEBM",
     ae_bitrate: "Bitrate",
@@ -424,7 +511,7 @@ export const translations = {
     ae_step1_desc:
       "Přetáhněte libovolný MP4, MOV, MKV, AVI nebo WEBM soubor. Nic neopustí vaše zařízení.",
     ae_step2_title: "Vyberte formát a bitrate",
-    ae_step2_desc: "Vyberte MP3 nebo M4A. Vyšší bitrate = lepší kvalita, větší soubor.",
+    ae_step2_desc: "Vyberte MP3, M4A nebo WAV. Vyšší bitrate = lepší kvalita, větší soubor.",
     ae_step3_title: "Stáhněte audio",
     ae_step3_desc: "Audio je extrahováno ve vašem prohlížeči přes FFmpeg WebAssembly.",
     ae_tech_note: "profesionální zpracování zvuku běžící zcela ve vašem prohlížeči.",
@@ -457,12 +544,89 @@ export const translations = {
     color_palette_tech_note: "žádný server, žádná knihovna, čistá technologie prohlížeče.",
 
     // ============ CSS TOOLKIT ============
+    ct_copy: "Kopírovat",
+    ct_copied: "Zkopírováno!",
+    ct_color: "Barva",
+    ct_type: "Typ",
+    ct_blur: "Rozostření",
+    ct_opacity: "Krytí",
+    ct_br_sync: "Upravovat všechny rohy najednou",
+    ct_br_sync_tip:
+      "Když je zaškrtnuto, změna jednoho rohu změní všechny čtyři. Odškrtněte pro nastavení každého zvlášť.",
+    ct_br_tl: "Vlevo nahoře",
+    ct_br_tr: "Vpravo nahoře",
+    ct_br_br: "Vpravo dole",
+    ct_br_bl: "Vlevo dole",
+    ct_bs_layers: "Vrstvy",
+    ct_bs_layers_tip:
+      "Na jeden prvek můžete vrstvit více stínů a vytvořit tak hloubku nebo složitější efekty.",
+    ct_bs_layer_inset: "Vnitřní stín",
+    ct_bs_layer_drop: "Vnější stín",
+    ct_bs_type_tip:
+      "Vnější stín je mimo prvek. Vnitřní stín je uvnitř, takže prvek vypadá zamáčknutý.",
+    ct_bs_outset: "Vnější",
+    ct_bs_inset: "Vnitřní",
+    ct_bs_x: "Posun X",
+    ct_bs_x_tip: "Vodorovná poloha stínu. Kladná hodnota posouvá doprava, záporná doleva.",
+    ct_bs_y: "Posun Y",
+    ct_bs_y_tip: "Svislá poloha stínu. Kladná hodnota posouvá dolů, záporná nahoru.",
+    ct_bs_blur_tip:
+      "Jak měkké jsou okraje stínu. 0 = ostrý okraj, vyšší = jemnější a rozptýlenější.",
+    ct_bs_spread: "Rozprostření",
+    ct_bs_spread_tip:
+      "Zvětší nebo zmenší stín oproti prvku. Záporná hodnota ho zmenšuje, kladná zvětšuje.",
+    ct_bs_color_tip: "Základní barva stínu před použitím krytí.",
+    ct_bs_opacity_tip: "Jak průhledný je stín. 0 % = neviditelný, 100 % = plná barva.",
+    ct_ft_image: "Obrázek",
+    ct_ft_image_tip:
+      "Vyberte přednastavený obrázek nebo nahrajte vlastní a uvidíte, jak filtr vypadá.",
+    ct_ft_blur_tip: "Změkčí obrázek, takže působí neostře. Vyšší = rozmazanější.",
+    ct_ft_brightness: "Jas",
+    ct_ft_brightness_tip:
+      "Jak světlý nebo tmavý je obrázek. 100 % = originál, 0 % = černá, 200 % = velmi světlý.",
+    ct_ft_contrast: "Kontrast",
+    ct_ft_contrast_tip:
+      "Rozdíl mezi tmavými a světlými místy. 0 % = vše šedé, 100 % = originál, 200 % = velmi kontrastní.",
+    ct_ft_saturate: "Sytost",
+    ct_ft_saturate_tip:
+      "Intenzita barev. 0 % = černobílý, 100 % = originál, 200 % = velmi syté barvy.",
+    ct_ft_hue: "Posun odstínu",
+    ct_ft_hue_tip: "Posune všechny barvy po barevném kruhu. Zkuste 180° pro opačné barvy.",
+    ct_ft_sepia: "Sépie",
+    ct_ft_sepia_tip: "Hnědavý nádech staré fotografie. 100 % = plný vintage vzhled.",
+    ct_ft_grayscale: "Odstíny šedi",
+    ct_ft_grayscale_tip: "Odstraní barvy. 100 % = čistě černobílý.",
+    ct_ft_invert: "Inverze",
+    ct_ft_invert_tip: "Převrátí všechny barvy na opačné. 100 % = efekt negativu.",
+    ct_ft_reset: "Obnovit všechny filtry",
+    ct_gm_bg: "Pozadí",
+    ct_gm_bg_tip:
+      "Glassmorphism funguje jen na barevném pozadí. Vyzkoušejte různé předvolby a uvidíte efekt.",
+    ct_gm_blur_tip: "Jak moc se rozostří pozadí za sklem. Vyšší = matnější vzhled.",
+    ct_gm_bg_opacity: "Krytí pozadí",
+    ct_gm_bg_opacity_tip: "Jak průhledná je skleněná karta. Nižší hodnoty propustí víc pozadí.",
+    ct_gm_saturation: "Sytost",
+    ct_gm_saturation_tip: "Zvýší sytost barev za sklem. Efekt pak působí živěji.",
+    ct_gm_radius: "Zaoblení rohů",
+    ct_gm_radius_tip: "Jak moc jsou zaoblené rohy skleněné karty.",
+    ct_gm_border_opacity: "Krytí okraje",
+    ct_gm_border_opacity_tip: "Tenký okraj, který skleněné kartě dodá obrys a hloubku.",
+    ct_gm_color_tip:
+      "Barva tónování skla. Bílá dává neutrální matný vzhled, ostatní barvy tónované sklo.",
+    ct_gr_type_tip:
+      "Lineární vede v přímce. Radiální se šíří ze středu ven. Kuželový se otáčí kolem středu jako koláčový graf.",
+    ct_gr_angle: "Úhel",
+    ct_gr_angle_tip: "Směr gradientu. 0° vede nahoru, 90° doprava, 180° dolů.",
+    ct_gr_colors: "Barvy",
+    ct_gr_colors_tip:
+      "Přetažením bodů na liště změníte jejich pozici. Klepnutím na prázdné místo přidáte nový bod.",
+    ct_gr_remove_stop: "Odebrat bod",
     ct_sub_gradient:
-      "Vytvářejte lineární a radiální gradienty s více barevnými body. Přetahujte pro změnu pořadí, upravujte úhel a pozici.",
+      "Vytvářejte lineární, radiální a kuželové gradienty s více barevnými body. Posouvejte body po liště a upravujte úhel.",
     ct_sub_shadow:
       "Vytvářejte komplexní stíny skládáním více vrstev. Každá s vlastní barvou, posunem, rozostřením a rozprostřením.",
     ct_sub_glass: "Efekt matného skla. Kombinujte rozostření pozadí, průhlednost a jemný okraj.",
-    ct_sub_radius: "Zaoblete každý roh samostatně. Čtyři posuvníky pro vytvoření dokonalé křivky.",
+    ct_sub_radius: "Zaoblete každý roh zvlášť: táhněte za úchyty nebo použijte čtyři posuvníky.",
     ct_sub_filter:
       "Aplikujte CSS filter funkce: blur, brightness, contrast, saturate, hue-rotate, grayscale, sepia a invert.",
 
@@ -506,7 +670,7 @@ export const translations = {
     svg_stroke_tooltip: "Barva obrysu tvaru.",
     svg_stroke_width: "Šířka obrysu",
     svg_stroke_width_tooltip: "Jak tlustý je obrys.",
-    svg_opacity: "Průhlednost",
+    svg_opacity: "Krytí",
     svg_delete: "Smazat tvar",
     svg_zoom: "Přiblížení",
     svg_actions: "Akce",
@@ -516,6 +680,7 @@ export const translations = {
     svg_export: "Exportovat SVG",
     svg_shape: "tvar",
     svg_shapes: "tvary",
+    svg_shapes_many: "tvarů",
     svg_hint_hand: "Přetáhněte plátno pro posun.",
     svg_hint_empty: "Importujte SVG nebo něco nakreslete pro zahájení úprav.",
     svg_hint_select: "Klikněte na libovolný tvar pro úpravu jeho vlastností.",
@@ -534,12 +699,9 @@ export const translations = {
       "SVG soubory jsou parsovány pomocí DOMParser a renderovány jako nativní React elementy — žádný canvas raster, nekonečně škálovatelný výstup.",
 
     // ============ MARKDOWN PREVIEW LABELS ============
-    md_label_source: "Zdroj",
-    md_label_preview: "Náhled",
 
     // ============ DESKTOP ONLY ============
     desktop_only_badge: "Pouze desktop",
-    desktop_only_notice: "Tento nástroj nejlépe funguje na počítači. Mobilní podpora je omezená.",
     desktop_only_title: "Nejlépe na počítači",
     desktop_only_desc:
       "SVG Editor vyžaduje přesné ovládání myší a široké plátno. Otevřete tento projekt na notebooku nebo počítači pro plnohodnotný zážitek.",

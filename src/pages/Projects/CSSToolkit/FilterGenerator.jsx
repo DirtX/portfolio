@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useLang } from "../../../context/LanguageContext";
 import Tooltip from "../../../components/Tooltip";
 import "./FilterGenerator.css";
 
@@ -10,6 +11,7 @@ const PRESET_IMAGES = [
 ];
 
 export default function FilterGenerator() {
+  const { t } = useLang();
   const [imageIndex, setImageIndex] = useState(0);
   const [customImage, setCustomImage] = useState(null);
   const [blur, setBlur] = useState(0);
@@ -72,8 +74,8 @@ export default function FilterGenerator() {
           {/* IMAGE PRESETS */}
           <div className="tool-group">
             <label className="tool-label">
-              Image
-              <Tooltip text="Pick a preset image or upload your own to see how the filter looks." />
+              {t("ct_ft_image")}
+              <Tooltip text={t("ct_ft_image_tip")} />
             </label>
             <div className="filter-presets">
               {PRESET_IMAGES.map((img, i) => (
@@ -102,8 +104,8 @@ export default function FilterGenerator() {
           {/* BLUR */}
           <div className="tool-group">
             <label className="tool-label">
-              Blur — {blur}px
-              <Tooltip text="Softens the image, making it look out of focus. Higher = more blurred." />
+              {t("ct_blur")} — {blur}px
+              <Tooltip text={t("ct_ft_blur_tip")} />
             </label>
             <input
               type="range"
@@ -118,8 +120,8 @@ export default function FilterGenerator() {
           {/* BRIGHTNESS */}
           <div className="tool-group">
             <label className="tool-label">
-              Brightness — {brightness}%
-              <Tooltip text="How light or dark the image is. 100% = original, 0% = pure black, 200% = very bright." />
+              {t("ct_ft_brightness")} — {brightness}%
+              <Tooltip text={t("ct_ft_brightness_tip")} />
             </label>
             <input
               type="range"
@@ -134,8 +136,8 @@ export default function FilterGenerator() {
           {/* CONTRAST */}
           <div className="tool-group">
             <label className="tool-label">
-              Contrast — {contrast}%
-              <Tooltip text="Difference between dark and bright areas. 0% = all gray, 100% = original, 200% = very contrasty." />
+              {t("ct_ft_contrast")} — {contrast}%
+              <Tooltip text={t("ct_ft_contrast_tip")} />
             </label>
             <input
               type="range"
@@ -150,8 +152,8 @@ export default function FilterGenerator() {
           {/* SATURATE */}
           <div className="tool-group">
             <label className="tool-label">
-              Saturate — {saturate}%
-              <Tooltip text="Color intensity. 0% = black and white, 100% = original, 200% = very vivid colors." />
+              {t("ct_ft_saturate")} — {saturate}%
+              <Tooltip text={t("ct_ft_saturate_tip")} />
             </label>
             <input
               type="range"
@@ -166,8 +168,8 @@ export default function FilterGenerator() {
           {/* HUE ROTATE */}
           <div className="tool-group">
             <label className="tool-label">
-              Hue rotate — {hueRotate}°
-              <Tooltip text="Shifts all colors around the color wheel. Try 180° to invert colors." />
+              {t("ct_ft_hue")} — {hueRotate}°
+              <Tooltip text={t("ct_ft_hue_tip")} />
             </label>
             <input
               type="range"
@@ -182,8 +184,8 @@ export default function FilterGenerator() {
           {/* SEPIA */}
           <div className="tool-group">
             <label className="tool-label">
-              Sepia — {sepia}%
-              <Tooltip text="Old-photo brownish tint. 100% = full vintage look." />
+              {t("ct_ft_sepia")} — {sepia}%
+              <Tooltip text={t("ct_ft_sepia_tip")} />
             </label>
             <input
               type="range"
@@ -198,8 +200,8 @@ export default function FilterGenerator() {
           {/* GRAYSCALE */}
           <div className="tool-group">
             <label className="tool-label">
-              Grayscale — {grayscale}%
-              <Tooltip text="Removes color. 100% = pure black and white." />
+              {t("ct_ft_grayscale")} — {grayscale}%
+              <Tooltip text={t("ct_ft_grayscale_tip")} />
             </label>
             <input
               type="range"
@@ -214,8 +216,8 @@ export default function FilterGenerator() {
           {/* INVERT */}
           <div className="tool-group">
             <label className="tool-label">
-              Invert — {invert}%
-              <Tooltip text="Flips all colors to their opposite. 100% = negative photo effect." />
+              {t("ct_ft_invert")} — {invert}%
+              <Tooltip text={t("ct_ft_invert_tip")} />
             </label>
             <input
               type="range"
@@ -229,7 +231,7 @@ export default function FilterGenerator() {
 
           {/* RESET */}
           <button className="filter-reset" onClick={handleReset}>
-            Reset all filters
+            {t("ct_ft_reset")}
           </button>
         </div>
       </div>
@@ -240,7 +242,7 @@ export default function FilterGenerator() {
         <div className="tool-output">
           <code className="tool-code">{css}</code>
           <button className="tool-copy" onClick={handleCopy}>
-            {copied ? "Copied!" : "Copy"}
+            {copied ? t("ct_copied") : t("ct_copy")}
           </button>
         </div>
       </div>

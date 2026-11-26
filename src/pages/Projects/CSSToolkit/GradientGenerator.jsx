@@ -1,5 +1,6 @@
 import { useState, useRef } from "react";
 import ColorPicker from "../../../components/ColorPicker";
+import { useLang } from "../../../context/LanguageContext";
 import Tooltip from "../../../components/Tooltip";
 import "./GradientGenerator.css";
 import BackButton from "../../../components/BackButton";
@@ -12,6 +13,7 @@ const defaultStops = [
 ];
 
 export default function GradientGenerator() {
+  const { t } = useLang();
   const [type, setType] = useState("linear");
   const [angle, setAngle] = useState(135);
   const [stops, setStops] = useState(defaultStops);
@@ -160,17 +162,17 @@ export default function GradientGenerator() {
           {/* TYPE */}
           <div className="tool-group">
             <label className="tool-label">
-              Type
-              <Tooltip text="Linear goes in a straight line. Radial spreads from center outwards. Conic wraps around like a pie chart." />
+              {t("ct_type")}
+              <Tooltip text={t("ct_gr_type_tip")} />
             </label>
             <div className="tool-pills">
-              {TYPES.map((t) => (
+              {TYPES.map((ty) => (
                 <button
-                  key={t}
-                  className={`tool-pill ${type === t ? "active" : ""}`}
-                  onClick={() => setType(t)}
+                  key={ty}
+                  className={`tool-pill ${type === ty ? "active" : ""}`}
+                  onClick={() => setType(ty)}
                 >
-                  {t}
+                  {ty}
                 </button>
               ))}
             </div>
@@ -180,8 +182,8 @@ export default function GradientGenerator() {
           {(type === "linear" || type === "conic") && (
             <div className="tool-group">
               <label className="tool-label">
-                Angle — {angle}°
-                <Tooltip text="Direction the gradient flows. 0° goes upward, 90° to the right, 180° downward." />
+                {t("ct_gr_angle")} — {angle}°
+                <Tooltip text={t("ct_gr_angle_tip")} />
               </label>
               <input
                 type="range"
@@ -197,8 +199,8 @@ export default function GradientGenerator() {
           {/* COLORS */}
           <div className="tool-group">
             <label className="tool-label">
-              Colors
-              <Tooltip text="Drag the dots on the timeline to reposition. Tap empty space on the bar to add a stop." />
+              {t("ct_gr_colors")}
+              <Tooltip text={t("ct_gr_colors_tip")} />
             </label>
 
             {/* TIMELINE BAR with draggable dots */}
@@ -246,7 +248,7 @@ export default function GradientGenerator() {
                       removeStop(i);
                     }}
                     disabled={stops.length <= 2}
-                    aria-label="Remove stop"
+                    aria-label={t("ct_gr_remove_stop")}
                   >
                     ×
                   </button>
@@ -268,7 +270,7 @@ export default function GradientGenerator() {
         <div className="tool-output">
           <code className="tool-code">{css}</code>
           <button className="tool-copy" onClick={handleCopy}>
-            {copied ? "Copied!" : "Copy"}
+            {copied ? t("ct_copied") : t("ct_copy")}
           </button>
         </div>
       </div>

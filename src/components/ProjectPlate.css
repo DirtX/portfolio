@@ -1,0 +1,201 @@
+/* ============ PLATE (project preview illustration) ============ */
+.plate {
+  position: relative;
+  height: 220px;
+  margin: 0;
+  background: var(--bg-tertiary);
+  border-bottom: 0.5px solid var(--border-subtle);
+  color: var(--text-secondary);
+  overflow: hidden;
+}
+
+.plate-svg {
+  display: block;
+  width: 100%;
+  height: 192px;
+}
+
+/* Caption strip, like "Fig. 3 — ..." under a book illustration */
+.plate-caption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 20px;
+  border-top: 0.5px solid var(--border-subtle);
+  font-size: 11px;
+  color: var(--text-faint);
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.plate-fig {
+  font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  font-style: italic;
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.plate-caption-text {
+  font-family: "JetBrains Mono", "SFMono-Regular", Menlo, Consolas, monospace;
+  font-size: 10px;
+  letter-spacing: 0.02em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ============ DRAWING PRIMITIVES ============ */
+.plate-line {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.2;
+  transition:
+    fill var(--transition-slow),
+    stroke var(--transition-slow);
+}
+
+.plate-line-faint {
+  fill: none;
+  stroke: var(--border-medium);
+  stroke-width: 1;
+}
+
+.plate-fill {
+  fill: currentColor;
+}
+
+.plate-fill-faint {
+  fill: var(--border-strong);
+}
+
+.plate-surface {
+  fill: var(--border-soft);
+  stroke: var(--border-strong);
+  stroke-width: 1;
+}
+
+.plate-glass {
+  fill: rgba(255, 255, 255, 0.08);
+  stroke: rgba(255, 255, 255, 0.35);
+  stroke-width: 1;
+}
+
+.plate-handle {
+  fill: var(--bg-tertiary);
+  stroke: currentColor;
+  stroke-width: 1;
+}
+
+.plate-arrow line,
+.plate-arrow polyline {
+  fill: none;
+  stroke: var(--text-muted);
+  stroke-width: 1.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.plate-label {
+  font-family: "JetBrains Mono", "SFMono-Regular", Menlo, Consolas, monospace;
+  font-size: 11px;
+  text-anchor: middle;
+  fill: var(--text-muted);
+}
+
+.plate-label--strong {
+  fill: var(--text-primary);
+}
+
+.plate-wave line {
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+.plate-mono text {
+  font-family: "JetBrains Mono", "SFMono-Regular", Menlo, Consolas, monospace;
+  font-size: 14px;
+  fill: var(--text-secondary);
+}
+
+.plate-token {
+  fill: var(--text-faint);
+}
+
+.plate-serif-title {
+  font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  font-size: 22px;
+  font-weight: 700;
+  fill: var(--text-primary);
+}
+
+.plate-text {
+  font-size: 14px;
+  fill: var(--text-secondary);
+}
+
+.plate-text--bold {
+  font-weight: 700;
+  fill: var(--text-light);
+}
+
+/* ============ HOVER — colour only where it carries meaning ============ */
+.projects-card:hover .plate {
+  color: var(--text-light);
+}
+
+/* Palette: picture regions and swatches go from grey to the extracted colours */
+.plate-tint {
+  fill: var(--grey);
+  transition: fill var(--transition-slow);
+  transition-delay: calc(var(--i) * 60ms);
+}
+
+.plate-swatch {
+  stroke: var(--border-strong);
+  stroke-width: 0.5;
+}
+
+.projects-card:hover .plate-tint {
+  fill: var(--swatch);
+}
+
+.plate-hex {
+  font-family: "JetBrains Mono", "SFMono-Regular", Menlo, Consolas, monospace;
+  font-size: 12px;
+  fill: var(--text-secondary);
+}
+
+.projects-card:hover .plate-hex {
+  fill: var(--text-primary);
+}
+
+/* SVG editor: shapes get filled as if just recoloured */
+.projects-card:hover .plate-svg-shape {
+  fill: rgba(26, 86, 219, 0.35);
+  stroke: #5b8def;
+}
+
+.projects-card:hover .plate-svg-shape--alt {
+  fill: rgba(16, 185, 129, 0.3);
+  stroke: #34d399;
+}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width: 480px) {
+  .plate {
+    height: 188px;
+  }
+
+  .plate-svg {
+    height: 160px;
+  }
+
+  .plate-caption {
+    padding: 0 16px;
+  }
+}

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import figmaLogo from "../assets/figma-logo.svg";
 import { useLang } from "../context/LanguageContext";
 import { useModal } from "../context/ModalContext";
+import { useIsMobile } from "../hooks/useIsMobile";
 import SocialIcons from "../components/SocialIcons";
 import FeaturedProjectCard from "../components/FeaturedProjectCard";
 import ProjectEntryCard from "../components/ProjectEntryCard";
@@ -15,6 +16,8 @@ const FULL_NAME = "Yaroslav Horbatiuk";
 export default function Home() {
   const { t, lang } = useLang();
   const { openContactModal } = useModal();
+  // Matches the "manual scroll" carousel media query in Home.css (max-width: 768px)
+  const isManualCarousel = useIsMobile(769);
 
   const projects = getProjects(t);
 
@@ -104,12 +107,17 @@ export default function Home() {
     e.currentTarget.style.transform = "";
   };
 
-  // Featured project leads each half of the loop so the seam stays seamless
-  const loopedProjects = [
+  // Desktop: the list is doubled for the seamless auto-scroll loop.
+  // Mobile (≤768px): manual swipe, so every card is shown once.
+  const carouselItems = [
     { featured: true, key: "featured-a" },
     ...projects.map((p) => ({ ...p, key: `${p.id}-a` })),
-    { featured: true, key: "featured-b" },
-    ...projects.map((p) => ({ ...p, key: `${p.id}-b` })),
+    ...(isManualCarousel
+      ? []
+      : [
+          { featured: true, key: "featured-b" },
+          ...projects.map((p) => ({ ...p, key: `${p.id}-b` })),
+        ]),
   ];
 
   return (
@@ -209,7 +217,7 @@ export default function Home() {
         </div>
         <div className="carousel-wrap">
           <div className="carousel">
-            {loopedProjects.map((p) =>
+            {carouselItems.map((p) =>
               p.featured ? (
                 <FeaturedProjectCard
                   key={p.key}

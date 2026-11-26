@@ -79,6 +79,57 @@
   color: var(--text-primary);
 }
 
+/* Card arrow: → for pages on this site, ↗ for external links */
+.card-arrow {
+  display: inline-block;
+  margin-left: 4px;
+  color: var(--text-muted);
+  transition:
+    color var(--transition-base),
+    transform var(--transition-base);
+}
+
+.dict-card:hover .card-arrow {
+  color: var(--text-primary);
+  transform: translateX(3px);
+}
+
+.dict-card:hover .card-arrow--out {
+  transform: translate(2px, -2px);
+}
+
+/* ============ KEY FIGURES (grid variant) ============ */
+.dict-aside {
+  flex: 0 0 220px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 24px;
+  padding: 36px 32px;
+  border-left: 0.5px solid var(--border-subtle);
+}
+
+.dict-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.dict-stat-num {
+  font-family: var(--dict-serif);
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--text-primary);
+}
+
+.dict-stat-label {
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+
 /* ============ HEADWORD ============ */
 .dict-headline {
   display: flex;
@@ -219,7 +270,22 @@
 }
 
 /* ============ RESPONSIVE ============ */
+@media (max-width: 1024px) {
+  .dict-aside {
+    flex-basis: 180px;
+    padding: 28px 24px;
+  }
+
+  .dict-stat-num {
+    font-size: 26px;
+  }
+}
+
 @media (max-width: 768px) {
+  .dict-aside {
+    display: none;
+  }
+
   .dict-card--carousel {
     flex-basis: 612px; /* 300 + 12 + 300 */
     scroll-snap-align: start;

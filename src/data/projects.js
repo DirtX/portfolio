@@ -9,6 +9,11 @@ export const FEATURED_PROJECT = {
   title: "Slovniczech",
   headword: "Slov·ni·czech",
   tech: ["React", "TypeScript", "Cloudflare Workers", "D1"],
+  stats: [
+    { value: "15 000", key: "proj_dict_stat_words" },
+    { value: "8", key: "proj_dict_stat_modes" },
+    { value: "UA / EN", key: "proj_dict_stat_ui" },
+  ],
 };
 
 export function getProjects(t) {

@@ -741,7 +741,6 @@
     animation-play-state: running;
   }
 
-
   /* Hide carousel progress on mobile (no auto-anim) */
   .carousel-progress {
     display: none;
@@ -857,7 +856,6 @@
     padding-right: 20px;
   }
 
-
   /* ABOUT + CONTACT */
   .home-about,
   .home-contact {
@@ -924,7 +922,6 @@
   .carousel {
     padding-right: 16px;
   }
-
 
   .home-about,
   .home-contact {

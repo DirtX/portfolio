@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react";
+import { useLang } from "../../../context/LanguageContext";
 import Tooltip from "../../../components/Tooltip";
 import "./BorderRadiusGenerator.css";
 
@@ -9,6 +10,7 @@ const MAX_RADIUS = 100;
 const clamp = (v) => Math.max(MIN_RADIUS, Math.min(MAX_RADIUS, v));
 
 export default function BorderRadiusGenerator() {
+  const { t } = useLang();
   const [tl, setTl] = useState(16);
   const [tr, setTr] = useState(16);
   const [br, setBr] = useState(16);
@@ -154,14 +156,16 @@ export default function BorderRadiusGenerator() {
                 onChange={toggleSync}
                 className="radius-sync-checkbox"
               />
-              <span>Edit all corners together</span>
-              <Tooltip text="When checked, changing one corner changes all four. Uncheck to set each independently." />
+              <span>{t("ct_br_sync")}</span>
+              <Tooltip text={t("ct_br_sync_tip")} />
             </label>
           </div>
 
           {/* TOP LEFT */}
           <div className="tool-group">
-            <label className="tool-label">Top left — {tl}px</label>
+            <label className="tool-label">
+              {t("ct_br_tl")} — {tl}px
+            </label>
             <input
               type="range"
               min={MIN_RADIUS}
@@ -174,7 +178,9 @@ export default function BorderRadiusGenerator() {
 
           {/* TOP RIGHT */}
           <div className="tool-group">
-            <label className="tool-label">Top right — {tr}px</label>
+            <label className="tool-label">
+              {t("ct_br_tr")} — {tr}px
+            </label>
             <input
               type="range"
               min={MIN_RADIUS}
@@ -187,7 +193,9 @@ export default function BorderRadiusGenerator() {
 
           {/* BOTTOM RIGHT */}
           <div className="tool-group">
-            <label className="tool-label">Bottom right — {br}px</label>
+            <label className="tool-label">
+              {t("ct_br_br")} — {br}px
+            </label>
             <input
               type="range"
               min={MIN_RADIUS}
@@ -200,7 +208,9 @@ export default function BorderRadiusGenerator() {
 
           {/* BOTTOM LEFT */}
           <div className="tool-group">
-            <label className="tool-label">Bottom left — {bl}px</label>
+            <label className="tool-label">
+              {t("ct_br_bl")} — {bl}px
+            </label>
             <input
               type="range"
               min={MIN_RADIUS}
@@ -219,7 +229,7 @@ export default function BorderRadiusGenerator() {
         <div className="tool-output">
           <code className="tool-code">{css}</code>
           <button className="tool-copy" onClick={handleCopy}>
-            {copied ? "Copied!" : "Copy"}
+            {copied ? t("ct_copied") : t("ct_copy")}
           </button>
         </div>
       </div>

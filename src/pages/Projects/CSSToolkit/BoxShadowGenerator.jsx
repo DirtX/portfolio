@@ -1,5 +1,6 @@
 import { useState } from "react";
 import ColorPicker from "../../../components/ColorPicker";
+import { useLang } from "../../../context/LanguageContext";
 import Tooltip from "../../../components/Tooltip";
 import "./BoxShadowGenerator.css";
 
@@ -8,6 +9,7 @@ const defaultShadows = [
 ];
 
 export default function BoxShadowGenerator() {
+  const { t } = useLang();
   const [shadows, setShadows] = useState(defaultShadows);
   const [activeIndex, setActiveIndex] = useState(0);
   const [copied, setCopied] = useState(false);
@@ -105,8 +107,8 @@ export default function BoxShadowGenerator() {
           {/* LAYERS LIST */}
           <div className="tool-group">
             <label className="tool-label">
-              Layers
-              <Tooltip text="You can stack multiple shadows on the same element to create depth or complex effects." />
+              {t("ct_bs_layers")}
+              <Tooltip text={t("ct_bs_layers_tip")} />
             </label>
             <div className="shadow-layers">
               {shadows.map((s, i) => (
@@ -122,7 +124,7 @@ export default function BoxShadowGenerator() {
                   }}
                 >
                   <span className="shadow-layer-name">
-                    {s.inset ? "Inset" : "Drop"} Shadow {i + 1}
+                    {s.inset ? t("ct_bs_layer_inset") : t("ct_bs_layer_drop")} {i + 1}
                   </span>
                   <button
                     className="shadow-remove"
@@ -154,21 +156,21 @@ export default function BoxShadowGenerator() {
           {/* TYPE */}
           <div className="tool-group">
             <label className="tool-label">
-              Type
-              <Tooltip text="Outset puts shadow outside the element. Inset puts it inside, making the element look pressed in." />
+              {t("ct_type")}
+              <Tooltip text={t("ct_bs_type_tip")} />
             </label>
             <div className="tool-pills">
               <button
                 className={`tool-pill ${!active.inset ? "active" : ""}`}
                 onClick={() => updateActive("inset", false)}
               >
-                Outset
+                {t("ct_bs_outset")}
               </button>
               <button
                 className={`tool-pill ${active.inset ? "active" : ""}`}
                 onClick={() => updateActive("inset", true)}
               >
-                Inset
+                {t("ct_bs_inset")}
               </button>
             </div>
           </div>
@@ -176,8 +178,8 @@ export default function BoxShadowGenerator() {
           {/* X OFFSET */}
           <div className="tool-group">
             <label className="tool-label">
-              X offset — {active.x}px
-              <Tooltip text="Horizontal shadow position. Positive moves right, negative moves left." />
+              {t("ct_bs_x")} — {active.x}px
+              <Tooltip text={t("ct_bs_x_tip")} />
             </label>
             <input
               type="range"
@@ -192,8 +194,8 @@ export default function BoxShadowGenerator() {
           {/* Y OFFSET */}
           <div className="tool-group">
             <label className="tool-label">
-              Y offset — {active.y}px
-              <Tooltip text="Vertical shadow position. Positive moves down, negative moves up." />
+              {t("ct_bs_y")} — {active.y}px
+              <Tooltip text={t("ct_bs_y_tip")} />
             </label>
             <input
               type="range"
@@ -208,8 +210,8 @@ export default function BoxShadowGenerator() {
           {/* BLUR */}
           <div className="tool-group">
             <label className="tool-label">
-              Blur — {active.blur}px
-              <Tooltip text="How soft the shadow edges are. 0 = sharp edge, higher = smoother and more spread out." />
+              {t("ct_blur")} — {active.blur}px
+              <Tooltip text={t("ct_bs_blur_tip")} />
             </label>
             <input
               type="range"
@@ -224,8 +226,8 @@ export default function BoxShadowGenerator() {
           {/* SPREAD */}
           <div className="tool-group">
             <label className="tool-label">
-              Spread — {active.spread}px
-              <Tooltip text="Makes the shadow bigger or smaller than the element. Negative shrinks it, positive expands it." />
+              {t("ct_bs_spread")} — {active.spread}px
+              <Tooltip text={t("ct_bs_spread_tip")} />
             </label>
             <input
               type="range"
@@ -240,8 +242,8 @@ export default function BoxShadowGenerator() {
           {/* COLOR */}
           <div className="tool-group">
             <label className="tool-label">
-              Color
-              <Tooltip text="The base color of the shadow before opacity is applied." />
+              {t("ct_color")}
+              <Tooltip text={t("ct_bs_color_tip")} />
             </label>
             <ColorPicker value={active.color} onChange={(color) => updateActive("color", color)} />
           </div>
@@ -249,8 +251,8 @@ export default function BoxShadowGenerator() {
           {/* OPACITY */}
           <div className="tool-group">
             <label className="tool-label">
-              Opacity — {Math.round(active.opacity * 100)}%
-              <Tooltip text="How transparent the shadow is. 0% = invisible, 100% = fully solid color." />
+              {t("ct_opacity")} — {Math.round(active.opacity * 100)}%
+              <Tooltip text={t("ct_bs_opacity_tip")} />
             </label>
             <input
               type="range"
@@ -271,7 +273,7 @@ export default function BoxShadowGenerator() {
         <div className="tool-output">
           <code className="tool-code">{css}</code>
           <button className="tool-copy" onClick={handleCopy}>
-            {copied ? "Copied!" : "Copy"}
+            {copied ? t("ct_copied") : t("ct_copy")}
           </button>
         </div>
       </div>
