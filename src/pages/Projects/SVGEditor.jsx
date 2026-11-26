@@ -31,6 +31,8 @@ const elementAttrs = (el) => {
   return obj;
 };
 
+// Feature: Desktop-only gate. Kept separate from the editor so the editor's
+// hooks always run in the same order when the viewport crosses the breakpoint.
 export default function SVGEditor() {
   const { t } = useLang();
   const isMobile = useIsMobile();
@@ -55,6 +57,12 @@ export default function SVGEditor() {
       </div>
     );
   }
+
+  return <SVGEditorApp />;
+}
+
+function SVGEditorApp() {
+  const { t } = useLang();
 
   const TOOLS = [
     { id: "hand", label: t("svg_tool_hand") },
@@ -373,14 +381,6 @@ export default function SVGEditor() {
   return (
     <div className="svg-wrapper">
       <BackButton />
-      {/* MOBILE DESKTOP-ONLY NOTICE */}
-      {isMobile && (
-        <div className="svg-desktop-notice">
-          <span className="svg-desktop-notice-icon">⚠</span>
-          <span className="svg-desktop-notice-text">{t("desktop_only_notice")}</span>
-        </div>
-      )}
-
       {/* HERO */}
       <div className="svg-hero">
         <div className="svg-tech">

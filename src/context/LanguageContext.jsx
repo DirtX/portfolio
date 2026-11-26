@@ -32,4 +32,5 @@ export function LanguageProvider({ children }) {
 }
 
 // Feature: Shortcut hook to use the language context anywhere
+// eslint-disable-next-line react-refresh/only-export-components -- hook belongs with its provider
 export const useLang = () => useContext(LanguageContext);

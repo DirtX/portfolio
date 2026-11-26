@@ -48,14 +48,11 @@ export default function MarkdownEditor() {
     { num: "03", title: t("me_step3_title"), desc: t("me_step3_desc") },
   ];
 
-  const [content, setContent] = useState(DEFAULT_CONTENT);
+  // Feature: Restore saved content from localStorage on first render
+  const [content, setContent] = useState(
+    () => localStorage.getItem(STORAGE_KEY) ?? DEFAULT_CONTENT
+  );
   const editorRef = useRef(null);
-
-  // Feature: Load saved content from localStorage on mount
-  useEffect(() => {
-    const saved = localStorage.getItem(STORAGE_KEY);
-    if (saved !== null) setContent(saved);
-  }, []);
 
   // Feature: Auto-save content to localStorage on every change
   useEffect(() => {

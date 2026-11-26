@@ -42,14 +42,19 @@ export default function ColorPicker({ value, onChange }) {
     };
   }, []);
 
-  useEffect(() => {
+  // Feature: Sync internal state when the value prop changes (during render, not in an effect).
+  // Hue is kept for greys/black, where it is undefined.
+  const [prevValue, setPrevValue] = useState(value);
+  if (value !== prevValue) {
+    setPrevValue(value);
     const newHsv = hexToHsv(value);
     setHsv((prev) => ({
       h: newHsv.s < 0.01 || newHsv.v < 0.01 ? prev.h : newHsv.h,
       s: newHsv.s,
       v: newHsv.v,
     }));
-  }, [value]);
+    setHexInput(value.replace("#", "").toUpperCase());
+  }
 
   const updateColor = (newHsv) => {
     setHsv(newHsv);
@@ -76,15 +81,21 @@ export default function ColorPicker({ value, onChange }) {
     updateColor({ ...hsv, h: x * 360 });
   };
 
+  // Latest move handlers, so the window listeners below are attached only once
+  const moveHandlersRef = useRef(null);
+  useEffect(() => {
+    moveHandlersRef.current = { canvas: handleCanvasMove, hue: handleHueMove };
+  });
+
   // Feature: drag tracking (mouse + touch)
   useEffect(() => {
     const onMove = (e) => {
       if (draggingCanvas.current) {
-        handleCanvasMove(e);
+        moveHandlersRef.current.canvas(e);
         if (e.cancelable) e.preventDefault();
       }
       if (draggingHue.current) {
-        handleHueMove(e);
+        moveHandlersRef.current.hue(e);
         if (e.cancelable) e.preventDefault();
       }
     };
@@ -102,11 +113,7 @@ export default function ColorPicker({ value, onChange }) {
       window.removeEventListener("touchmove", onMove);
       window.removeEventListener("touchend", onUp);
     };
-  }, [hsv]);
-
-  useEffect(() => {
-    setHexInput(value.replace("#", "").toUpperCase());
-  }, [value]);
+  }, []);
 
   const handleHexInput = (e) => {
     const cleaned = e.target.value
@@ -227,7 +234,7 @@ function hsvToHex({ h, s, v }) {
   const c = v * s;
   const x = c * (1 - Math.abs(((h / 60) % 2) - 1));
   const m = v - c;
-  let [r, g, b] = [0, 0, 0];
+  let r, g, b;
   if (h < 60) [r, g, b] = [c, x, 0];
   else if (h < 120) [r, g, b] = [x, c, 0];
   else if (h < 180) [r, g, b] = [0, c, x];

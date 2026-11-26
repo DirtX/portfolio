@@ -3,7 +3,6 @@ import { useLang } from "../context/LanguageContext";
 import "./ContactModal.css";
 
 const PHONE = "+420739984652";
-const PHONE_DISPLAY = "+420 739 984 652";
 
 export default function ContactModal({ open, onClose }) {
   const { t } = useLang();

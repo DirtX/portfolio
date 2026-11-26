@@ -70,7 +70,9 @@ export default function GradientGenerator() {
     const target = e.currentTarget;
     try {
       target.setPointerCapture(e.pointerId);
-    } catch (_) {}
+    } catch {
+      // Pointer capture is unsupported on some browsers; dragging still works
+    }
 
     const moveHandler = (ev) => {
       const rect = timelineRef.current.getBoundingClientRect();

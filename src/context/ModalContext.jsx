@@ -17,4 +17,5 @@ export function ModalProvider({ children }) {
 }
 
 // Feature: Hook for any component to control modal
+// eslint-disable-next-line react-refresh/only-export-components -- hook belongs with its provider
 export const useModal = () => useContext(ModalContext);
